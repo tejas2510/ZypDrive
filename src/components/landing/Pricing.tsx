@@ -3,10 +3,14 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 const BASE_PRICE = 1799;
 const INCLUDED_PER_DAY = 40;
 const EXTRA_PER_KM = 8;
+// Approximate average scooter speed in city traffic (km/h)
+const AVERAGE_SCOOTER_SPEED_KMPH = 20;
 
 function formatMinutes(totalMins: number) {
   const hrs = Math.floor(totalMins / 60);
@@ -18,8 +22,6 @@ function formatMinutes(totalMins: number) {
 const Pricing = () => {
   const [days, setDays] = useState(26);
   const [kmsPerDay, setKmsPerDay] = useState(30);
-  const [tripsPerDay, setTripsPerDay] = useState(2); // to & from work
-  const [scooterTimeMins, setScooterTimeMins] = useState(15); // one-way by scooter
   const [busDailyCost, setBusDailyCost] = useState(55); // typical 50–60
 
   const results = useMemo(() => {
@@ -30,23 +32,19 @@ const Pricing = () => {
 
     const scooterMonthly = BASE_PRICE + extraCost;
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
-    const monthlySavings = busMonthly - scooterMonthly;
 
-    // Time: assumption — 1x scooter time ≈ 4x on public transport
-    const ptOneWay = scooterTimeMins * 4;
-    const savedPerOneWay = Math.max(0, ptOneWay - scooterTimeMins);
-    const savedPerDay = savedPerOneWay * Math.max(0, tripsPerDay);
+    // Time: derive from distance; public transport assumed ~4x scooter time
+    const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
+    const ptPerDayMins = scooterPerDayMins * 4;
+    const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
     return {
-      extraKms,
-      extraCost,
       scooterMonthly,
       busMonthly,
-      monthlySavings,
       savedPerMonthMins,
     };
-  }, [days, kmsPerDay, scooterTimeMins, tripsPerDay, busDailyCost]);
+  }, [days, kmsPerDay, busDailyCost]);
 
   return (
     <section id="pricing" className="py-14 md:py-20 bg-secondary/50">
@@ -89,17 +87,21 @@ const Pricing = () => {
                 <Input id="days" type="number" min={1} max={31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
               </div>
               <div>
-                <Label htmlFor="kms">Your commute (km/day)</Label>
+                <div className="flex items-center gap-2">
+                  <Label htmlFor="kms">Your commute (km/day)</Label>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button type="button" aria-label="Commute distance info" className="text-muted-foreground hover:text-foreground">
+                        <Info className="h-4 w-4" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      Total distance for both to-and-fro journeys in a day.
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input id="kms" type="number" min={0} max={200} value={kmsPerDay} onChange={(e) => setKmsPerDay(Number(e.target.value))} />
-              </div>
-              <div>
-                <Label htmlFor="trips">Trips per day</Label>
-                <Input id="trips" type="number" min={1} max={6} value={tripsPerDay} onChange={(e) => setTripsPerDay(Number(e.target.value))} />
-              </div>
-              <div>
-                <Label htmlFor="scooterTime">Scooter time (one-way, minutes)</Label>
-                <Input id="scooterTime" type="number" min={5} max={120} value={scooterTimeMins} onChange={(e) => setScooterTimeMins(Number(e.target.value))} />
-                <div className="text-xs text-muted-foreground mt-1">Typically, 15 min by scooter ≈ 60 min by public transport.</div>
+                <div className="text-xs text-muted-foreground mt-1">We estimate scooter time from this distance. Public transport typically takes ~4x longer.</div>
               </div>
               <div className="sm:col-span-2">
                 <Label htmlFor="busCost">Bus cost per day (₹)</Label>
@@ -110,14 +112,6 @@ const Pricing = () => {
 
             <div className="mt-5 grid grid-cols-2 gap-4 text-sm">
               <Card className="p-4 bg-background">
-                <div className="text-muted-foreground">Extra kms (month)</div>
-                <div className="text-2xl font-heading">{results.extraKms.toLocaleString()}</div>
-              </Card>
-              <Card className="p-4 bg-background">
-                <div className="text-muted-foreground">Extra cost (month)</div>
-                <div className="text-2xl font-heading">₹{results.extraCost.toLocaleString()}</div>
-              </Card>
-              <Card className="p-4 bg-background">
                 <div className="text-muted-foreground">Scooter total (month)</div>
                 <div className="text-2xl font-heading">₹{results.scooterMonthly.toLocaleString()}</div>
               </Card>
@@ -127,13 +121,7 @@ const Pricing = () => {
               </Card>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card className="p-4 bg-primary/5">
-                <div className="text-muted-foreground text-sm">Estimated savings vs bus</div>
-                <div className={`text-3xl font-heading ${results.monthlySavings >= 0 ? "text-foreground" : "text-muted-foreground"}`}>
-                  {results.monthlySavings >= 0 ? `₹${results.monthlySavings.toLocaleString()}` : `—`}
-                </div>
-              </Card>
+            <div className="mt-6">
               <Card className="p-4 bg-primary/5">
                 <div className="text-muted-foreground text-sm">Time saved per month</div>
                 <div className="text-3xl font-heading">{formatMinutes(results.savedPerMonthMins)}</div>
