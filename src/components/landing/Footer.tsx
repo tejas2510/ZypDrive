@@ -8,7 +8,7 @@ const Footer = () => {
           </div>
           <span className="font-heading">Zypdrive</span>
         </div>
-        <div className="text-muted-foreground">© {new Date().getFullYear()} Zypdrive. All rights reserved.</div>
+        <div className="text-muted-foreground">Made with ❤️ by Tejas © {new Date().getFullYear()} Zypdrive. All rights reserved.</div>
       </div>
     </footer>
   );
