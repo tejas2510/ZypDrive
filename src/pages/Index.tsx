@@ -1,5 +1,6 @@
 import Hero from "@/components/landing/Hero";
 import Benefits from "@/components/landing/Benefits";
+import JourneyComparison from "@/components/landing/JourneyComparison";
 import Pricing from "@/components/landing/Pricing";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Showcase from "@/components/landing/Showcase";
@@ -70,6 +71,7 @@ const Index = () => {
     <main>
       <Hero />
       <Benefits />
+      <JourneyComparison />
       <Pricing />
       <HowItWorks />
       <Showcase />

@@ -6,7 +6,9 @@ import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
 
-const BASE_PRICE = 1799;
+const BASE_PRICE = 1779;
+const PRO_PRICE = 2399;
+const ONBOARDING_FEE = 2000;
 const INCLUDED_PER_DAY = 40;
 const EXTRA_PER_KM = 8;
 // Approximate average scooter speed in city traffic (km/h)
@@ -54,32 +56,60 @@ const Pricing = () => {
           Transparent plans with everything you need to ride. Compare versus daily buses.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 mt-8">
           {/* Base plan */}
-          <Card className="p-6 flex flex-col justify-between">
+          <Card className="p-4 md:p-6 flex flex-col justify-between">
             <div>
-              <h3 className="font-semibold text-xl">Base plan</h3>
+              <h3 className="font-semibold text-lg md:text-xl">Base plan</h3>
               <div className="mt-3 flex items-end gap-2">
-                <span className="text-4xl font-heading">₹{BASE_PRICE.toLocaleString()}</span>
-                <span className="text-muted-foreground mb-1">/ month</span>
+                <span className="text-3xl md:text-4xl font-heading">₹{BASE_PRICE.toLocaleString()}</span>
+                <span className="text-muted-foreground mb-1 text-sm">/ month</span>
               </div>
+              <div className="text-xs text-muted-foreground mt-1">+ ₹{ONBOARDING_FEE.toLocaleString()} onboarding fee</div>
               <ul className="mt-4 space-y-2 text-sm">
-                <li>• No downpayment</li>
+                <li>• Monthly rental in advance</li>
                 <li>• {INCLUDED_PER_DAY} km/day included</li>
                 <li>• ₹{EXTRA_PER_KM}/km after included</li>
                 <li>• Charge at home</li>
                 <li>• Routine service included</li>
+                <li>• Standard speed & range</li>
+              </ul>
+            </div>
+            <Button variant="outline" size="lg" className="mt-6" asChild>
+              <a href="#contact">Choose Base</a>
+            </Button>
+          </Card>
+
+          {/* Pro plan */}
+          <Card className="p-4 md:p-6 flex flex-col justify-between border-primary/50 relative">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">POPULAR</span>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg md:text-xl">Pro plan</h3>
+              <div className="mt-3 flex items-end gap-2">
+                <span className="text-3xl md:text-4xl font-heading">₹{PRO_PRICE.toLocaleString()}</span>
+                <span className="text-muted-foreground mb-1 text-sm">/ month</span>
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">+ ₹{ONBOARDING_FEE.toLocaleString()} onboarding fee</div>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li>• Monthly rental in advance</li>
+                <li>• Unlimited km/day</li>
+                <li>• No extra per km charges</li>
+                <li>• Higher speed & range</li>
+                <li>• Premium scooter model</li>
+                <li>• Priority service support</li>
               </ul>
             </div>
             <Button variant="hero" size="lg" className="mt-6" asChild>
-              <a href="#contact">Start subscription</a>
+              <a href="#contact">Choose Pro</a>
             </Button>
           </Card>
 
           {/* Calculator */}
-          <Card className="p-6">
-            <h3 className="font-semibold mb-1">Your commute</h3>
-            <p className="text-sm text-muted-foreground mb-4">We’ll calculate scooter costs vs bus and time saved.</p>
+          <Card className="p-4 md:p-6 lg:col-span-1 md:col-span-2">
+            <h3 className="font-semibold mb-1 text-lg md:text-xl">Your commute calculator</h3>
+            <p className="text-sm text-muted-foreground mb-4">Compare scooter costs vs bus and see time saved.</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -110,27 +140,27 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div className="mt-5 grid grid-cols-2 gap-4 text-sm">
-              <Card className="p-4 bg-background">
-                <div className="text-muted-foreground">Scooter total (month)</div>
-                <div className="text-2xl font-heading">₹{results.scooterMonthly.toLocaleString()}</div>
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <Card className="p-3 md:p-4 bg-background">
+                <div className="text-muted-foreground text-xs md:text-sm">Scooter total (month)</div>
+                <div className="text-xl md:text-2xl font-heading">₹{results.scooterMonthly.toLocaleString()}</div>
               </Card>
-              <Card className="p-4 bg-background">
-                <div className="text-muted-foreground">Bus total (month)</div>
-                <div className="text-2xl font-heading">₹{results.busMonthly.toLocaleString()}</div>
+              <Card className="p-3 md:p-4 bg-background">
+                <div className="text-muted-foreground text-xs md:text-sm">Bus total (month)</div>
+                <div className="text-xl md:text-2xl font-heading">₹{results.busMonthly.toLocaleString()}</div>
               </Card>
             </div>
 
             <div className="mt-6">
-              <Card className="p-4 bg-primary/5">
-                <div className="text-muted-foreground text-sm">Time saved per month</div>
-                <div className="text-3xl font-heading">{formatMinutes(results.savedPerMonthMins)}</div>
+              <Card className="p-3 md:p-4 bg-primary/5">
+                <div className="text-muted-foreground text-xs md:text-sm">Time saved per month</div>
+                <div className="text-2xl md:text-3xl font-heading">{formatMinutes(results.savedPerMonthMins)}</div>
               </Card>
             </div>
 
-            <div className="mt-4 flex items-center justify-between gap-4">
+            <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <p className="text-xs text-muted-foreground">Estimates vary by route & traffic. Extra kms charged at ₹{EXTRA_PER_KM}/km.</p>
-              <Button variant="secondary" asChild>
+              <Button variant="secondary" size="sm" asChild>
                 <a href="#contact">Enroll</a>
               </Button>
             </div>
