@@ -30,10 +30,12 @@ const JourneyComparison = () => {
             <div className="space-y-4">
               {[
                 { step: "1", action: "Walk to bus stop", time: "10-15 min", icon: "🚶‍♀️" },
-                { step: "2", action: "Wait for bus", time: "15-20 min", icon: "⏰" },
-                { step: "3", action: "Crowded bus ride", time: "30-45 min", icon: "🚌" },
-                { step: "4", action: "Walk to destination", time: "10-15 min", icon: "🚶‍♀️" },
-                { step: "5", action: "Repeat return journey", time: "+60-90 min", icon: "🔄" },
+                { step: "2", action: "Wait for first bus", time: "15-25 min", icon: "⏰" },
+                { step: "3", action: "Crowded bus ride #1", time: "20-30 min", icon: "🚌" },
+                { step: "4", action: "Change buses/wait", time: "10-20 min", icon: "🔄" },
+                { step: "5", action: "Crowded bus ride #2", time: "15-25 min", icon: "🚌" },
+                { step: "6", action: "Walk to destination", time: "10-15 min", icon: "🚶‍♀️" },
+                { step: "7", action: "Repeat return journey", time: "+80-110 min", icon: "🔄" },
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 p-3 bg-white/60 rounded-lg">
                   <div className="text-2xl">{item.icon}</div>
@@ -50,9 +52,10 @@ const JourneyComparison = () => {
 
             <div className="mt-6 p-4 bg-red-100 rounded-lg">
               <div className="text-center">
-                <div className="font-bold text-red-800 text-lg">Total Daily Time: 2-3 hours</div>
+                <div className="font-bold text-red-800 text-lg">Total Daily Time: 2.5-3.5 hours</div>
                 <div className="text-red-600 text-sm">Daily Cost: ₹50-60 | Monthly: ₹1,300-1,560</div>
                 <div className="text-red-600 text-xs mt-1">+ Stress, Safety concerns, Weather dependency</div>
+                <div className="text-red-600 text-xs mt-1">*Assumes 15-20 km daily commute in Udupi/Manipal region</div>
               </div>
             </div>
           </Card>
@@ -97,6 +100,7 @@ const JourneyComparison = () => {
                 <div className="font-bold text-green-800 text-lg">Total Daily Time: 30-40 minutes</div>
                 <div className="text-green-600 text-sm">Monthly Cost: ₹1,779-2,399 (All inclusive)</div>
                 <div className="text-green-600 text-xs mt-1">+ Safety, Convenience, Weather protection</div>
+                <div className="text-green-600 text-xs mt-1">*Assumes 15-20 km daily commute in Udupi/Manipal region</div>
               </div>
             </div>
           </Card>
