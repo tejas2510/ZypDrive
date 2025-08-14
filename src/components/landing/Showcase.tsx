@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 
 const Showcase = () => {
   return (
-    <section id="scooter" className="py-8 md:py-12">
+    <section id="scooter" className="py-14 md:py-20">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
