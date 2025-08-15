@@ -1,3 +1,4 @@
+import TrialBanner from "@/components/landing/TrialBanner";
 import Hero from "@/components/landing/Hero";
 import Benefits from "@/components/landing/Benefits";
 import JourneyComparison from "@/components/landing/JourneyComparison";
@@ -69,6 +70,7 @@ const Index = () => {
 
   return (
     <main>
+      <TrialBanner />
       <Hero />
       <Benefits />
       <JourneyComparison />
