@@ -44,6 +44,13 @@ const Hero = () => {
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-left">
+              {/* Free Trial Highlight */}
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-primary text-white mb-4 animate-pulse">
+                <span className="text-lg">🎉</span>
+                <span className="font-semibold text-sm md:text-base">FREE TRIAL - 15 DAYS. NO QUESTIONS ASKED!</span>
+                <span className="text-lg">🎉</span>
+              </div>
+              
               <p className="inline-flex items-center gap-2 text-xs md:text-sm px-3 py-1 rounded-full bg-secondary">
                 Women-first mobility • Service included
               </p>
