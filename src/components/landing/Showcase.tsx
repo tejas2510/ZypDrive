@@ -1,4 +1,4 @@
-import scooterImg from "@/assets/scooter-komaki-xone.webp";
+import scooterImg from "@/assets/scooter-zypdrive.png";
 import { Card } from "@/components/ui/card";
 
 const Showcase = () => {
@@ -9,11 +9,11 @@ const Showcase = () => {
           <div>
             <img
               src={scooterImg}
-              alt="Electric scooter similar to Komaki X-One in studio"
+              alt="Zypdrive branded white and pink electric scooter for women"
               className="w-full h-auto rounded-xl shadow-elevated"
               loading="lazy"
-              width={1024}
-              height={768}
+              width={1280}
+              height={1024}
             />
           </div>
           <div>
