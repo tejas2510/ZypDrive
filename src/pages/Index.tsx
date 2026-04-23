@@ -25,7 +25,7 @@ const Index = () => {
       '@type': 'Offer',
       price: '1799',
       priceCurrency: 'INR',
-      description: 'Monthly subscription with 40 km/day included, no downpayment, routine service included',
+      description: 'Monthly subscription with 60-70 km/day included, no downpayment, routine service included',
     },
   };
 
@@ -43,7 +43,7 @@ const Index = () => {
       },
       {
         '@type': 'Question',
-        name: 'What if I ride more than 40 km/day?',
+        name: 'What if I ride more than 60-70 km/day?',
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Extra kms are charged at ₹8/km. Use the calculator to estimate your monthly cost.',

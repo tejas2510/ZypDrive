@@ -13,7 +13,7 @@ const FAQ = () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>What if I ride more than 40 km/day?</AccordionTrigger>
+            <AccordionTrigger>What if I ride more than 60–70 km/day?</AccordionTrigger>
             <AccordionContent>
               Extra kms are charged at ₹8/km. Use the calculator to estimate your monthly cost.
             </AccordionContent>
