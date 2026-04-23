@@ -14,7 +14,7 @@ const items = [
   },
   {
     title: "Charge at home",
-    desc: "40 km/day included. Plug into a regular socket and go.",
+    desc: "60–70 km/day included. Plug into a regular socket and go.",
     Icon: BatteryCharging,
   },
 ];
