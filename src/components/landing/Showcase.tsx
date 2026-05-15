@@ -21,8 +21,8 @@ const Showcase = () => {
             <p className="text-muted-foreground mt-2">Komaki X-One or similar model, chosen for comfort, practicality and easy city rides.</p>
             <div className="grid sm:grid-cols-2 gap-4 mt-6">
               <Card className="p-4 bg-background">
-                <div className="text-sm text-muted-foreground">Range (real-world)</div>
-                <div className="text-xl font-semibold">Up to 60–70 km/day</div>
+                <div className="text-sm text-muted-foreground">Included mileage</div>
+                <div className="text-xl font-semibold">40 km/day · 1,000 km/month free</div>
               </Card>
               <Card className="p-4 bg-background">
                 <div className="text-sm text-muted-foreground">Charging</div>

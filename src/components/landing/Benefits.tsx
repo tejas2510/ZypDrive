@@ -14,7 +14,7 @@ const items = [
   },
   {
     title: "Charge at home",
-    desc: "60–70 km/day included. Plug into a regular socket and go.",
+    desc: "1,000 km/month free (40 km/day). Plug into a regular socket and go.",
     Icon: BatteryCharging,
   },
 ];

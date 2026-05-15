@@ -59,7 +59,7 @@ const Hero = () => {
                 <span className="block text-gradient">₹1,799 per month</span>
               </h1>
               <p className="mt-4 text-muted-foreground max-w-prose">
-                Commute with confidence and predictable costs. No downpayment, 60–70 km/day included, charge at home, and routine service handled by us.
+                Commute with confidence and predictable costs. No downpayment, 1,000 km/month free (40 km/day), charge at home, and routine service handled by us.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Button asChild variant="hero" size="lg">
@@ -73,7 +73,7 @@ const Hero = () => {
               <ul className="mt-6 grid grid-cols-2 gap-3 text-sm">
                 <li className="flex items-center gap-2"><CheckCircle className="text-primary" /> No downpayment</li>
                 <li className="flex items-center gap-2"><BatteryCharging className="text-primary" /> Charge at home</li>
-                <li className="flex items-center gap-2"><Home className="text-primary" /> 60–70 km/day included</li>
+                <li className="flex items-center gap-2"><Home className="text-primary" /> 1,000 km/month free (40/day)</li>
                 <li className="flex items-center gap-2"><Wrench className="text-primary" /> Routine service included</li>
               </ul>
 
