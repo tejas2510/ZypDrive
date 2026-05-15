@@ -13,9 +13,9 @@ const FAQ = () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>What if I ride more than 60–70 km/day?</AccordionTrigger>
+            <AccordionTrigger>What if I ride more than 40 km/day?</AccordionTrigger>
             <AccordionContent>
-              Extra kms are charged at ₹8/km. Use the calculator to estimate your monthly cost.
+              You get 40 km/day included — that's 1,000 km free every month. Anything beyond is just ₹2.5/km. Use the calculator to estimate your monthly cost.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
@@ -57,7 +57,7 @@ const FAQ = () => {
           <AccordionItem value="item-9">
             <AccordionTrigger>Can I use it for long trips?</AccordionTrigger>
             <AccordionContent>
-              Our scooters are designed for daily commuting. For longer trips beyond your daily allowance, extra kms are charged at ₹8/km. The Pro plan offers unlimited km for those who need more flexibility.
+              Our scooters are designed for daily commuting. You get 1,000 km/month free (40 km/day), and extra kms are charged at just ₹2.5/km.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-10">

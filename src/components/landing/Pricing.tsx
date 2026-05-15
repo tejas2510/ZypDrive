@@ -8,8 +8,8 @@ import { Info } from "lucide-react";
 
 const BASE_PRICE = 1779;
 const ONBOARDING_FEE = 2000;
-const INCLUDED_PER_DAY = 65;
-const EXTRA_PER_KM = 8;
+const INCLUDED_PER_DAY = 40;
+const EXTRA_PER_KM = 2.5;
 const AVERAGE_SCOOTER_SPEED_KMPH = 20;
 
 function formatMinutes(totalMins: number) {
@@ -62,8 +62,8 @@ const Pricing = () => {
               <div className="text-xs text-muted-foreground mt-1.5">+ ₹{ONBOARDING_FEE.toLocaleString()} one-time onboarding fee</div>
               <ul className="mt-5 space-y-2.5 text-sm">
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Monthly rental in advance</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 60–70 km/day included</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> ₹{EXTRA_PER_KM}/km after included</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 40 km/day included — that's 1,000 km/month free</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Just ₹{EXTRA_PER_KM}/km after included</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Charge at home</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Routine service included</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 15-day free trial</li>
