@@ -141,6 +141,8 @@ const JourneyComparison = () => {
               <p>✨ Financial independence through smart mobility</p>
               <p>✨ More time for career, family, and personal growth</p>
               <p>✨ Breaking barriers, one ride at a time</p>
+              <p>✨ Everyday convenience: buying vegetables, groceries & medicines</p>
+              <p>✨ Drop & pick up children from school, tuitions or sports activities</p>
             </div>
           </Card>
 
