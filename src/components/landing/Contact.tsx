@@ -17,7 +17,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
     );
-    window.location.href = `mailto:for.tejaspatil@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact.mohandaspatil@gmail.com?subject=${subject}&body=${body}`;
     toast.success("Opening your email app to send the message");
   };
 
