@@ -63,11 +63,15 @@ const Pricing = () => {
               <ul className="mt-5 space-y-2.5 text-sm">
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Monthly rental in advance</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 40 km/day included — that's 1,000 km/month free</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Just ₹{EXTRA_PER_KM}/km after included</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Charge at home</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Just ₹{EXTRA_PER_KM}/km added above 1,000 km/month</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Charge at home only as required</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Routine service included</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 15-day free trial</li>
               </ul>
+              <div className="mt-4 space-y-2 text-xs text-muted-foreground border-t pt-4">
+                <p>ℹ️ Unused km don't carry forward to the next month.</p>
+                <p>👯 <span className="font-medium text-foreground">Double-ride friendly</span> — share with a friend, colleague or loved one. Split the cost at just <span className="font-semibold text-primary">₹899/month per person</span> (50% of ₹1,799).</p>
+              </div>
             </div>
             <Button variant="hero" size="lg" className="mt-6 w-full" asChild>
               <a href="#contact">Get started</a>
