@@ -29,8 +29,8 @@ const JourneyComparison = () => {
 
             <div className="space-y-4">
               {[
-                { step: "1", action: "Walk to bus stop", time: "10-15 min", icon: "🚶‍♀️" },
-                { step: "2", action: "Wait for bus", time: "15-20 min", icon: "⏰" },
+              { step: "1", action: "Walk to bus stop", time: "10-15 min", icon: "🚶‍♀️" },
+                { step: "2", action: "Wait for bus", time: "10-15 min", icon: "⏰" },
                 { step: "3", action: "Crowded bus ride", time: "30-45 min", icon: "🚌" },
                 { step: "4", action: "Walk to destination", time: "10-15 min", icon: "🚶‍♀️" },
                 { step: "5", action: "Repeat return journey", time: "+60-90 min", icon: "🔄" },
