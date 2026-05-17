@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-woman-scooter.webp";
 import { CheckCircle, BatteryCharging, Home, Wrench } from "lucide-react";
 import { useRef } from "react";
