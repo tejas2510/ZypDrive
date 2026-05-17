@@ -119,7 +119,7 @@ const JourneyComparison = () => {
           <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-teal-50">
             <Shield className="w-12 h-12 text-green-600 mx-auto mb-4" />
             <h3 className="font-heading text-xl mb-2">Safety First</h3>
-            <p className="text-muted-foreground text-sm">Well-maintained scooters, GPS tracking, and 24/7 support</p>
+            <p className="text-muted-foreground text-sm">Well-maintained scooters and 24/7 support</p>
           </Card>
         </div>
 
