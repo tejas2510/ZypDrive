@@ -162,6 +162,9 @@ const JourneyComparison = () => {
               <p>🇮🇳 Reducing imports, boosting economy</p>
               <p>🇮🇳 Clean energy for a cleaner India</p>
               <p>🇮🇳 Innovation that puts India first</p>
+              <p>🇮🇳 Lower carbon footprint with every ride</p>
+              <p>🇮🇳 Empowering local mechanics & service partners</p>
+              <p>🇮🇳 Built for Indian roads, weather & traffic</p>
             </div>
           </Card>
         </div>

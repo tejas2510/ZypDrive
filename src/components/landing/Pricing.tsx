@@ -70,7 +70,7 @@ const Pricing = () => {
               </ul>
               <div className="mt-4 space-y-2 text-xs text-muted-foreground border-t pt-4">
                 <p>ℹ️ Unused km don't carry forward to the next month.</p>
-                <p>👯 <span className="font-medium text-foreground">Double-ride friendly</span> — share with a friend, colleague or loved one. Split the cost at just <span className="font-semibold text-primary">₹899/month per person</span> (50% of ₹1,799).</p>
+                <p>👯 <span className="font-medium text-foreground">Double-ride friendly</span> — share with a friend, colleague or loved one. Split the cost at just <span className="font-semibold text-primary">₹899/month per person</span>.</p>
               </div>
             </div>
             <Button variant="hero" size="lg" className="mt-6 w-full" asChild>
