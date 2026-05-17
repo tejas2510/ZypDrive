@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
 
-const BASE_PRICE = 1779;
+const BASE_PRICE = 1799;
 const ONBOARDING_FEE = 2000;
 const INCLUDED_PER_DAY = 40;
 const EXTRA_PER_KM = 2.5;
