@@ -36,6 +36,7 @@ const Hero = () => {
               <a className="hover:opacity-80" href="#why">Why</a>
               <a className="hover:opacity-80" href="#pricing">Pricing</a>
               <a className="hover:opacity-80" href="#how">How it works</a>
+              <Link className="hover:opacity-80" to="/about">About</Link>
               <a className="hover:opacity-80" href="#faq">FAQ</a>
             </div>
             <Button asChild variant="hero" size="lg">
