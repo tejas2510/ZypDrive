@@ -29,8 +29,8 @@ const JourneyComparison = () => {
 
             <div className="space-y-4">
               {[
-                { step: "1", action: "Walk to bus stop", time: "10-15 min", icon: "🚶‍♀️" },
-                { step: "2", action: "Wait for bus", time: "15-20 min", icon: "⏰" },
+              { step: "1", action: "Walk to bus stop", time: "10-15 min", icon: "🚶‍♀️" },
+                { step: "2", action: "Wait for bus", time: "10-15 min", icon: "⏰" },
                 { step: "3", action: "Crowded bus ride", time: "30-45 min", icon: "🚌" },
                 { step: "4", action: "Walk to destination", time: "10-15 min", icon: "🚶‍♀️" },
                 { step: "5", action: "Repeat return journey", time: "+60-90 min", icon: "🔄" },
@@ -50,7 +50,7 @@ const JourneyComparison = () => {
 
             <div className="mt-6 p-4 bg-red-100 rounded-lg">
               <div className="text-center">
-                <div className="font-bold text-red-800 text-lg">Total Daily Time: 2-3 hours</div>
+                <div className="font-bold text-red-800 text-lg">Total Daily Time: 2.5–3 hours</div>
                 <div className="text-red-600 text-sm">Daily Cost: ₹50-60 | Monthly: ₹1,300-1,560</div>
                 <div className="text-red-600 text-xs mt-1">+ Stress, Safety concerns, Weather dependency</div>
               </div>
@@ -74,10 +74,10 @@ const JourneyComparison = () => {
             <div className="space-y-4">
               {[
                 { step: "1", action: "Pick up scooter", time: "1 min", icon: "🛵" },
-                { step: "2", action: "Direct route to work", time: "15-20 min", icon: "🎯" },
+                { step: "2", action: "Travel time to work", time: "25-30 min", icon: "🎯" },
                 { step: "3", action: "Park at destination", time: "1 min", icon: "🅿️" },
-                { step: "4", action: "Return journey", time: "15-20 min", icon: "🏠" },
-                { step: "5", action: "Charge at home", time: "Overnight", icon: "🔌" },
+                { step: "4", action: "Return journey", time: "25-30 min", icon: "🏠" },
+                { step: "5", action: "Charge at home only as required (not overnight)", time: "As needed", icon: "🔌" },
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 p-3 bg-white/60 rounded-lg">
                   <div className="text-2xl">{item.icon}</div>
@@ -94,8 +94,8 @@ const JourneyComparison = () => {
 
             <div className="mt-6 p-4 bg-green-100 rounded-lg">
               <div className="text-center">
-                <div className="font-bold text-green-800 text-lg">Total Daily Time: 30-40 minutes</div>
-                <div className="text-green-600 text-sm">Monthly Cost: ₹1,779-2,399 (All inclusive)</div>
+                <div className="font-bold text-green-800 text-lg">Total Daily Travel Time: 50–60 minutes</div>
+                <div className="text-green-600 text-sm">Monthly Cost: ₹1,799 (All inclusive)</div>
                 <div className="text-green-600 text-xs mt-1">+ Safety, Convenience, Weather protection</div>
               </div>
             </div>
@@ -119,7 +119,7 @@ const JourneyComparison = () => {
           <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-teal-50">
             <Shield className="w-12 h-12 text-green-600 mx-auto mb-4" />
             <h3 className="font-heading text-xl mb-2">Safety First</h3>
-            <p className="text-muted-foreground text-sm">Well-maintained scooters, GPS tracking, and 24/7 support</p>
+            <p className="text-muted-foreground text-sm">Well-maintained scooters and 24/7 support</p>
           </Card>
         </div>
 
@@ -141,6 +141,8 @@ const JourneyComparison = () => {
               <p>✨ Financial independence through smart mobility</p>
               <p>✨ More time for career, family, and personal growth</p>
               <p>✨ Breaking barriers, one ride at a time</p>
+              <p>✨ Everyday convenience: buying vegetables, groceries & medicines</p>
+              <p>✨ Drop & pick up children from school, tuitions or sports activities</p>
             </div>
           </Card>
 

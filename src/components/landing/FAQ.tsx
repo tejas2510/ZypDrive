@@ -15,7 +15,13 @@ const FAQ = () => {
           <AccordionItem value="item-2">
             <AccordionTrigger>What if I ride more than 40 km/day?</AccordionTrigger>
             <AccordionContent>
-              You get 40 km/day included — that's 1,000 km free every month. Anything beyond is just ₹2.5/km. Use the calculator to estimate your monthly cost.
+              You get 40 km/day included — that's 1,000 km free every month. Anything above 1,000 km/month is charged at just ₹2.5/km. Note: unused km do not carry forward to the next month.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-double-ride">
+            <AccordionTrigger>Can I share the scooter with a friend or colleague?</AccordionTrigger>
+            <AccordionContent>
+              Yes! Double-ride is fully supported. Share with a loved one, friend or colleague and split the cost — that's just ₹899/month per person (50% of ₹1,799).
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">

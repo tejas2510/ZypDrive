@@ -2,11 +2,11 @@ import { Instagram, Facebook, MessageCircle, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: MessageCircle, href: "#", label: "WhatsApp" },
-    { icon: Mail, href: "#", label: "Email" },
-    { icon: Phone, href: "#", label: "Phone" },
+    { icon: Instagram, href: "#", label: "Instagram (coming soon)" },
+    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61576407295882", label: "Facebook" },
+    { icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
+    { icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
+    { icon: Phone, href: "tel:+919108721342", label: "Phone" },
   ];
 
   return (
@@ -28,6 +28,8 @@ const Footer = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
+                    target={social.href.startsWith("http") ? "_blank" : undefined}
+                    rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors group"
                   >
                     <Icon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
