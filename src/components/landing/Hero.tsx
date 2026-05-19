@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+
 import heroImg from "@/assets/hero-woman-scooter.webp";
 import { CheckCircle, BatteryCharging, Home, Wrench } from "lucide-react";
 import { useRef } from "react";
@@ -24,25 +24,8 @@ const Hero = () => {
         onPointerMove={handlePointer}
         className="hero-spotlight"
       >
-        <div className="container mx-auto px-4 py-14 md:py-20">
-          <nav className="flex items-center justify-between mb-10">
-            <a href="#home" className="flex items-center gap-2">
-              <div className="flex items-center gap-2">
-          <img src="/logo_proper.png" alt="Zypdrive Logo" className="h-14 w-auto object-contain" />
-         
-        </div>
-            </a>
-            <div className="hidden sm:flex items-center gap-6 text-sm">
-              <a className="hover:opacity-80" href="#why">Why</a>
-              <a className="hover:opacity-80" href="#pricing">Pricing</a>
-              <a className="hover:opacity-80" href="#how">How it works</a>
-              <Link className="hover:opacity-80" to="/about">About</Link>
-              <a className="hover:opacity-80" href="#faq">FAQ</a>
-            </div>
-            <Button asChild variant="hero" size="lg">
-              <a href="#contact">Start subscription</a>
-            </Button>
-          </nav>
+        <div className="container mx-auto px-4 py-10 md:py-16">
+
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-left">
