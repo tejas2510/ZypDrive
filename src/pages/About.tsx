@@ -13,6 +13,7 @@ import {
   Heart,
 } from "lucide-react";
 import Footer from "@/components/landing/Footer";
+import Navbar from "@/components/landing/Navbar";
 
 const principles = [
   {
