@@ -75,7 +75,7 @@ const Hero = () => {
               <ul className="mt-6 grid grid-cols-2 gap-3 text-sm">
                 <li className="flex items-center gap-2"><CheckCircle className="text-primary" /> No downpayment</li>
                 <li className="flex items-center gap-2"><BatteryCharging className="text-primary" /> Charge at home</li>
-                <li className="flex items-center gap-2"><Home className="text-primary" /> 1,000 km/month free (40/day)</li>
+                <li className="flex items-center gap-2"><Home className="text-primary" /> 1,000 km/month free</li>
                 <li className="flex items-center gap-2"><Wrench className="text-primary" /> Routine service included</li>
               </ul>
 
