@@ -2,10 +2,33 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+
+const ScrollToHash = () => {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace("#", "");
+      // Wait for the target route's DOM to mount
+      const tryScroll = (attempt = 0) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (attempt < 10) {
+          setTimeout(() => tryScroll(attempt + 1), 80);
+        }
+      };
+      tryScroll();
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, [pathname, hash]);
+  return null;
+};
 
 const queryClient = new QueryClient();
 
