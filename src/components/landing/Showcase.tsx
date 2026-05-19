@@ -25,6 +25,18 @@ const Showcase = () => {
                 <div className="text-xl font-semibold">40 km/day · 1,000 km/month free</div>
               </Card>
               <Card className="p-4 bg-background">
+                <div className="text-sm text-muted-foreground">Range per full charge</div>
+                <div className="text-xl font-semibold">70+ km</div>
+              </Card>
+              <Card className="p-4 bg-background">
+                <div className="text-sm text-muted-foreground">Full charging time</div>
+                <div className="text-xl font-semibold">3–4 hours</div>
+              </Card>
+              <Card className="p-4 bg-background">
+                <div className="text-sm text-muted-foreground">Charging cost</div>
+                <div className="text-xl font-semibold">~₹8–10 / day</div>
+              </Card>
+              <Card className="p-4 bg-background">
                 <div className="text-sm text-muted-foreground">Charging</div>
                 <div className="text-xl font-semibold">Home 220V socket</div>
               </Card>
@@ -32,7 +44,7 @@ const Showcase = () => {
                 <div className="text-sm text-muted-foreground">Brakes & safety</div>
                 <div className="text-xl font-semibold">Reliable city braking</div>
               </Card>
-              <Card className="p-4 bg-background">
+              <Card className="p-4 bg-background sm:col-span-2">
                 <div className="text-sm text-muted-foreground">Service</div>
                 <div className="text-xl font-semibold">Routine service included</div>
               </Card>
