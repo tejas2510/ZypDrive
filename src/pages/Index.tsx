@@ -72,6 +72,7 @@ const Index = () => {
   return (
     <main>
       <TrialBanner />
+      <Navbar />
       <Hero />
       <Benefits />
       <JourneyComparison />
