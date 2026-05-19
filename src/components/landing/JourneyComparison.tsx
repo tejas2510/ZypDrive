@@ -77,7 +77,7 @@ const JourneyComparison = () => {
                 { step: "2", action: "Travel time to work", time: "25-30 min", icon: "🎯" },
                 { step: "3", action: "Park at destination", time: "1 min", icon: "🅿️" },
                 { step: "4", action: "Return journey", time: "25-30 min", icon: "🏠" },
-                { step: "5", action: "Charge at home only as required (not overnight)", time: "As needed", icon: "🔌" },
+                { step: "5", action: "Charge at home only as required", time: "As needed", icon: "🔌" },
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 p-3 bg-white/60 rounded-lg">
                   <div className="text-2xl">{item.icon}</div>
