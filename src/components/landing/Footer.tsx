@@ -2,7 +2,7 @@ import { Instagram, Facebook, MessageCircle, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram (coming soon)" },
+    { icon: Instagram, href: "https://www.instagram.com/zypdrive", label: "Instagram" },
     { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61576407295882", label: "Facebook" },
     { icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
     { icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
