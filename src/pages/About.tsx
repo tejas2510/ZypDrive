@@ -61,23 +61,7 @@ const principles = [
 const About = () => {
   return (
     <main>
-      {/* Top nav */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/logo_proper.png" alt="Zypdrive Logo" className="h-12 w-auto object-contain" />
-          </Link>
-          <nav className="hidden sm:flex items-center gap-6 text-sm">
-            <Link to="/" className="hover:opacity-80">Home</Link>
-            <Link to="/#pricing" className="hover:opacity-80">Pricing</Link>
-            <Link to="/about" className="text-primary font-medium">About</Link>
-            <Link to="/#faq" className="hover:opacity-80">FAQ</Link>
-          </nav>
-          <Button asChild variant="hero" size="lg">
-            <Link to="/#contact">Start subscription</Link>
-          </Button>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/30 to-background">
