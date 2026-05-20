@@ -4,21 +4,65 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("Enter a valid email").max(255),
+  phone: z.string().trim().max(20).optional().or(z.literal("")),
+  message: z.string().trim().max(2000).optional().or(z.literal("")),
+});
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("New inquiry from Zypdrive website");
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
-    );
-    window.location.href = `mailto:contact.mohandaspatil@gmail.com?subject=${subject}&body=${body}`;
-    toast.success("Opening your email app to send the message");
+
+    const parsed = contactSchema.safeParse({ name, email, phone, message });
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? "Please check your inputs");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      // FormSubmit sends the form contents directly to the destination email
+      // server-side, with no popup or mail-app open required.
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("message", message);
+      formData.append("_subject", "New inquiry from Zypdrive website");
+      formData.append("_captcha", "false");
+      formData.append("_template", "table");
+
+      const res = await fetch(
+        "https://formsubmit.co/ajax/contact.mohandaspatil@gmail.com",
+        {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: formData,
+        }
+      );
+
+      if (!res.ok) throw new Error("Network error");
+
+      toast.success("Message sent! We'll reply within 24 hours.");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch {
+      toast.error("Couldn't send right now. Please try again or WhatsApp us.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -29,24 +73,26 @@ const Contact = () => {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="name">Name</Label>
-              <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+              <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required maxLength={100} />
             </div>
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} />
             </div>
           </div>
           <div>
             <Label htmlFor="phone">Phone</Label>
-            <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={20} />
           </div>
           <div>
             <Label htmlFor="message">Message</Label>
-            <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} rows={5} />
+            <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} rows={5} maxLength={2000} />
           </div>
           <div className="flex items-center justify-between gap-4">
-            <p className="text-xs text-muted-foreground">We’ll reply within 24 hours. No spam—ever.</p>
-            <Button type="submit" variant="hero">Send message</Button>
+            <p className="text-xs text-muted-foreground">We'll reply within 24 hours. No spam—ever.</p>
+            <Button type="submit" variant="hero" disabled={submitting}>
+              {submitting ? "Sending…" : "Send message"}
+            </Button>
           </div>
         </form>
       </div>
