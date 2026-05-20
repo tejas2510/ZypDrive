@@ -9,7 +9,7 @@ const items = [
   },
   {
     title: "No downpayment",
-    desc: "Predictable monthly cost starting at ₹1,799. Cancel anytime with notice.",
+    desc: "₹1,799/month + a one-time ₹2,000 onboarding fee (non-refundable). Cancel anytime with notice.",
     Icon: Wallet,
   },
   {

@@ -59,7 +59,7 @@ const Pricing = () => {
                 <span className="text-4xl md:text-5xl font-heading">₹{BASE_PRICE.toLocaleString()}</span>
                 <span className="text-muted-foreground mb-1.5 text-sm">/ month</span>
               </div>
-              <div className="text-xs text-muted-foreground mt-1.5">+ ₹{ONBOARDING_FEE.toLocaleString()} one-time onboarding fee</div>
+              <div className="text-xs text-muted-foreground mt-1.5">+ ₹{ONBOARDING_FEE.toLocaleString()} one-time onboarding fee <span className="text-foreground/70">(non-refundable)</span></div>
               <ul className="mt-5 space-y-2.5 text-sm">
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Monthly rental in advance</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 40 km/day included — that's 1,000 km/month free</li>
@@ -70,6 +70,7 @@ const Pricing = () => {
               </ul>
               <div className="mt-4 space-y-2 text-xs text-muted-foreground border-t pt-4">
                 <p>ℹ️ Unused km don't carry forward to the next month.</p>
+                <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewal on same or revised terms after verification.</p>
                 <p>👯 <span className="font-medium text-foreground">Double-ride friendly</span> — share with a friend, colleague or loved one. Split the cost at just <span className="font-semibold text-primary">₹899/month per person</span>.</p>
               </div>
             </div>
