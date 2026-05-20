@@ -34,7 +34,7 @@ const principles = [
   {
     icon: ShieldCheck,
     title: "No down payment, no EMI stress",
-    desc: "No bank loans, no finance company chasing you. One simple monthly subscription, that's it.",
+    desc: "No bank loans, no finance chasing you. Just ₹1,799/month plus a one-time ₹2,000 onboarding fee (non-refundable).",
   },
   {
     icon: Home,
@@ -65,7 +65,7 @@ const About = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/30 to-background">
-        <div className="container mx-auto px-4 py-16 md:py-24 text-center">
+        <div className="container mx-auto px-4 py-10 md:py-14 text-center">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-xs md:text-sm">
             <Heart className="w-3.5 h-3.5 text-primary" /> Our story
           </span>
@@ -80,7 +80,7 @@ const About = () => {
       </section>
 
       {/* Mission */}
-      <section className="py-14 md:py-20">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-[auto,1fr] gap-6 md:gap-10 items-start">
             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">

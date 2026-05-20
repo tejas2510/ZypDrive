@@ -9,7 +9,7 @@ const FAQ = () => {
           <AccordionItem value="item-1">
             <AccordionTrigger>Is there any downpayment?</AccordionTrigger>
             <AccordionContent>
-              No, you can start from ₹1,799 per month with no downpayment.
+              No downpayment. You start with just a one-time onboarding fee of ₹2,000 (non-refundable) and ₹1,799/month rental in advance.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -21,67 +21,73 @@ const FAQ = () => {
           <AccordionItem value="item-double-ride">
             <AccordionTrigger>Can I share the scooter with a friend or colleague?</AccordionTrigger>
             <AccordionContent>
-              Yes! Double-ride is fully supported. Share with a loved one, friend or colleague and split the cost — that's just ₹899/month per person (50% of ₹1,799).
+              Yes! Double-ride is fully supported. Share with a loved one, friend or colleague and split the cost — that's just ₹899/month per person.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-agreement">
+            <AccordionTrigger>How long is the rental agreement?</AccordionTrigger>
+            <AccordionContent>
+              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue with the ₹2,000 onboarding fee (if applicable) and the prevailing monthly rental as per company policy.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>How do I charge the scooter?</AccordionTrigger>
             <AccordionContent>
-              Plug into a regular 220V home socket. It's simple and safe when following the manual.
+              Plug into a regular 220V home socket. A full charge takes about 3–4 hours, costs roughly ₹8–10 per day, and gives you 70+ km of range — easily covering a full day of commuting.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
             <AccordionTrigger>Is service included?</AccordionTrigger>
             <AccordionContent>
-              Yes, routine service is included. We'll coordinate convenient service windows for you.
+              Yes, routine service is fully included. We'll coordinate convenient service windows for you.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
             <AccordionTrigger>How does the free trial work?</AccordionTrigger>
             <AccordionContent>
-              Get 15 days free trial with no questions asked. Experience the scooter, see if it fits your routine, and then decide to continue.
+              Get a 15-day free trial with no questions asked. Experience the scooter, see if it fits your routine, and then decide to continue.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-6">
             <AccordionTrigger>What scooters do you offer?</AccordionTrigger>
             <AccordionContent>
-              We offer high-quality electric scooters with different speed and range options. Base plan includes reliable daily commute scooters, while Pro plan offers premium models with enhanced performance.
+              We offer a range of electric scooter models with varying speed and range options, all chosen for safe, comfortable daily commuting.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-7">
-            <AccordionTrigger>Are you available in Udupi/Manipal?</AccordionTrigger>
+            <AccordionTrigger>Are you available in Udupi / Manipal?</AccordionTrigger>
             <AccordionContent>
-              Yes! We specifically serve the Udupi-Manipal region in Karnataka. Perfect for college students, working professionals, and anyone commuting in the area.
+              Yes — we currently serve the Udupi–Manipal region in Karnataka, and we'll be expanding to other cities shortly.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-8">
             <AccordionTrigger>What about insurance and registration?</AccordionTrigger>
             <AccordionContent>
-              All our scooters come with proper registration and insurance coverage. You don't need to worry about any legal documentation - it's all handled.
+              All our scooters are non-RTO vehicles, so no registration is required on your part. Third-party insurance is already covered. Please always carry your driving licence and wear a helmet ⛑️ for your safety.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-9">
             <AccordionTrigger>Can I use it for long trips?</AccordionTrigger>
             <AccordionContent>
-              Our scooters are designed for daily commuting. You get 1,000 km/month free (40 km/day), and extra kms are charged at just ₹2.5/km.
+              Our scooters are designed mainly for daily commute and city travel within Udupi–Manipal. Long inter-city trips are not advisable.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-10">
-            <AccordionTrigger>What happens if the scooter breaks down?</AccordionTrigger>
+            <AccordionTrigger>What if the scooter breaks down?</AccordionTrigger>
             <AccordionContent>
-              We provide roadside assistance and maintenance support. Our service team will help you get back on the road quickly, and routine maintenance is completely covered.
+              Please call or WhatsApp us on +91 91087 21342. Our support team will assist you with roadside support or a replacement scooter based on the situation.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-11">
-            <AccordionTrigger>Can I cancel my subscription anytime?</AccordionTrigger>
+            <AccordionTrigger>How can I cancel my subscription?</AccordionTrigger>
             <AccordionContent>
-              You can cancel with notice per your plan terms. Contact our support team and we'll guide you through the process smoothly.
+              You can cancel your subscription by giving prior notice as per the terms of your selected plan. Please note that the ₹2,000 onboarding fee is non-refundable.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-12">
-            <AccordionTrigger>Do I need a driving license?</AccordionTrigger>
+            <AccordionTrigger>Do I need a driving licence?</AccordionTrigger>
             <AccordionContent>
-              Yes, a valid driving license is required to use our electric scooters. This ensures safety and compliance with local traffic regulations.
+              Yes, a valid driving licence is mandatory to use our electric scooters. This ensures your safety and compliance with local traffic regulations.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

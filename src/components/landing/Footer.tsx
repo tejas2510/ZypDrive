@@ -1,5 +1,6 @@
-import { Instagram, Facebook, MessageCircle, Mail, Phone } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Mail, Phone, Leaf, Clock, Wallet, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import makeInIndia from "@/assets/make-in-india-lion.jpeg";
 
 const Footer = () => {
   const socialLinks = [
@@ -22,6 +23,14 @@ const Footer = () => {
     { label: "About us", to: "/about" },
     { label: "FAQ", to: "/#faq" },
     { label: "Contact", to: "/#contact" },
+    { label: "Terms & Conditions", to: "/terms" },
+  ];
+
+  const valueBadges = [
+    { Icon: Zap, label: "Save fuel" },
+    { Icon: Leaf, label: "Save the planet" },
+    { Icon: Clock, label: "Save time" },
+    { Icon: Wallet, label: "Save money" },
   ];
 
   return (
@@ -102,6 +111,33 @@ const Footer = () => {
                 );
               })}
             </div>
+          </div>
+        </div>
+
+        {/* Make in India + value props */}
+        <div className="pt-8 pb-6 grid md:grid-cols-[auto,1fr] gap-6 md:gap-10 items-center border-b">
+          <div className="flex items-center gap-4">
+            <img
+              src={makeInIndia}
+              alt="Proudly Make in India"
+              className="h-16 md:h-20 w-auto object-contain mix-blend-multiply dark:mix-blend-screen"
+              loading="lazy"
+            />
+            <div>
+              <div className="text-xs uppercase tracking-wider text-primary font-medium">Proudly</div>
+              <div className="font-heading text-lg md:text-xl">Made in India 🇮🇳</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {valueBadges.map(({ Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/5 border border-primary/10"
+              >
+                <Icon className="h-4 w-4 text-primary shrink-0" />
+                <span className="text-xs md:text-sm font-medium">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
 

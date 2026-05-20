@@ -44,7 +44,7 @@ const Hero = () => {
                 <span className="block text-gradient">₹1,799 per month</span>
               </h1>
               <p className="mt-4 text-muted-foreground max-w-prose">
-                Commute with confidence and predictable costs. No downpayment, 1,000 km/month free (40 km/day), charge at home, and routine service handled by us.
+                Commute with confidence and predictable costs. No downpayment — just a one-time ₹2,000 onboarding fee (non-refundable). 1,000 km/month free, charge at home, and routine service handled by us.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Button asChild variant="hero" size="lg">
