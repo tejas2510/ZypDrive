@@ -70,15 +70,14 @@ const Navbar = () => {
         </div>
 
         {/* Mobile */}
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Open menu">
                 <Menu className="h-6 w-6" />
               </Button>
-            </div>
-          </SheetTrigger>
+            </SheetTrigger>
           <SheetContent side="right" className="w-[280px] sm:w-[320px]">
             <div className="flex flex-col gap-1 mt-8">
               {links.map((l) => (
@@ -97,8 +96,9 @@ const Navbar = () => {
                 </Link>
               </Button>
             </div>
-          </SheetContent>
-        </Sheet>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );
