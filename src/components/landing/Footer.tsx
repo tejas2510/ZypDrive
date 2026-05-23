@@ -1,14 +1,21 @@
-import { Instagram, Facebook, MessageCircle, Mail, Phone, Leaf, Clock, Wallet, Zap } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Mail, Phone, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
-import makeInIndia from "@/assets/make-in-india-lion.jpeg";
+
+const XIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+    <path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.844l-5.36-6.78L4.6 22H1.34l8.02-9.16L1 2h7l4.84 6.2L18.244 2Zm-1.2 18h1.86L7.06 4h-1.93l11.914 16Z" />
+  </svg>
+);
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Instagram, href: "https://www.instagram.com/zypdrive", label: "Instagram" },
-    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61576407295882", label: "Facebook" },
-    { icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
-    { icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
-    { icon: Phone, href: "tel:+919108721342", label: "Phone" },
+    { Icon: Instagram, href: "https://www.instagram.com/zypdrive", label: "Instagram" },
+    { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61576407295882", label: "Facebook" },
+    { Icon: XIcon, href: "https://x.com/zypdrive_me", label: "X (Twitter)" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/in/mohandas-patil-a885a6410", label: "LinkedIn" },
+    { Icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
+    { Icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
+    { Icon: Phone, href: "tel:+919108721342", label: "Phone" },
   ];
 
   const exploreLinks = [
@@ -23,14 +30,8 @@ const Footer = () => {
     { label: "About us", to: "/about" },
     { label: "FAQ", to: "/#faq" },
     { label: "Contact", to: "/#contact" },
+    { label: "Safety Guidelines", to: "/safety" },
     { label: "Terms & Conditions", to: "/terms" },
-  ];
-
-  const valueBadges = [
-    { Icon: Zap, label: "Save fuel" },
-    { Icon: Leaf, label: "Save the planet" },
-    { Icon: Clock, label: "Save time" },
-    { Icon: Wallet, label: "Save money" },
   ];
 
   return (
