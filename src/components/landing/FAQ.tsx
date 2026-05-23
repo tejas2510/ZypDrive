@@ -78,6 +78,18 @@ const FAQ = () => {
               Please call or WhatsApp us on +91 91087 21342. Our support team will assist you with roadside support or a replacement scooter based on the situation.
             </AccordionContent>
           </AccordionItem>
+          <AccordionItem value="item-buy">
+            <AccordionTrigger>Can I buy my scooter later?</AccordionTrigger>
+            <AccordionContent>
+              Yes 🎉 After completing <span className="font-medium">3 years</span> of your rental agreement, you'll have the option to buy the scooter at <span className="font-medium">40–50% of the original price</span>, or at a price we mutually agree upon.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-parking">
+            <AccordionTrigger>Where should I park the scooter?</AccordionTrigger>
+            <AccordionContent>
+              Please park your scooter in a <span className="font-medium">covered shed or parking area</span> at home or office whenever possible. This protects the electronic dashboard and other components from heavy rain. Short outdoor stops (a restaurant, the market) are completely fine — just try to avoid leaving it exposed to heavy rains for long periods.
+            </AccordionContent>
+          </AccordionItem>
           <AccordionItem value="item-11">
             <AccordionTrigger>How can I cancel my subscription?</AccordionTrigger>
             <AccordionContent>
