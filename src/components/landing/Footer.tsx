@@ -95,9 +95,9 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex flex-wrap items-center gap-3 mt-5">
               {socialLinks.map((social, index) => {
-                const Icon = social.icon;
+                const Icon = social.Icon;
                 return (
                   <a
                     key={index}
@@ -115,34 +115,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Make in India + value props */}
-        <div className="pt-8 pb-6 grid md:grid-cols-[auto,1fr] gap-6 md:gap-10 items-center border-b">
-          <div className="flex items-center gap-4">
-            <img
-              src={makeInIndia}
-              alt="Proudly Make in India"
-              className="h-16 md:h-20 w-auto object-contain mix-blend-multiply dark:mix-blend-screen"
-              loading="lazy"
-            />
-            <div>
-              <div className="text-xs uppercase tracking-wider text-primary font-medium">Proudly</div>
-              <div className="font-heading text-lg md:text-xl">Made in India 🇮🇳</div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {valueBadges.map(({ Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/5 border border-primary/10"
-              >
-                <Icon className="h-4 w-4 text-primary shrink-0" />
-                <span className="text-xs md:text-sm font-medium">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="pt-6 text-muted-foreground text-sm text-center">
+          <div className="italic text-primary/80 mb-1">Urban Mobility Redefined · Proudly Made in India 🇮🇳</div>
           Made with ❤️ by Tejas © {new Date().getFullYear()} Zypdrive. All rights reserved.
         </div>
       </div>

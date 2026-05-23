@@ -71,7 +71,7 @@ const Pricing = () => {
               <div className="mt-4 space-y-2 text-xs text-muted-foreground border-t pt-4">
                 <p>ℹ️ Unused km don't carry forward to the next month.</p>
                 <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewal on same or revised terms after verification.</p>
-                <p>👯 <span className="font-medium text-foreground">Double-ride friendly</span> — share with a friend, colleague or loved one. Split the cost at just <span className="font-semibold text-primary">₹899/month per person</span>.</p>
+                <p>🛒 After <span className="font-medium text-foreground">3 years</span>, you have the option to buy your scooter at <span className="font-medium text-foreground">40–50% of the original price</span> (or as mutually agreed).</p>
               </div>
             </div>
             <Button variant="hero" size="lg" className="mt-6 w-full" asChild>
