@@ -37,7 +37,7 @@ const Hero = () => {
               </div>
               
               <p className="inline-flex items-center gap-2 text-xs md:text-sm px-3 py-1 rounded-full bg-secondary">
-                Women-first mobility • Service included
+                Urban Mobility Redefined • Women-first
               </p>
               <h1 className="mt-4 font-heading text-4xl md:text-5xl leading-tight">
                 Electric scooters for working women from

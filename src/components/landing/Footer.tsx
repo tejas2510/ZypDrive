@@ -1,14 +1,21 @@
-import { Instagram, Facebook, MessageCircle, Mail, Phone, Leaf, Clock, Wallet, Zap } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Mail, Phone, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
-import makeInIndia from "@/assets/make-in-india-lion.jpeg";
+
+const XIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+    <path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.844l-5.36-6.78L4.6 22H1.34l8.02-9.16L1 2h7l4.84 6.2L18.244 2Zm-1.2 18h1.86L7.06 4h-1.93l11.914 16Z" />
+  </svg>
+);
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Instagram, href: "https://www.instagram.com/zypdrive", label: "Instagram" },
-    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61576407295882", label: "Facebook" },
-    { icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
-    { icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
-    { icon: Phone, href: "tel:+919108721342", label: "Phone" },
+    { Icon: Instagram, href: "https://www.instagram.com/zypdrive", label: "Instagram" },
+    { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61576407295882", label: "Facebook" },
+    { Icon: XIcon, href: "https://x.com/zypdrive_me", label: "X (Twitter)" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/in/mohandas-patil-a885a6410", label: "LinkedIn" },
+    { Icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
+    { Icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
+    { Icon: Phone, href: "tel:+919108721342", label: "Phone" },
   ];
 
   const exploreLinks = [
@@ -23,14 +30,8 @@ const Footer = () => {
     { label: "About us", to: "/about" },
     { label: "FAQ", to: "/#faq" },
     { label: "Contact", to: "/#contact" },
+    { label: "Safety Guidelines", to: "/safety" },
     { label: "Terms & Conditions", to: "/terms" },
-  ];
-
-  const valueBadges = [
-    { Icon: Zap, label: "Save fuel" },
-    { Icon: Leaf, label: "Save the planet" },
-    { Icon: Clock, label: "Save time" },
-    { Icon: Wallet, label: "Save money" },
   ];
 
   return (
@@ -94,9 +95,9 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex flex-wrap items-center gap-3 mt-5">
               {socialLinks.map((social, index) => {
-                const Icon = social.icon;
+                const Icon = social.Icon;
                 return (
                   <a
                     key={index}
@@ -114,34 +115,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Make in India + value props */}
-        <div className="pt-8 pb-6 grid md:grid-cols-[auto,1fr] gap-6 md:gap-10 items-center border-b">
-          <div className="flex items-center gap-4">
-            <img
-              src={makeInIndia}
-              alt="Proudly Make in India"
-              className="h-16 md:h-20 w-auto object-contain mix-blend-multiply dark:mix-blend-screen"
-              loading="lazy"
-            />
-            <div>
-              <div className="text-xs uppercase tracking-wider text-primary font-medium">Proudly</div>
-              <div className="font-heading text-lg md:text-xl">Made in India 🇮🇳</div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {valueBadges.map(({ Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/5 border border-primary/10"
-              >
-                <Icon className="h-4 w-4 text-primary shrink-0" />
-                <span className="text-xs md:text-sm font-medium">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="pt-6 text-muted-foreground text-sm text-center">
+          <div className="italic text-primary/80 mb-1">Urban Mobility Redefined · Proudly Made in India 🇮🇳</div>
           Made with ❤️ by Tejas © {new Date().getFullYear()} Zypdrive. All rights reserved.
         </div>
       </div>

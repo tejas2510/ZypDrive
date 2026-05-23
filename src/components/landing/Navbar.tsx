@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { label: "Why", to: "/#why" },
@@ -42,6 +43,9 @@ const Navbar = () => {
             alt="Zypdrive Logo"
             className="h-10 md:h-12 w-auto object-contain"
           />
+          <span className="hidden lg:inline text-xs text-muted-foreground font-medium tracking-wide">
+            Urban Mobility Redefined
+          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm">
@@ -58,19 +62,22 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           <Button asChild variant="hero" size="lg">
             <Link to="/#contact">Start subscription</Link>
           </Button>
         </div>
 
         {/* Mobile */}
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" aria-label="Open menu">
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Open menu">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
           <SheetContent side="right" className="w-[280px] sm:w-[320px]">
             <div className="flex flex-col gap-1 mt-8">
               {links.map((l) => (
@@ -89,8 +96,9 @@ const Navbar = () => {
                 </Link>
               </Button>
             </div>
-          </SheetContent>
-        </Sheet>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );

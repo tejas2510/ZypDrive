@@ -160,9 +160,6 @@ const sections = [
             +91-9108721342
           </a>
         </li>
-        <li>
-          Address: G–701, Sai Radha Pride Apartments, Brahmagiri Circle, Udupi – 576 101
-        </li>
       </ul>
     ),
   },
