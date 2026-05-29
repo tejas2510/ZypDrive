@@ -42,7 +42,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-flex items-center gap-2">
-              <img src="/logo_proper.png" alt="Zypdrive Logo" className="h-14 w-auto object-contain transition-all dark:invert dark:brightness-110" />
+              <img src="/logo_proper.png" alt="Zypdrive Logo" className="h-14 w-auto object-contain block dark:hidden" />
+              <img src="/logo_proper_dark.png" alt="Zypdrive Logo" className="h-14 w-auto object-contain hidden dark:block" />
             </Link>
             <p className="text-sm text-muted-foreground mt-3 max-w-xs">
               Electric scooter subscriptions built for working women in India.
