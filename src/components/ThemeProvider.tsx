@@ -12,7 +12,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("zypdrive-theme", theme);
   }, [theme]);
 
   const setTheme = (t: Theme) => setThemeState(t);
