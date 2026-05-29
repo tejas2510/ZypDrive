@@ -41,7 +41,12 @@ const Navbar = () => {
           <img
             src="/logo_proper.png"
             alt="Zypdrive Logo"
-            className="h-10 md:h-12 w-auto object-contain transition-all dark:invert dark:brightness-110"
+            className="h-10 md:h-12 w-auto object-contain block dark:hidden"
+          />
+          <img
+            src="/logo_proper_dark.png"
+            alt="Zypdrive Logo"
+            className="h-10 md:h-12 w-auto object-contain hidden dark:block"
           />
         </Link>
 
