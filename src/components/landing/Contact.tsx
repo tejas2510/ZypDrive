@@ -30,9 +30,8 @@ const Contact = () => {
     }
 
     setSubmitting(true);
+    const destinationEmail = "contact.mohandaspatil@gmail.com";
     try {
-      // FormSubmit sends the form contents directly to the destination email
-      // server-side, with no popup or mail-app open required.
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -43,7 +42,7 @@ const Contact = () => {
       formData.append("_template", "table");
 
       const res = await fetch(
-        "https://formsubmit.co/ajax/contact.mohandaspatil@gmail.com",
+        `https://formsubmit.co/ajax/${destinationEmail}`,
         {
           method: "POST",
           headers: { Accept: "application/json" },
@@ -51,15 +50,25 @@ const Contact = () => {
         }
       );
 
-      if (!res.ok) throw new Error("Network error");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || (data && data.success === "false")) {
+        throw new Error(data?.message || "Network error");
+      }
 
       toast.success("Message sent! We'll reply within 24 hours.");
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
-    } catch {
-      toast.error("Couldn't send right now. Please try again or WhatsApp us.");
+    } catch (err) {
+      console.error("Contact form error:", err);
+      // Fallback: open the user's mail client pre-filled so the message still goes through.
+      const subject = encodeURIComponent("New inquiry from Zypdrive website");
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
+      );
+      window.location.href = `mailto:${destinationEmail}?subject=${subject}&body=${body}`;
+      toast.message("Opening your email app as a fallback. You can also WhatsApp us.");
     } finally {
       setSubmitting(false);
     }
