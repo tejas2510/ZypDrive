@@ -41,11 +41,8 @@ const Navbar = () => {
           <img
             src="/logo_proper.png"
             alt="Zypdrive Logo"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-10 md:h-12 w-auto object-contain transition-all dark:invert dark:brightness-110"
           />
-          <span className="hidden lg:inline text-xs text-muted-foreground font-medium tracking-wide">
-            Urban Mobility Redefined
-          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm">
