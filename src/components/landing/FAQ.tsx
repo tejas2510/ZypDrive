@@ -27,7 +27,7 @@ const FAQ = () => {
           <AccordionItem value="item-agreement">
             <AccordionTrigger>How long is the rental agreement?</AccordionTrigger>
             <AccordionContent>
-              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue with the ₹2,000 onboarding fee (if applicable) and the prevailing monthly rental as per company policy.
+              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue with the prevailing monthly rental as per company policy.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
@@ -45,7 +45,7 @@ const FAQ = () => {
           <AccordionItem value="item-5">
             <AccordionTrigger>How does the free trial work?</AccordionTrigger>
             <AccordionContent>
-              Get a 15-day free trial with no questions asked. Experience the scooter, see if it fits your routine, and then decide to continue.
+              Get a 15-day free trial with no questions asked. Experience the scooter, see if it fits your routine, and then decide to continue. If you love the ride, please share your experience and tag us on Facebook, Instagram, LinkedIn or X — and don't forget to like our pages while you're there!
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-6">
@@ -93,13 +93,13 @@ const FAQ = () => {
           <AccordionItem value="item-11">
             <AccordionTrigger>How can I cancel my subscription?</AccordionTrigger>
             <AccordionContent>
-              You can cancel your subscription by giving prior notice as per the terms of your selected plan. Please note that the ₹2,000 onboarding fee is non-refundable.
+              You can cancel your subscription by giving 15 days prior notice as per the terms of your selected plan. Please note that the ₹2,000 onboarding fee is non-refundable.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-12">
             <AccordionTrigger>Do I need a driving licence?</AccordionTrigger>
             <AccordionContent>
-              Yes, a valid driving licence is mandatory to use our electric scooters. This ensures your safety and compliance with local traffic regulations.
+              Our scooters are non-RTO vehicles, so no registration is required. However, we only provide scooters to riders with a valid driving licence to ensure you can ride comfortably and safely, avoiding any issues later.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
