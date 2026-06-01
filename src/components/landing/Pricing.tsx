@@ -20,8 +20,8 @@ function formatMinutes(totalMins: number) {
 }
 
 const Pricing = () => {
-  const [days, setDays] = useState(26);
-  const [kmsPerDay, setKmsPerDay] = useState(30);
+  const [days, setDays] = useState(25);
+  const [kmsPerDay, setKmsPerDay] = useState(40);
   const [busDailyCost, setBusDailyCost] = useState(55);
 
   const results = useMemo(() => {
@@ -70,7 +70,7 @@ const Pricing = () => {
               </ul>
               <div className="mt-4 space-y-2 text-xs text-muted-foreground border-t pt-4">
                 <p>ℹ️ Unused km don't carry forward to the next month.</p>
-                <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewal on same or revised terms after verification.</p>
+                <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewal on same or revised terms after verification, with the prevailing ₹{ONBOARDING_FEE.toLocaleString()} onboarding fee and monthly rental as per company policy.</p>
                 <p>🛒 After <span className="font-medium text-foreground">3 years</span>, you have the option to buy your scooter at <span className="font-medium text-foreground">40–50% of the original price</span> (or as mutually agreed).</p>
               </div>
             </div>
