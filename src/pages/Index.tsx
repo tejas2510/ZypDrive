@@ -80,6 +80,7 @@ const Index = () => {
       <Pricing />
       <HowItWorks />
       <Showcase />
+      <BatteryCare />
       <Testimonials />
       <FAQ />
       <Contact />
