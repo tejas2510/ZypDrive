@@ -1,4 +1,4 @@
-import { BatteryCharging, Home, ShieldCheck, Wallet } from "lucide-react";
+import { BatteryCharging, ShieldCheck, Wallet } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const items = [
@@ -9,12 +9,12 @@ const items = [
   },
   {
     title: "No downpayment",
-    desc: "₹1,799/month + a one-time ₹2,000 onboarding fee (non-refundable). Cancel anytime with notice.",
+    desc: "Starting at ₹1,999/month + a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). Cancel anytime with notice.",
     Icon: Wallet,
   },
   {
     title: "Charge at home",
-    desc: "1,000 km/month free (40 km/day). Plug into a regular socket and go.",
+    desc: "From 750 km/month free on the Green plan (30 km/day). Plug into a regular socket and go.",
     Icon: BatteryCharging,
   },
 ];

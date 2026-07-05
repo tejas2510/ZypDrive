@@ -34,7 +34,7 @@ const principles = [
   {
     icon: ShieldCheck,
     title: "No down payment, no EMI stress",
-    desc: "No bank loans, no finance chasing you. Just ₹1,799/month plus a one-time ₹2,000 onboarding fee (non-refundable).",
+    desc: "No bank loans, no finance chasing you. Starting at ₹1,999/month plus a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable).",
   },
   {
     icon: Home,
