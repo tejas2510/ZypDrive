@@ -34,20 +34,25 @@ const sections = [
     body: (
       <ul className="list-disc pl-5 space-y-1">
         <li>
-          A one-time onboarding fee of <span className="font-medium text-foreground">₹2,000</span> is
-          payable at the time of joining. This onboarding fee is{" "}
-          <span className="font-medium text-foreground">strictly non-refundable</span> in case the
-          rental agreement is cancelled at any time.
+          A <span className="font-medium text-foreground">one-time</span> onboarding fee of{" "}
+          <span className="font-medium text-foreground">₹2,000</span> is payable at the time of joining.
+          This onboarding fee is{" "}
+          <span className="font-medium text-foreground">strictly non-refundable</span> and is{" "}
+          <span className="font-medium text-foreground">not charged again on renewal</span>.
         </li>
         <li>
-          The monthly rental is <span className="font-medium text-foreground">₹1,799</span>, payable
-          in advance. This amount may be revised in line with operational costs. If the agreement is
-          cancelled, the advance rental for the unused portion is non-refundable.
+          Monthly rentals start at <span className="font-medium text-foreground">₹1,999</span> on the
+          Green plan and <span className="font-medium text-foreground">₹2,499</span> on the Plus plan.
+          The Gig Rider plan is billed weekly at{" "}
+          <span className="font-medium text-foreground">₹1,250/week</span>. Rentals are payable in
+          advance and may be revised in line with operational costs. If the agreement is cancelled,
+          the advance rental for the unused portion is non-refundable.
         </li>
         <li>
-          1,000 km/month are included with every plan. Additional kilometres are billed at{" "}
-          <span className="font-medium text-foreground">₹2.5/km</span>. Unused km do not carry
-          forward to the following month.
+          Included kilometres: <span className="font-medium text-foreground">Green — 750 km/month</span> (extra
+          at ₹5/km), <span className="font-medium text-foreground">Plus — 1,000 km/month</span> (extra at
+          ₹6/km), <span className="font-medium text-foreground">Gig Rider — 2,000 km/month</span> (extra
+          at ₹6/km). Unused km do not carry forward.
         </li>
       </ul>
     ),
@@ -59,8 +64,9 @@ const sections = [
         Our first rental agreement is valid for{" "}
         <span className="font-medium text-foreground">12 months (1 year)</span> from the start date.
         A new agreement may be made with the same or revised terms after verification of customer
-        credentials and feedback from our support team. Renewal terms will continue to include the
-        ₹2,000 onboarding fee (if applicable) and the prevailing rental rate as per company policy.
+        credentials and feedback from our support team. Renewals continue at the prevailing rental
+        rate as per company policy — <span className="font-medium text-foreground">the ₹2,000
+        onboarding fee is not charged again on renewal</span>.
       </p>
     ),
   },

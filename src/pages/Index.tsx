@@ -6,6 +6,7 @@ import JourneyComparison from "@/components/landing/JourneyComparison";
 import Pricing from "@/components/landing/Pricing";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Showcase from "@/components/landing/Showcase";
+import BatteryCare from "@/components/landing/BatteryCare";
 import Testimonials from "@/components/landing/Testimonials";
 import FAQ from "@/components/landing/FAQ";
 import Contact from "@/components/landing/Contact";
