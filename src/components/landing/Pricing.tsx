@@ -4,13 +4,62 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
+import { Info, Leaf, Zap, Briefcase } from "lucide-react";
 
-const BASE_PRICE = 1799;
 const ONBOARDING_FEE = 2000;
-const INCLUDED_PER_DAY = 40;
-const EXTRA_PER_KM = 2.5;
 const AVERAGE_SCOOTER_SPEED_KMPH = 20;
+
+type PlanId = "green" | "plus" | "gig";
+
+const PLANS: Record<PlanId, {
+  id: PlanId;
+  name: string;
+  tagline: string;
+  price: number;
+  cycle: "month" | "week";
+  includedPerDay: number;
+  includedPerMonth: number; // approximate monthly cap for display
+  extraPerKm: number;
+  Icon: typeof Leaf;
+  highlight?: boolean;
+  badge?: string;
+}> = {
+  green: {
+    id: "green",
+    name: "Green",
+    tagline: "Perfect for daily city commutes",
+    price: 1999,
+    cycle: "month",
+    includedPerDay: 30,
+    includedPerMonth: 750,
+    extraPerKm: 5,
+    Icon: Leaf,
+    highlight: true,
+    badge: "Most popular",
+  },
+  plus: {
+    id: "plus",
+    name: "Plus",
+    tagline: "More km for longer commutes",
+    price: 2499,
+    cycle: "month",
+    includedPerDay: 40,
+    includedPerMonth: 1000,
+    extraPerKm: 6,
+    Icon: Zap,
+  },
+  gig: {
+    id: "gig",
+    name: "Gig Rider",
+    tagline: "Built for delivery & gig workers",
+    price: 1250,
+    cycle: "week",
+    includedPerDay: 80,
+    includedPerMonth: 2000,
+    extraPerKm: 6,
+    Icon: Briefcase,
+  },
+};
 
 function formatMinutes(totalMins: number) {
   const hrs = Math.floor(totalMins / 60);
@@ -19,18 +68,90 @@ function formatMinutes(totalMins: number) {
   return `${hrs} hr${hrs > 1 ? "s" : ""}${mins > 0 ? ` ${mins} min` : ""}`;
 }
 
+const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
+  const { Icon } = plan;
+  return (
+    <Card
+      className={`p-5 md:p-7 flex flex-col justify-between card-hover relative ${
+        plan.highlight ? "border-primary/60 ring-1 ring-primary/30 shadow-elevated" : ""
+      }`}
+    >
+      {plan.badge && (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-primary text-white text-xs font-medium px-3 py-1 rounded-full shadow">
+          {plan.badge}
+        </span>
+      )}
+      <div>
+        <div className="flex items-center gap-2">
+          <div className="h-9 w-9 rounded-lg bg-primary/10 grid place-items-center">
+            <Icon className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-heading text-lg md:text-xl leading-tight">{plan.name}</h3>
+            <p className="text-xs text-muted-foreground">{plan.tagline}</p>
+          </div>
+        </div>
+
+        <div className="mt-5 flex items-end gap-2">
+          <span className="text-3xl md:text-4xl font-heading">₹{plan.price.toLocaleString()}</span>
+          <span className="text-muted-foreground mb-1 text-sm">/ {plan.cycle}</span>
+        </div>
+        <div className="text-xs text-muted-foreground mt-1.5">
+          + ₹{ONBOARDING_FEE.toLocaleString()} one-time onboarding fee
+          <span className="text-foreground/70"> (paid once, never on renewal · non-refundable)</span>
+        </div>
+
+        <ul className="mt-5 space-y-2.5 text-sm">
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
+            {plan.includedPerDay} km/day included — {plan.includedPerMonth.toLocaleString()} km/{plan.cycle === "week" ? "month*" : "month"} free
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
+            Just ₹{plan.extraPerKm}/km for extra kilometres
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
+            Routine service included
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
+            Charge at home only as required
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
+            {plan.cycle === "week" ? "Weekly rental in advance" : "Monthly rental in advance"}
+          </li>
+          {plan.cycle === "month" && (
+            <li className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 15-day free trial
+            </li>
+          )}
+        </ul>
+      </div>
+      <Button variant={plan.highlight ? "hero" : "secondary"} size="lg" className="mt-6 w-full" asChild>
+        <a href="#contact">Get started</a>
+      </Button>
+    </Card>
+  );
+};
+
 const Pricing = () => {
+  const [planId, setPlanId] = useState<PlanId>("green");
+  const plan = PLANS[planId];
+
   const [days, setDays] = useState(25);
-  const [kmsPerDay, setKmsPerDay] = useState(40);
+  const [kmsPerDay, setKmsPerDay] = useState(30);
   const [busDailyCost, setBusDailyCost] = useState(55);
 
   const results = useMemo(() => {
-    const included = INCLUDED_PER_DAY * days;
+    const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
+    const includedForPeriod = plan.includedPerMonth;
     const expected = kmsPerDay * days;
-    const extraKms = Math.max(0, expected - included);
-    const extraCost = extraKms * EXTRA_PER_KM;
+    const extraKms = Math.max(0, expected - includedForPeriod);
+    const extraCost = extraKms * plan.extraPerKm;
 
-    const scooterMonthly = BASE_PRICE + extraCost;
+    const scooterMonthly = plan.price * cyclesPerMonth + extraCost;
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
@@ -39,52 +160,54 @@ const Pricing = () => {
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
     return { scooterMonthly, busMonthly, savedPerMonthMins };
-  }, [days, kmsPerDay, busDailyCost]);
+  }, [days, kmsPerDay, busDailyCost, plan]);
 
   return (
     <section id="pricing" className="py-14 md:py-20 bg-secondary/50">
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center">Simple pricing</h2>
-        <p className="text-center text-muted-foreground mt-2 max-w-lg mx-auto">
-          Transparent plan with everything you need to ride. Compare versus daily buses.
+        <p className="text-center text-muted-foreground mt-2 max-w-xl mx-auto">
+          Pick the plan that fits your routine. Transparent pricing, routine service included.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-10 max-w-4xl mx-auto">
-          {/* Base plan */}
-          <Card className="p-5 md:p-8 flex flex-col justify-between card-hover">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">Monthly subscription</p>
-              <h3 className="font-heading text-xl md:text-2xl mt-1">Base plan</h3>
-              <div className="mt-4 flex items-end gap-2">
-                <span className="text-4xl md:text-5xl font-heading">₹{BASE_PRICE.toLocaleString()}</span>
-                <span className="text-muted-foreground mb-1.5 text-sm">/ month</span>
+        <div className="grid md:grid-cols-3 gap-6 mt-12 max-w-6xl mx-auto">
+          <PlanCard plan={PLANS.green} />
+          <PlanCard plan={PLANS.plus} />
+          <PlanCard plan={PLANS.gig} />
+        </div>
+
+        <p className="text-center text-xs text-muted-foreground mt-4 max-w-2xl mx-auto">
+          *Gig Rider is billed weekly (₹1,250/week). 2,000 km included per month. Unused km don't carry forward.
+          The ₹{ONBOARDING_FEE.toLocaleString()} onboarding fee is a one-time charge and is not repeated on renewal.
+        </p>
+
+        {/* Calculator */}
+        <div className="max-w-4xl mx-auto mt-12">
+          <Card className="p-5 md:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+              <div>
+                <h3 className="font-heading text-xl md:text-2xl">Your commute calculator</h3>
+                <p className="text-sm text-muted-foreground">Compare scooter costs vs bus and see time saved.</p>
               </div>
-              <div className="text-xs text-muted-foreground mt-1.5">+ ₹{ONBOARDING_FEE.toLocaleString()} one-time onboarding fee <span className="text-foreground/70">(non-refundable)</span></div>
-              <ul className="mt-5 space-y-2.5 text-sm">
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Monthly rental in advance</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 40 km/day included — that's 1,000 km/month free</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Just ₹{EXTRA_PER_KM}/km added above 1,000 km/month</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Charge at home only as required</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> Routine service included</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" /> 15-day free trial</li>
-              </ul>
-              <div className="mt-4 space-y-2 text-xs text-muted-foreground border-t pt-4">
-                <p>ℹ️ Unused km don't carry forward to the next month.</p>
-                <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewal on same or revised terms after verification, with the prevailing ₹{ONBOARDING_FEE.toLocaleString()} onboarding fee and monthly rental as per company policy.</p>
-                <p>🛒 After <span className="font-medium text-foreground">3 years</span>, you have the option to buy your scooter at <span className="font-medium text-foreground">40–50% of the original price</span> (or as mutually agreed).</p>
+              <div className="flex gap-2 flex-wrap">
+                {(Object.keys(PLANS) as PlanId[]).map((id) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setPlanId(id)}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                      planId === id
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background hover:bg-secondary border-border text-muted-foreground"
+                    }`}
+                  >
+                    {PLANS[id].name}
+                  </button>
+                ))}
               </div>
             </div>
-            <Button variant="hero" size="lg" className="mt-6 w-full" asChild>
-              <a href="#contact">Get started</a>
-            </Button>
-          </Card>
 
-          {/* Calculator */}
-          <Card className="p-5 md:p-8">
-            <h3 className="font-heading text-xl md:text-2xl">Your commute calculator</h3>
-            <p className="text-sm text-muted-foreground mb-5">Compare scooter costs vs bus and see time saved.</p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
               <div>
                 <Label htmlFor="days">Working days / month</Label>
                 <Input id="days" type="number" min={1} max={31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
@@ -115,7 +238,7 @@ const Pricing = () => {
 
             <div className="mt-5 grid grid-cols-2 gap-4">
               <Card className="p-3 md:p-4 bg-primary/5 border-primary/20">
-                <div className="text-muted-foreground text-xs">Scooter (month)</div>
+                <div className="text-muted-foreground text-xs">Scooter — {plan.name} (month)</div>
                 <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterMonthly.toLocaleString()}</div>
               </Card>
               <Card className="p-3 md:p-4 bg-background">
@@ -129,8 +252,16 @@ const Pricing = () => {
               <div className="text-2xl md:text-3xl font-heading text-primary">{formatMinutes(results.savedPerMonthMins)}</div>
             </Card>
 
-            <p className="mt-4 text-xs text-muted-foreground">Estimates vary by route & traffic. Extra kms at ₹{EXTRA_PER_KM}/km.</p>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Estimates vary by route & traffic. Extra kms on {plan.name} at ₹{plan.extraPerKm}/km.
+            </p>
           </Card>
+        </div>
+
+        <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
+          <p>ℹ️ Unused km don't carry forward to the next month.</p>
+          <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
+          <p>🛒 After <span className="font-medium text-foreground">3 years</span>, you have the option to buy your scooter at <span className="font-medium text-foreground">40–50% of the original price</span> (or as mutually agreed).</p>
         </div>
       </div>
     </section>

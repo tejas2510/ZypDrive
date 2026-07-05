@@ -9,25 +9,37 @@ const FAQ = () => {
           <AccordionItem value="item-1">
             <AccordionTrigger>Is there any downpayment?</AccordionTrigger>
             <AccordionContent>
-              No downpayment. You start with just a one-time onboarding fee of ₹2,000 (non-refundable) and ₹1,799/month rental in advance.
+              No downpayment. You start with just a <span className="font-medium">one-time</span> onboarding fee of ₹2,000 (non-refundable, and never charged again on renewal) and your monthly rental in advance — starting at ₹1,999/month on the Green plan.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-plans">
+            <AccordionTrigger>What plans do you offer?</AccordionTrigger>
+            <AccordionContent>
+              We offer three plans:
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li><span className="font-medium">Green</span> — ₹1,999/month · 30 km/day (750 km/month free) · extra km at ₹5/km.</li>
+                <li><span className="font-medium">Plus</span> — ₹2,499/month · 40 km/day (1,000 km/month free) · extra km at ₹6/km.</li>
+                <li><span className="font-medium">Gig Rider</span> — ₹1,250/week · 80 km/day (2,000 km/month free) · extra km at ₹6/km. Perfect for delivery and gig workers.</li>
+              </ul>
+              All plans include routine service, home charging and third-party insurance.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>What if I ride more than 40 km/day?</AccordionTrigger>
+            <AccordionTrigger>What if I ride more than my included km?</AccordionTrigger>
             <AccordionContent>
-              You get 40 km/day included — that's 1,000 km free every month. Anything above 1,000 km/month is charged at just ₹2.5/km. Note: unused km do not carry forward to the next month.
+              Extra kilometres are charged at ₹5/km on the Green plan and ₹6/km on the Plus and Gig Rider plans. Note: unused km do not carry forward to the next month.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-double-ride">
             <AccordionTrigger>Can I share the scooter with a friend or colleague?</AccordionTrigger>
             <AccordionContent>
-              Yes! Double-ride is fully supported. Share with a loved one, friend or colleague and split the cost — that's just ₹899/month per person.
+              Yes! Double-ride is fully supported. Share with a loved one, friend or colleague and split the cost — that's an easy way to cut your monthly commute spend in half.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-agreement">
             <AccordionTrigger>How long is the rental agreement?</AccordionTrigger>
             <AccordionContent>
-              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue with the prevailing monthly rental as per company policy.
+              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue at the prevailing monthly rental, and the ₹2,000 onboarding fee is <span className="font-medium">not</span> charged again.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
@@ -39,7 +51,7 @@ const FAQ = () => {
           <AccordionItem value="item-4">
             <AccordionTrigger>Is service included?</AccordionTrigger>
             <AccordionContent>
-              Yes, routine service is fully included. We'll coordinate convenient service windows for you.
+              Yes, routine service is fully included on all plans. We'll coordinate convenient service windows for you.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
@@ -51,7 +63,7 @@ const FAQ = () => {
           <AccordionItem value="item-6">
             <AccordionTrigger>What scooters do you offer?</AccordionTrigger>
             <AccordionContent>
-              We offer a range of electric scooter models with varying speed and range options, all chosen for safe, comfortable daily commuting.
+              We offer a range of Indian-made electric scooter models with varying speed and range options, all chosen for safe, comfortable daily commuting.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-7">
@@ -93,7 +105,7 @@ const FAQ = () => {
           <AccordionItem value="item-11">
             <AccordionTrigger>How can I cancel my subscription?</AccordionTrigger>
             <AccordionContent>
-              You can cancel your subscription by giving 15 days prior notice as per the terms of your selected plan. Please note that the ₹2,000 onboarding fee is non-refundable.
+              You can cancel your subscription by giving 15 days prior notice as per the terms of your selected plan. Please note that the ₹2,000 onboarding fee is a one-time non-refundable charge.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-12">

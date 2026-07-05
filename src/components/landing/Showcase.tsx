@@ -18,11 +18,11 @@ const Showcase = () => {
           </div>
           <div>
             <h2 className="font-heading text-3xl md:text-4xl">Scooter showcase</h2>
-            <p className="text-muted-foreground mt-2">Komaki X-One or similar model, chosen for comfort, practicality and easy city rides.</p>
+            <p className="text-muted-foreground mt-2">Reliable Indian-made electric scooters, chosen for comfort, practicality and easy city rides.</p>
             <div className="grid sm:grid-cols-2 gap-4 mt-6">
               <Card className="p-4 bg-background">
                 <div className="text-sm text-muted-foreground">Included mileage</div>
-                <div className="text-xl font-semibold">40 km/day · 1,000 km/month free</div>
+                <div className="text-xl font-semibold">From 30 km/day · 750 km/month free</div>
               </Card>
               <Card className="p-4 bg-background">
                 <div className="text-sm text-muted-foreground">Range per full charge</div>

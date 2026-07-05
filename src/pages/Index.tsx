@@ -6,6 +6,7 @@ import JourneyComparison from "@/components/landing/JourneyComparison";
 import Pricing from "@/components/landing/Pricing";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Showcase from "@/components/landing/Showcase";
+import BatteryCare from "@/components/landing/BatteryCare";
 import Testimonials from "@/components/landing/Testimonials";
 import FAQ from "@/components/landing/FAQ";
 import Contact from "@/components/landing/Contact";
@@ -24,9 +25,9 @@ const Index = () => {
     audience: { '@type': 'PeopleAudience', audienceType: 'Working-class women' },
     offers: {
       '@type': 'Offer',
-      price: '1799',
+      price: '1999',
       priceCurrency: 'INR',
-      description: 'Monthly subscription with 1,000 km/month free (40 km/day), no downpayment, routine service included',
+      description: 'Monthly subscription starting at ₹1,999 with 750 km/month free (Green plan, 30 km/day), no downpayment, routine service included',
     },
   };
 
@@ -39,15 +40,15 @@ const Index = () => {
         name: 'Is there any downpayment?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'No, you can start from ₹1,799 per month with no downpayment.',
+          text: 'No, you can start from ₹1,999 per month on the Green plan with no downpayment — only a one-time ₹2,000 onboarding fee.',
         },
       },
       {
         '@type': 'Question',
-        name: 'What if I ride more than 40 km/day?',
+        name: 'What if I ride more than my included km?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You get 1,000 km/month free (40 km/day). Extra kms are charged at ₹2.5/km. Use the calculator to estimate your monthly cost.',
+          text: 'Green plan includes 30 km/day (750 km/month) with ₹5/km extra. Plus plan includes 40 km/day (1,000 km/month) with ₹6/km extra. Use the calculator to estimate your monthly cost.',
         },
       },
       {
@@ -79,6 +80,7 @@ const Index = () => {
       <Pricing />
       <HowItWorks />
       <Showcase />
+      <BatteryCare />
       <Testimonials />
       <FAQ />
       <Contact />
