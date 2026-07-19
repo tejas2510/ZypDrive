@@ -297,6 +297,11 @@ const Pricing = () => {
               <Card className="p-3 md:p-4 bg-background">
                 <div className="text-muted-foreground text-xs">{results.comparisonLabel}</div>
                 <div className="text-xl md:text-2xl font-heading">₹{results.comparisonMonthly.toLocaleString()}</div>
+                {isGig && (
+                  <div className="text-[11px] text-muted-foreground mt-1">
+                    Petrol ₹{results.petrolFuel.toLocaleString()} + EMI ₹{results.emi.toLocaleString()}
+                  </div>
+                )}
               </Card>
             </div>
 
