@@ -153,10 +153,11 @@ const Pricing = () => {
   const plan = PLANS[planId];
 
   const [days, setDays] = useState(25);
-  const [kmsPerDay, setKmsPerDay] = useState(40);
+  const [kmsPerDay, setKmsPerDay] = useState(30);
   const [busDailyCost, setBusDailyCost] = useState(75);
   const [petrolMileage, setPetrolMileage] = useState(45); // km/l for petrol scooter/bike
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
+  const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
 
   const results = useMemo(() => {
     const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
