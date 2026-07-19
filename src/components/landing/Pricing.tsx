@@ -274,6 +274,11 @@ const Pricing = () => {
                     <Input id="petrolPrice" type="number" min={50} max={200} value={petrolPrice} onChange={(e) => setPetrolPrice(Number(e.target.value))} />
                     <div className="text-xs text-muted-foreground mt-1">Karnataka average is around ₹100–₹110/l.</div>
                   </div>
+                  <div className="sm:col-span-2">
+                    <Label htmlFor="emi">Bike / scooter EMI (₹/month)</Label>
+                    <Input id="emi" type="number" min={0} max={20000} value={bikeEmi} onChange={(e) => setBikeEmi(Number(e.target.value))} />
+                    <div className="text-xs text-muted-foreground mt-1">Typical EMI for a new petrol 2-wheeler is ₹3,000–₹4,500/month.</div>
+                  </div>
                 </>
               ) : (
                 <div className="sm:col-span-2">
