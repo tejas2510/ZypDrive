@@ -1,4 +1,4 @@
-import { Instagram, Facebook, MessageCircle, Mail, Phone, Linkedin } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const XIcon = ({ className = "" }: { className?: string }) => (
@@ -14,8 +14,6 @@ const Footer = () => {
     { Icon: XIcon, href: "https://x.com/zypdrive_me", label: "X (Twitter)" },
     { Icon: Linkedin, href: "https://www.linkedin.com/in/mohandas-patil-a885a6410", label: "LinkedIn" },
     { Icon: MessageCircle, href: "https://wa.link/3vijz3", label: "WhatsApp" },
-    { Icon: Mail, href: "mailto:contact.mohandaspatil@gmail.com", label: "Email" },
-    { Icon: Phone, href: "tel:+919108721342", label: "Phone" },
   ];
 
   const exploreLinks = [
