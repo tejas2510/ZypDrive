@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info, Leaf, Zap, Briefcase } from "lucide-react";
 
-const ONBOARDING_FEE = 2000;
 const AVERAGE_SCOOTER_SPEED_KMPH = 20;
 
 type PlanId = "green" | "plus" | "gig";
@@ -18,8 +17,10 @@ const PLANS: Record<PlanId, {
   price: number;
   cycle: "month" | "week";
   includedPerDay: number;
-  includedPerMonth: number; // approximate monthly cap for display
+  includedPerMonth: number;
   extraPerKm: number;
+  onboardingFee: number;
+  refundableDeposit?: number;
   Icon: typeof Leaf;
   highlight?: boolean;
   badge?: string;
@@ -32,7 +33,8 @@ const PLANS: Record<PlanId, {
     cycle: "month",
     includedPerDay: 30,
     includedPerMonth: 750,
-    extraPerKm: 5,
+    extraPerKm: 4,
+    onboardingFee: 2000,
     Icon: Leaf,
     highlight: true,
     badge: "Most popular",
@@ -45,7 +47,8 @@ const PLANS: Record<PlanId, {
     cycle: "month",
     includedPerDay: 40,
     includedPerMonth: 1000,
-    extraPerKm: 6,
+    extraPerKm: 5,
+    onboardingFee: 3000,
     Icon: Zap,
   },
   gig: {
@@ -57,6 +60,8 @@ const PLANS: Record<PlanId, {
     includedPerDay: 80,
     includedPerMonth: 2000,
     extraPerKm: 6,
+    onboardingFee: 2000,
+    refundableDeposit: 3000,
     Icon: Briefcase,
   },
 };
@@ -70,6 +75,7 @@ function formatMinutes(totalMins: number) {
 
 const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
   const { Icon } = plan;
+  const totalUpfront = plan.onboardingFee + (plan.refundableDeposit ?? 0);
   return (
     <Card
       className={`p-5 md:p-7 flex flex-col justify-between card-hover relative ${
@@ -97,8 +103,14 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
           <span className="text-muted-foreground mb-1 text-sm">/ {plan.cycle}</span>
         </div>
         <div className="text-xs text-muted-foreground mt-1.5">
-          + ₹{ONBOARDING_FEE.toLocaleString()} one-time onboarding fee
-          <span className="text-foreground/70"> (paid once, never on renewal · non-refundable)</span>
+          + ₹{totalUpfront.toLocaleString()} upfront
+          {plan.refundableDeposit ? (
+            <span className="text-foreground/70">
+              {" "}(₹{plan.onboardingFee.toLocaleString()} onboarding, non-refundable · ₹{plan.refundableDeposit.toLocaleString()} refundable deposit)
+            </span>
+          ) : (
+            <span className="text-foreground/70"> onboarding fee (one-time, non-refundable)</span>
+          )}
         </div>
 
         <ul className="mt-5 space-y-2.5 text-sm">
@@ -141,8 +153,10 @@ const Pricing = () => {
   const plan = PLANS[planId];
 
   const [days, setDays] = useState(25);
-  const [kmsPerDay, setKmsPerDay] = useState(30);
-  const [busDailyCost, setBusDailyCost] = useState(55);
+  const [kmsPerDay, setKmsPerDay] = useState(40);
+  const [busDailyCost, setBusDailyCost] = useState(75);
+  const [petrolMileage, setPetrolMileage] = useState(45); // km/l for petrol scooter/bike
+  const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
 
   const results = useMemo(() => {
     const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
@@ -152,15 +166,24 @@ const Pricing = () => {
     const extraCost = extraKms * plan.extraPerKm;
 
     const scooterMonthly = plan.price * cyclesPerMonth + extraCost;
+
+    // For Gig Rider compare vs petrol; for Green/Plus compare vs bus
+    const petrolMonthly = petrolMileage > 0
+      ? Math.round((expected / petrolMileage) * petrolPrice)
+      : 0;
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
+    const comparisonMonthly = plan.id === "gig" ? petrolMonthly : busMonthly;
+    const comparisonLabel = plan.id === "gig" ? "Petrol scooter / bike (month)" : "Bus (month)";
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
     const ptPerDayMins = scooterPerDayMins * 4;
     const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
-    return { scooterMonthly, busMonthly, savedPerMonthMins };
-  }, [days, kmsPerDay, busDailyCost, plan]);
+    return { scooterMonthly, comparisonMonthly, comparisonLabel, savedPerMonthMins };
+  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, plan]);
+
+  const isGig = plan.id === "gig";
 
   return (
     <section id="pricing" className="py-14 md:py-20 bg-secondary/50">
@@ -178,7 +201,7 @@ const Pricing = () => {
 
         <p className="text-center text-xs text-muted-foreground mt-4 max-w-2xl mx-auto">
           *Gig Rider is billed weekly (₹1,250/week). 2,000 km included per month. Unused km don't carry forward.
-          The ₹{ONBOARDING_FEE.toLocaleString()} onboarding fee is a one-time charge and is not repeated on renewal.
+          The onboarding fee is a one-time charge and is not repeated on renewal.
         </p>
 
         {/* Calculator */}
@@ -187,7 +210,11 @@ const Pricing = () => {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
               <div>
                 <h3 className="font-heading text-xl md:text-2xl">Your commute calculator</h3>
-                <p className="text-sm text-muted-foreground">Compare scooter costs vs bus and see time saved.</p>
+                <p className="text-sm text-muted-foreground">
+                  {isGig
+                    ? "Compare Gig Rider cost vs running a petrol scooter/bike."
+                    : "Compare scooter costs vs bus and see time saved."}
+                </p>
               </div>
               <div className="flex gap-2 flex-wrap">
                 {(Object.keys(PLANS) as PlanId[]).map((id) => (
@@ -227,13 +254,31 @@ const Pricing = () => {
                   </Tooltip>
                 </div>
                 <Input id="kms" type="number" min={0} max={200} value={kmsPerDay} onChange={(e) => setKmsPerDay(Number(e.target.value))} />
-                <div className="text-xs text-muted-foreground mt-1">Public transport typically takes ~4× longer.</div>
+                {!isGig && (
+                  <div className="text-xs text-muted-foreground mt-1">Public transport typically takes ~4× longer.</div>
+                )}
               </div>
-              <div className="sm:col-span-2">
-                <Label htmlFor="busCost">Bus cost per day (₹)</Label>
-                <Input id="busCost" type="number" min={0} max={500} value={busDailyCost} onChange={(e) => setBusDailyCost(Number(e.target.value))} />
-                <div className="text-xs text-muted-foreground mt-1">Typical range is ₹50–₹60 per day.</div>
-              </div>
+
+              {isGig ? (
+                <>
+                  <div>
+                    <Label htmlFor="mileage">Petrol scooter mileage (km/l)</Label>
+                    <Input id="mileage" type="number" min={10} max={100} value={petrolMileage} onChange={(e) => setPetrolMileage(Number(e.target.value))} />
+                    <div className="text-xs text-muted-foreground mt-1">Typical range is 40–55 km/l.</div>
+                  </div>
+                  <div>
+                    <Label htmlFor="petrolPrice">Petrol price (₹/litre)</Label>
+                    <Input id="petrolPrice" type="number" min={50} max={200} value={petrolPrice} onChange={(e) => setPetrolPrice(Number(e.target.value))} />
+                    <div className="text-xs text-muted-foreground mt-1">Karnataka average is around ₹100–₹110/l.</div>
+                  </div>
+                </>
+              ) : (
+                <div className="sm:col-span-2">
+                  <Label htmlFor="busCost">Bus cost per day (₹)</Label>
+                  <Input id="busCost" type="number" min={0} max={500} value={busDailyCost} onChange={(e) => setBusDailyCost(Number(e.target.value))} />
+                  <div className="text-xs text-muted-foreground mt-1">Typical range is ₹70–₹80 per day (~₹1,875/month).</div>
+                </div>
+              )}
             </div>
 
             <div className="mt-5 grid grid-cols-2 gap-4">
@@ -242,15 +287,17 @@ const Pricing = () => {
                 <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterMonthly.toLocaleString()}</div>
               </Card>
               <Card className="p-3 md:p-4 bg-background">
-                <div className="text-muted-foreground text-xs">Bus (month)</div>
-                <div className="text-xl md:text-2xl font-heading">₹{results.busMonthly.toLocaleString()}</div>
+                <div className="text-muted-foreground text-xs">{results.comparisonLabel}</div>
+                <div className="text-xl md:text-2xl font-heading">₹{results.comparisonMonthly.toLocaleString()}</div>
               </Card>
             </div>
 
-            <Card className="mt-4 p-3 md:p-4 bg-primary/5 border-primary/20">
-              <div className="text-muted-foreground text-xs">Time saved per month</div>
-              <div className="text-2xl md:text-3xl font-heading text-primary">{formatMinutes(results.savedPerMonthMins)}</div>
-            </Card>
+            {!isGig && (
+              <Card className="mt-4 p-3 md:p-4 bg-primary/5 border-primary/20">
+                <div className="text-muted-foreground text-xs">Time saved per month</div>
+                <div className="text-2xl md:text-3xl font-heading text-primary">{formatMinutes(results.savedPerMonthMins)}</div>
+              </Card>
+            )}
 
             <p className="mt-4 text-xs text-muted-foreground">
               Estimates vary by route & traffic. Extra kms on {plan.name} at ₹{plan.extraPerKm}/km.

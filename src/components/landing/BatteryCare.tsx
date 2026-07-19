@@ -4,7 +4,7 @@ import { BatteryCharging, Sparkles } from "lucide-react";
 const tips = [
   "Avoid full discharges — plug in when 20–30% remains.",
   "Store the scooter in cool, dry places.",
-  "Use only brand-recommended chargers.",
+  "Only use our charger — third-party chargers can damage the battery.",
   "Charge after every ride instead of waiting for low-battery alerts.",
 ];
 
@@ -13,7 +13,6 @@ const takeaways = [
   "Weight, temperature and terrain all impact real-world EV battery performance.",
   "Higher-capacity batteries deliver better range and overall efficiency.",
   "Our scooters use long-lasting batteries chosen for reliable Indian-city performance.",
-  "Consistent maintenance preserves up to 90% of original battery capacity even after 2–3 years.",
 ];
 
 const BatteryCare = () => {

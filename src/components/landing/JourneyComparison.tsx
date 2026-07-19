@@ -95,7 +95,8 @@ const JourneyComparison = () => {
             <div className="mt-6 p-4 bg-green-100 dark:bg-emerald-900/40 rounded-lg">
               <div className="text-center">
                 <div className="font-bold text-green-800 dark:text-emerald-100 text-lg">Total Daily Travel Time: 50–60 minutes</div>
-                <div className="text-green-600 dark:text-emerald-300 text-sm">Monthly Cost: from ₹1,999 (All inclusive)</div>
+                <div className="text-green-700 dark:text-emerald-200 text-sm font-medium mt-1">⏱️ Quality time saved: 1.5–2 hours every day</div>
+                <div className="text-green-600 dark:text-emerald-300 text-sm mt-1">Monthly Cost: from ₹1,999 (All inclusive)</div>
                 <div className="text-green-600 dark:text-emerald-300/80 text-xs mt-1">+ Safety, Convenience, Weather protection</div>
               </div>
             </div>
