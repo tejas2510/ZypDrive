@@ -168,21 +168,23 @@ const Pricing = () => {
 
     const scooterMonthly = plan.price * cyclesPerMonth + extraCost;
 
-    // For Gig Rider compare vs petrol; for Green/Plus compare vs bus
-    const petrolMonthly = petrolMileage > 0
+    // For Gig Rider compare vs petrol running cost + bike/scooter EMI; for Green/Plus compare vs bus
+    const petrolFuel = petrolMileage > 0
       ? Math.round((expected / petrolMileage) * petrolPrice)
       : 0;
+    const emi = Math.max(0, bikeEmi);
+    const petrolTotal = petrolFuel + emi;
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
-    const comparisonMonthly = plan.id === "gig" ? petrolMonthly : busMonthly;
-    const comparisonLabel = plan.id === "gig" ? "Petrol scooter / bike (month)" : "Bus (month)";
+    const comparisonMonthly = plan.id === "gig" ? petrolTotal : busMonthly;
+    const comparisonLabel = plan.id === "gig" ? "Petrol + EMI (month)" : "Bus (month)";
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
     const ptPerDayMins = scooterPerDayMins * 4;
     const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
-    return { scooterMonthly, comparisonMonthly, comparisonLabel, savedPerMonthMins };
-  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, plan]);
+    return { scooterMonthly, comparisonMonthly, comparisonLabel, petrolFuel, emi, savedPerMonthMins };
+  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, bikeEmi, plan]);
 
   const isGig = plan.id === "gig";
 
