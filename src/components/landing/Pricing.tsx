@@ -174,31 +174,52 @@ const Pricing = () => {
   }, [planId]);
 
   const results = useMemo(() => {
-    const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
-    const includedForPeriod = plan.includedPerMonth;
-    const expected = kmsPerDay * days;
+    const isGigPlan = plan.id === "gig";
+    const expected = kmsPerDay * days; // total km for the period (week for gig, month otherwise)
+
+    // Included km for the period being calculated
+    const includedForPeriod = isGigPlan
+      ? plan.includedPerMonth / 4 // ~500 km/week
+      : plan.includedPerMonth;
     const extraKms = Math.max(0, expected - includedForPeriod);
     const extraCost = extraKms * plan.extraPerKm;
 
-    const scooterMonthly = plan.price * cyclesPerMonth + extraCost;
+    // Scooter cost for the shown period
+    const scooterPeriodCost = plan.price + extraCost; // plan.price is weekly for gig, monthly otherwise
 
-    // For Gig Rider compare vs petrol running cost + bike/scooter EMI; for Green/Plus compare vs bus
+    // Petrol / EMI / maintenance comparison (Gig only, shown weekly)
     const petrolFuel = petrolMileage > 0
       ? Math.round((expected / petrolMileage) * petrolPrice)
       : 0;
     const emi = Math.max(0, bikeEmi);
-    const petrolTotal = petrolFuel + emi;
+    const maint = Math.max(0, maintenanceWeekly);
+    const petrolTotal = petrolFuel + emi + maint;
+
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
-    const comparisonMonthly = plan.id === "gig" ? petrolTotal : busMonthly;
-    const comparisonLabel = plan.id === "gig" ? "Petrol + EMI (month)" : "Bus (month)";
+    const comparisonAmount = isGigPlan ? petrolTotal : busMonthly;
+    const comparisonLabel = isGigPlan
+      ? "Petrol + EMI + maintenance (week)"
+      : "Bus (month)";
+    const scooterLabel = isGigPlan
+      ? `Scooter — ${plan.name} (week)`
+      : `Scooter — ${plan.name} (month)`;
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
     const ptPerDayMins = scooterPerDayMins * 4;
     const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
-    return { scooterMonthly, comparisonMonthly, comparisonLabel, petrolFuel, emi, savedPerMonthMins };
-  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, bikeEmi, plan]);
+    return {
+      scooterPeriodCost,
+      comparisonAmount,
+      comparisonLabel,
+      scooterLabel,
+      petrolFuel,
+      emi,
+      maint,
+      savedPerMonthMins,
+    };
+  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, bikeEmi, maintenanceWeekly, plan]);
 
   const isGig = plan.id === "gig";
 
