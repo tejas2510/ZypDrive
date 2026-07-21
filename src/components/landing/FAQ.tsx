@@ -17,8 +17,8 @@ const FAQ = () => {
             <AccordionContent>
               We offer three plans:
               <ul className="list-disc pl-5 mt-2 space-y-1">
-                <li><span className="font-medium">Green</span> — ₹1,999/month · 30 km/day (750 km/month free) · extra km at ₹5/km.</li>
-                <li><span className="font-medium">Plus</span> — ₹2,499/month · 40 km/day (1,000 km/month free) · extra km at ₹6/km.</li>
+                <li><span className="font-medium">Green</span> — ₹1,999/month · 30 km/day (750 km/month free) · extra km at ₹4/km.</li>
+                <li><span className="font-medium">Plus</span> — ₹2,599/month · 40 km/day (1,000 km/month free) · extra km at ₹5/km.</li>
                 <li><span className="font-medium">Gig Rider</span> — ₹1,250/week · 80 km/day (2,000 km/month free) · extra km at ₹6/km. Perfect for delivery and gig workers.</li>
               </ul>
               All plans include routine service, home charging and third-party insurance.
@@ -27,7 +27,7 @@ const FAQ = () => {
           <AccordionItem value="item-2">
             <AccordionTrigger>What if I ride more than my included km?</AccordionTrigger>
             <AccordionContent>
-              Extra kilometres are charged at ₹5/km on the Green plan and ₹6/km on the Plus and Gig Rider plans. Note: unused km do not carry forward to the next month.
+              Extra kilometres are charged at ₹4/km on the Green plan, ₹5/km on the Plus plan and ₹6/km on the Gig Rider plan. Note: unused km do not carry forward to the next month.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-double-ride">
