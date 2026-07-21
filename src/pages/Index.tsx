@@ -48,7 +48,7 @@ const Index = () => {
         name: 'What if I ride more than my included km?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Green plan includes 30 km/day (750 km/month) with ₹5/km extra. Plus plan includes 40 km/day (1,000 km/month) with ₹6/km extra. Use the calculator to estimate your monthly cost.',
+          text: 'Green plan includes 30 km/day (750 km/month) with ₹4/km extra. Plus plan includes 40 km/day (1,000 km/month) with ₹5/km extra. Use the calculator to estimate your monthly cost.',
         },
       },
       {

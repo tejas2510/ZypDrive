@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,20 +36,20 @@ const PLANS: Record<PlanId, {
     extraPerKm: 4,
     onboardingFee: 2000,
     Icon: Leaf,
-    highlight: true,
-    badge: "Most popular",
   },
   plus: {
     id: "plus",
     name: "Plus",
     tagline: "More km for longer commutes",
-    price: 2499,
+    price: 2599,
     cycle: "month",
     includedPerDay: 40,
     includedPerMonth: 1000,
     extraPerKm: 5,
     onboardingFee: 3000,
     Icon: Zap,
+    highlight: true,
+    badge: "Most popular",
   },
   gig: {
     id: "gig",
@@ -148,16 +148,28 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
   );
 };
 
+const PLAN_DEFAULTS: Record<PlanId, { days: number; busDailyCost: number }> = {
+  green: { days: 30, busDailyCost: 60 },
+  plus: { days: 30, busDailyCost: 80 },
+  gig: { days: 25, busDailyCost: 75 },
+};
+
 const Pricing = () => {
-  const [planId, setPlanId] = useState<PlanId>("green");
+  const [planId, setPlanId] = useState<PlanId>("plus");
   const plan = PLANS[planId];
 
-  const [days, setDays] = useState(25);
+  const [days, setDays] = useState(PLAN_DEFAULTS.plus.days);
   const [kmsPerDay, setKmsPerDay] = useState(30);
-  const [busDailyCost, setBusDailyCost] = useState(75);
+  const [busDailyCost, setBusDailyCost] = useState(PLAN_DEFAULTS.plus.busDailyCost);
   const [petrolMileage, setPetrolMileage] = useState(45); // km/l for petrol scooter/bike
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
   const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
+
+  useEffect(() => {
+    const defaults = PLAN_DEFAULTS[planId];
+    setDays(defaults.days);
+    setBusDailyCost(defaults.busDailyCost);
+  }, [planId]);
 
   const results = useMemo(() => {
     const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
@@ -239,7 +251,7 @@ const Pricing = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
               <div>
-                <Label htmlFor="days">Working days / month</Label>
+                <Label htmlFor="days">Working days + holidays / month</Label>
                 <Input id="days" type="number" min={1} max={31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
               </div>
               <div>
@@ -284,7 +296,7 @@ const Pricing = () => {
                 <div className="sm:col-span-2">
                   <Label htmlFor="busCost">Bus cost per day (₹)</Label>
                   <Input id="busCost" type="number" min={0} max={500} value={busDailyCost} onChange={(e) => setBusDailyCost(Number(e.target.value))} />
-                  <div className="text-xs text-muted-foreground mt-1">Typical range is ₹70–₹80 per day (~₹1,875/month).</div>
+                  <div className="text-xs text-muted-foreground mt-1">Green default ₹60/day · Plus default ₹80/day.</div>
                 </div>
               )}
             </div>

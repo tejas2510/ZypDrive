@@ -42,7 +42,7 @@ const sections = [
         </li>
         <li>
           Monthly rentals start at <span className="font-medium text-foreground">₹1,999</span> on the
-          Green plan and <span className="font-medium text-foreground">₹2,499</span> on the Plus plan.
+          Green plan and <span className="font-medium text-foreground">₹2,599</span> on the Plus plan.
           The Gig Rider plan is billed weekly at{" "}
           <span className="font-medium text-foreground">₹1,250/week</span>. Rentals are payable in
           advance and may be revised in line with operational costs. If the agreement is cancelled,
@@ -50,8 +50,8 @@ const sections = [
         </li>
         <li>
           Included kilometres: <span className="font-medium text-foreground">Green — 750 km/month</span> (extra
-          at ₹5/km), <span className="font-medium text-foreground">Plus — 1,000 km/month</span> (extra at
-          ₹6/km), <span className="font-medium text-foreground">Gig Rider — 2,000 km/month</span> (extra
+          at ₹4/km), <span className="font-medium text-foreground">Plus — 1,000 km/month</span> (extra at
+          ₹5/km), <span className="font-medium text-foreground">Gig Rider — 2,000 km/month</span> (extra
           at ₹6/km). Unused km do not carry forward.
         </li>
       </ul>
