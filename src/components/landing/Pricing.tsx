@@ -148,10 +148,10 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
   );
 };
 
-const PLAN_DEFAULTS: Record<PlanId, { days: number; busDailyCost: number }> = {
-  green: { days: 30, busDailyCost: 60 },
-  plus: { days: 30, busDailyCost: 80 },
-  gig: { days: 25, busDailyCost: 75 },
+const PLAN_DEFAULTS: Record<PlanId, { days: number; kmsPerDay: number; busDailyCost: number }> = {
+  green: { days: 30, kmsPerDay: 30, busDailyCost: 60 },
+  plus: { days: 30, kmsPerDay: 40, busDailyCost: 80 },
+  gig: { days: 7, kmsPerDay: 80, busDailyCost: 0 },
 };
 
 const Pricing = () => {
@@ -159,44 +159,67 @@ const Pricing = () => {
   const plan = PLANS[planId];
 
   const [days, setDays] = useState(PLAN_DEFAULTS.plus.days);
-  const [kmsPerDay, setKmsPerDay] = useState(30);
+  const [kmsPerDay, setKmsPerDay] = useState(PLAN_DEFAULTS.plus.kmsPerDay);
   const [busDailyCost, setBusDailyCost] = useState(PLAN_DEFAULTS.plus.busDailyCost);
-  const [petrolMileage, setPetrolMileage] = useState(45); // km/l for petrol scooter/bike
+  const [petrolMileage, setPetrolMileage] = useState(40); // km/l for petrol scooter/bike
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
   const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
+  const [maintenanceWeekly, setMaintenanceWeekly] = useState(300); // ₹/week maintenance for petrol 2-wheeler
 
   useEffect(() => {
     const defaults = PLAN_DEFAULTS[planId];
     setDays(defaults.days);
+    setKmsPerDay(defaults.kmsPerDay);
     setBusDailyCost(defaults.busDailyCost);
   }, [planId]);
 
   const results = useMemo(() => {
-    const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
-    const includedForPeriod = plan.includedPerMonth;
-    const expected = kmsPerDay * days;
+    const isGigPlan = plan.id === "gig";
+    const expected = kmsPerDay * days; // total km for the period (week for gig, month otherwise)
+
+    // Included km for the period being calculated
+    const includedForPeriod = isGigPlan
+      ? plan.includedPerMonth / 4 // ~500 km/week
+      : plan.includedPerMonth;
     const extraKms = Math.max(0, expected - includedForPeriod);
     const extraCost = extraKms * plan.extraPerKm;
 
-    const scooterMonthly = plan.price * cyclesPerMonth + extraCost;
+    // Scooter cost for the shown period
+    const scooterPeriodCost = plan.price + extraCost; // plan.price is weekly for gig, monthly otherwise
 
-    // For Gig Rider compare vs petrol running cost + bike/scooter EMI; for Green/Plus compare vs bus
+    // Petrol / EMI / maintenance comparison (Gig only, shown weekly)
     const petrolFuel = petrolMileage > 0
       ? Math.round((expected / petrolMileage) * petrolPrice)
       : 0;
     const emi = Math.max(0, bikeEmi);
-    const petrolTotal = petrolFuel + emi;
+    const maint = Math.max(0, maintenanceWeekly);
+    const petrolTotal = petrolFuel + emi + maint;
+
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
-    const comparisonMonthly = plan.id === "gig" ? petrolTotal : busMonthly;
-    const comparisonLabel = plan.id === "gig" ? "Petrol + EMI (month)" : "Bus (month)";
+    const comparisonAmount = isGigPlan ? petrolTotal : busMonthly;
+    const comparisonLabel = isGigPlan
+      ? "Petrol + EMI + maintenance (week)"
+      : "Bus (month)";
+    const scooterLabel = isGigPlan
+      ? `Scooter — ${plan.name} (week)`
+      : `Scooter — ${plan.name} (month)`;
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
     const ptPerDayMins = scooterPerDayMins * 4;
     const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
-    return { scooterMonthly, comparisonMonthly, comparisonLabel, petrolFuel, emi, savedPerMonthMins };
-  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, bikeEmi, plan]);
+    return {
+      scooterPeriodCost,
+      comparisonAmount,
+      comparisonLabel,
+      scooterLabel,
+      petrolFuel,
+      emi,
+      maint,
+      savedPerMonthMins,
+    };
+  }, [days, kmsPerDay, busDailyCost, petrolMileage, petrolPrice, bikeEmi, maintenanceWeekly, plan]);
 
   const isGig = plan.id === "gig";
 
@@ -251,8 +274,11 @@ const Pricing = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
               <div>
-                <Label htmlFor="days">Working days + holidays / month</Label>
-                <Input id="days" type="number" min={1} max={31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
+                <Label htmlFor="days">{isGig ? "Days / week" : "Working days + holidays / month"}</Label>
+                <Input id="days" type="number" min={1} max={isGig ? 7 : 31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
+                {isGig && (
+                  <div className="text-xs text-muted-foreground mt-1">Gig Rider is billed weekly.</div>
+                )}
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -286,10 +312,15 @@ const Pricing = () => {
                     <Input id="petrolPrice" type="number" min={50} max={200} value={petrolPrice} onChange={(e) => setPetrolPrice(Number(e.target.value))} />
                     <div className="text-xs text-muted-foreground mt-1">Karnataka average is around ₹100–₹110/l.</div>
                   </div>
-                  <div className="sm:col-span-2">
+                  <div>
                     <Label htmlFor="emi">Bike / scooter EMI (₹/month)</Label>
                     <Input id="emi" type="number" min={0} max={20000} value={bikeEmi} onChange={(e) => setBikeEmi(Number(e.target.value))} />
-                    <div className="text-xs text-muted-foreground mt-1">Typical EMI for a new petrol 2-wheeler is ₹3,000–₹4,500/month.</div>
+                    <div className="text-xs text-muted-foreground mt-1">Typical EMI is ₹3,000–₹4,500/month.</div>
+                  </div>
+                  <div>
+                    <Label htmlFor="maint">Maintenance (₹/week)</Label>
+                    <Input id="maint" type="number" min={0} max={5000} value={maintenanceWeekly} onChange={(e) => setMaintenanceWeekly(Number(e.target.value))} />
+                    <div className="text-xs text-muted-foreground mt-1">Servicing, oil, tyres, small repairs (~₹300/week).</div>
                   </div>
                 </>
               ) : (
@@ -303,15 +334,20 @@ const Pricing = () => {
 
             <div className="mt-5 grid grid-cols-2 gap-4">
               <Card className="p-3 md:p-4 bg-primary/5 border-primary/20">
-                <div className="text-muted-foreground text-xs">Scooter — {plan.name} (month)</div>
-                <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterMonthly.toLocaleString()}</div>
+                <div className="text-muted-foreground text-xs">{results.scooterLabel}</div>
+                <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterPeriodCost.toLocaleString()}</div>
+                {isGig && (
+                  <div className="text-[11px] text-muted-foreground mt-1">
+                    ≈ ₹{(results.scooterPeriodCost * 4).toLocaleString()} / month
+                  </div>
+                )}
               </Card>
               <Card className="p-3 md:p-4 bg-background">
                 <div className="text-muted-foreground text-xs">{results.comparisonLabel}</div>
-                <div className="text-xl md:text-2xl font-heading">₹{results.comparisonMonthly.toLocaleString()}</div>
+                <div className="text-xl md:text-2xl font-heading">₹{results.comparisonAmount.toLocaleString()}</div>
                 {isGig && (
                   <div className="text-[11px] text-muted-foreground mt-1">
-                    Petrol ₹{results.petrolFuel.toLocaleString()} + EMI ₹{results.emi.toLocaleString()}
+                    Petrol ₹{results.petrolFuel.toLocaleString()} + EMI ₹{results.emi.toLocaleString()} + Maint. ₹{results.maint.toLocaleString()}
                   </div>
                 )}
               </Card>
@@ -329,6 +365,7 @@ const Pricing = () => {
             </p>
           </Card>
         </div>
+
 
         <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
           <p>ℹ️ Unused km don't carry forward to the next month.</p>
