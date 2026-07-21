@@ -353,6 +353,20 @@ const Pricing = () => {
               </Card>
             </div>
 
+            {!isGig && (
+              <Card className="mt-4 p-3 md:p-4 bg-primary/5 border-primary/20">
+                <div className="text-muted-foreground text-xs">Time saved per month</div>
+                <div className="text-2xl md:text-3xl font-heading text-primary">{formatMinutes(results.savedPerMonthMins)}</div>
+              </Card>
+            )}
+
+            <p className="mt-4 text-xs text-muted-foreground">
+              Estimates vary by route & traffic. Extra kms on {plan.name} at ₹{plan.extraPerKm}/km.
+            </p>
+          </Card>
+        </div>
+
+
         <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
           <p>ℹ️ Unused km don't carry forward to the next month.</p>
           <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
