@@ -274,8 +274,11 @@ const Pricing = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
               <div>
-                <Label htmlFor="days">Working days + holidays / month</Label>
-                <Input id="days" type="number" min={1} max={31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
+                <Label htmlFor="days">{isGig ? "Days / week" : "Working days + holidays / month"}</Label>
+                <Input id="days" type="number" min={1} max={isGig ? 7 : 31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
+                {isGig && (
+                  <div className="text-xs text-muted-foreground mt-1">Gig Rider is billed weekly.</div>
+                )}
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -309,10 +312,15 @@ const Pricing = () => {
                     <Input id="petrolPrice" type="number" min={50} max={200} value={petrolPrice} onChange={(e) => setPetrolPrice(Number(e.target.value))} />
                     <div className="text-xs text-muted-foreground mt-1">Karnataka average is around ₹100–₹110/l.</div>
                   </div>
-                  <div className="sm:col-span-2">
+                  <div>
                     <Label htmlFor="emi">Bike / scooter EMI (₹/month)</Label>
                     <Input id="emi" type="number" min={0} max={20000} value={bikeEmi} onChange={(e) => setBikeEmi(Number(e.target.value))} />
-                    <div className="text-xs text-muted-foreground mt-1">Typical EMI for a new petrol 2-wheeler is ₹3,000–₹4,500/month.</div>
+                    <div className="text-xs text-muted-foreground mt-1">Typical EMI is ₹3,000–₹4,500/month.</div>
+                  </div>
+                  <div>
+                    <Label htmlFor="maint">Maintenance (₹/week)</Label>
+                    <Input id="maint" type="number" min={0} max={5000} value={maintenanceWeekly} onChange={(e) => setMaintenanceWeekly(Number(e.target.value))} />
+                    <div className="text-xs text-muted-foreground mt-1">Servicing, oil, tyres, small repairs (~₹300/week).</div>
                   </div>
                 </>
               ) : (
@@ -326,32 +334,24 @@ const Pricing = () => {
 
             <div className="mt-5 grid grid-cols-2 gap-4">
               <Card className="p-3 md:p-4 bg-primary/5 border-primary/20">
-                <div className="text-muted-foreground text-xs">Scooter — {plan.name} (month)</div>
-                <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterMonthly.toLocaleString()}</div>
+                <div className="text-muted-foreground text-xs">{results.scooterLabel}</div>
+                <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterPeriodCost.toLocaleString()}</div>
+                {isGig && (
+                  <div className="text-[11px] text-muted-foreground mt-1">
+                    ≈ ₹{(results.scooterPeriodCost * 4).toLocaleString()} / month
+                  </div>
+                )}
               </Card>
               <Card className="p-3 md:p-4 bg-background">
                 <div className="text-muted-foreground text-xs">{results.comparisonLabel}</div>
-                <div className="text-xl md:text-2xl font-heading">₹{results.comparisonMonthly.toLocaleString()}</div>
+                <div className="text-xl md:text-2xl font-heading">₹{results.comparisonAmount.toLocaleString()}</div>
                 {isGig && (
                   <div className="text-[11px] text-muted-foreground mt-1">
-                    Petrol ₹{results.petrolFuel.toLocaleString()} + EMI ₹{results.emi.toLocaleString()}
+                    Petrol ₹{results.petrolFuel.toLocaleString()} + EMI ₹{results.emi.toLocaleString()} + Maint. ₹{results.maint.toLocaleString()}
                   </div>
                 )}
               </Card>
             </div>
-
-            {!isGig && (
-              <Card className="mt-4 p-3 md:p-4 bg-primary/5 border-primary/20">
-                <div className="text-muted-foreground text-xs">Time saved per month</div>
-                <div className="text-2xl md:text-3xl font-heading text-primary">{formatMinutes(results.savedPerMonthMins)}</div>
-              </Card>
-            )}
-
-            <p className="mt-4 text-xs text-muted-foreground">
-              Estimates vary by route & traffic. Extra kms on {plan.name} at ₹{plan.extraPerKm}/km.
-            </p>
-          </Card>
-        </div>
 
         <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
           <p>ℹ️ Unused km don't carry forward to the next month.</p>
