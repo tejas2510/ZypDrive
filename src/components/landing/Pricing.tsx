@@ -251,7 +251,7 @@ const Pricing = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
               <div>
-                <Label htmlFor="days">Working days / month</Label>
+                <Label htmlFor="days">Working days + holidays / month</Label>
                 <Input id="days" type="number" min={1} max={31} value={days} onChange={(e) => setDays(Number(e.target.value))} />
               </div>
               <div>
