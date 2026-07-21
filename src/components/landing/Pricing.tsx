@@ -148,13 +148,19 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
   );
 };
 
+const PLAN_DEFAULTS: Record<PlanId, { days: number; busDailyCost: number }> = {
+  green: { days: 30, busDailyCost: 60 },
+  plus: { days: 30, busDailyCost: 80 },
+  gig: { days: 25, busDailyCost: 75 },
+};
+
 const Pricing = () => {
-  const [planId, setPlanId] = useState<PlanId>("green");
+  const [planId, setPlanId] = useState<PlanId>("plus");
   const plan = PLANS[planId];
 
-  const [days, setDays] = useState(25);
+  const [days, setDays] = useState(PLAN_DEFAULTS.plus.days);
   const [kmsPerDay, setKmsPerDay] = useState(30);
-  const [busDailyCost, setBusDailyCost] = useState(75);
+  const [busDailyCost, setBusDailyCost] = useState(PLAN_DEFAULTS.plus.busDailyCost);
   const [petrolMileage, setPetrolMileage] = useState(45); // km/l for petrol scooter/bike
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
   const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
