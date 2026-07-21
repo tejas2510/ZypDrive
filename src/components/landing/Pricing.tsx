@@ -148,10 +148,10 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
   );
 };
 
-const PLAN_DEFAULTS: Record<PlanId, { days: number; busDailyCost: number }> = {
-  green: { days: 30, busDailyCost: 60 },
-  plus: { days: 30, busDailyCost: 80 },
-  gig: { days: 25, busDailyCost: 75 },
+const PLAN_DEFAULTS: Record<PlanId, { days: number; kmsPerDay: number; busDailyCost: number }> = {
+  green: { days: 30, kmsPerDay: 30, busDailyCost: 60 },
+  plus: { days: 30, kmsPerDay: 40, busDailyCost: 80 },
+  gig: { days: 7, kmsPerDay: 80, busDailyCost: 0 },
 };
 
 const Pricing = () => {
@@ -159,15 +159,17 @@ const Pricing = () => {
   const plan = PLANS[planId];
 
   const [days, setDays] = useState(PLAN_DEFAULTS.plus.days);
-  const [kmsPerDay, setKmsPerDay] = useState(30);
+  const [kmsPerDay, setKmsPerDay] = useState(PLAN_DEFAULTS.plus.kmsPerDay);
   const [busDailyCost, setBusDailyCost] = useState(PLAN_DEFAULTS.plus.busDailyCost);
-  const [petrolMileage, setPetrolMileage] = useState(45); // km/l for petrol scooter/bike
+  const [petrolMileage, setPetrolMileage] = useState(40); // km/l for petrol scooter/bike
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
   const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
+  const [maintenanceWeekly, setMaintenanceWeekly] = useState(300); // ₹/week maintenance for petrol 2-wheeler
 
   useEffect(() => {
     const defaults = PLAN_DEFAULTS[planId];
     setDays(defaults.days);
+    setKmsPerDay(defaults.kmsPerDay);
     setBusDailyCost(defaults.busDailyCost);
   }, [planId]);
 
