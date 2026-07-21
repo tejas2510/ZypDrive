@@ -165,6 +165,12 @@ const Pricing = () => {
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
   const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
 
+  useEffect(() => {
+    const defaults = PLAN_DEFAULTS[planId];
+    setDays(defaults.days);
+    setBusDailyCost(defaults.busDailyCost);
+  }, [planId]);
+
   const results = useMemo(() => {
     const cyclesPerMonth = plan.cycle === "week" ? 4 : 1;
     const includedForPeriod = plan.includedPerMonth;
