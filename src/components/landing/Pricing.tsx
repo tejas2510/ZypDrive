@@ -150,7 +150,7 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
 
 const PLAN_DEFAULTS: Record<PlanId, { days: number; kmsPerDay: number; busDailyCost: number }> = {
   green: { days: 30, kmsPerDay: 30, busDailyCost: 60 },
-  plus: { days: 25, kmsPerDay: 40, busDailyCost: 80 },
+  plus: { days: 30, kmsPerDay: 40, busDailyCost: 80 },
   gig: { days: 7, kmsPerDay: 80, busDailyCost: 0 },
 };
 
@@ -176,11 +176,7 @@ const Pricing = () => {
   const results = useMemo(() => {
     const isGigPlan = plan.id === "gig";
     const expected = kmsPerDay * days; // total km for the period (week for gig, month otherwise)
-
-    // Included km for the period being calculated
-    const includedForPeriod = isGigPlan
-      ? plan.includedPerMonth / 4 // ~500 km/week
-      : plan.includedPerMonth;
+    const includedForPeriod = plan.includedPerDay * days;
     const extraKms = Math.max(0, expected - includedForPeriod);
     const extraCost = extraKms * plan.extraPerKm;
 
@@ -211,6 +207,8 @@ const Pricing = () => {
 
     return {
       scooterPeriodCost,
+      extraCost,
+      extraKms,
       comparisonAmount,
       comparisonLabel,
       scooterLabel,
@@ -336,6 +334,11 @@ const Pricing = () => {
               <Card className="p-3 md:p-4 bg-primary/5 border-primary/20">
                 <div className="text-muted-foreground text-xs">{results.scooterLabel}</div>
                 <div className="text-xl md:text-2xl font-heading text-primary">₹{results.scooterPeriodCost.toLocaleString()}</div>
+                {results.extraCost > 0 && (
+                  <div className="text-[11px] text-muted-foreground mt-1">
+                    Includes ₹{results.extraCost.toLocaleString()} for {results.extraKms.toLocaleString()} extra km
+                  </div>
+                )}
                 {isGig && (
                   <div className="text-[11px] text-muted-foreground mt-1">
                     ≈ ₹{(results.scooterPeriodCost * 4).toLocaleString()} / month
