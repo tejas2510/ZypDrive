@@ -10,7 +10,7 @@ const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Enter a valid email").max(255),
   phone: z.string().trim().max(20).optional().or(z.literal("")),
-  message: z.string().trim().max(2000).optional().or(z.literal("")),
+  message: z.string().trim().min(1, "Message cannot be empty").max(2000),
 });
 
 const Contact = () => {
@@ -95,7 +95,7 @@ const Contact = () => {
           </div>
           <div>
             <Label htmlFor="message">Message</Label>
-            <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} rows={5} maxLength={2000} />
+            <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} rows={5} maxLength={2000} required />
           </div>
           <div className="flex items-center justify-between gap-4">
             <p className="text-xs text-muted-foreground">We'll reply within 24 hours. No spam—ever.</p>

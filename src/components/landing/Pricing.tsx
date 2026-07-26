@@ -150,7 +150,7 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
 
 const PLAN_DEFAULTS: Record<PlanId, { days: number; kmsPerDay: number; busDailyCost: number }> = {
   green: { days: 30, kmsPerDay: 30, busDailyCost: 60 },
-  plus: { days: 30, kmsPerDay: 40, busDailyCost: 80 },
+  plus: { days: 25, kmsPerDay: 40, busDailyCost: 80 },
   gig: { days: 7, kmsPerDay: 80, busDailyCost: 0 },
 };
 
