@@ -8,8 +8,11 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import SafetyGuidelines from "./pages/SafetyGuidelines";
+import Login from "./pages/Login";
+import OAuthConsent from "./pages/OAuthConsent";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+
 
 const ScrollToHash = () => {
   const { pathname, hash } = useLocation();
@@ -47,9 +50,12 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/safety" element={<SafetyGuidelines />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+
         <ScrollToTop />
       </BrowserRouter>
     </TooltipProvider>
