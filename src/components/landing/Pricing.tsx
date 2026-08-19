@@ -327,7 +327,7 @@ const Pricing = () => {
                 <div className="sm:col-span-2">
                   <Label htmlFor="busCost">Bus cost per day (₹)</Label>
                   <Input id="busCost" type="number" min={0} max={500} value={busDailyCost} onChange={(e) => setBusDailyCost(Number(e.target.value))} />
-                  <div className="text-xs text-muted-foreground mt-1">Green default ₹60/day · Plus default ₹80/day.</div>
+                  
                 </div>
               )}
             </div>
