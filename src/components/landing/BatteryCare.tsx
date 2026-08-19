@@ -2,8 +2,11 @@ import { Card } from "@/components/ui/card";
 import { BatteryCharging, Sparkles } from "lucide-react";
 
 const tips = [
-  "Avoid full discharges — plug in when 20–30% remains.",
-  "Store the scooter in cool, dry places.",
+  "Never let the battery drain fully — plug in when 20–30% remains.",
+  "On uphill climbs, keep the accelerator at mid-throttle and ride slow — full acceleration drains the battery fast.",
+  "On downhill stretches, stay off the accelerator to conserve battery capacity.",
+  "Avoid double-riding where possible, and only double-ride on a full battery.",
+  "Park and store the scooter in a cool, dry place.",
   "Only use our charger — third-party chargers can damage the battery.",
   "Charge after every ride instead of waiting for low-battery alerts.",
 ];
