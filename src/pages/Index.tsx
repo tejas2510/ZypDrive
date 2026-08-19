@@ -27,7 +27,7 @@ const Index = () => {
       '@type': 'Offer',
       price: '1999',
       priceCurrency: 'INR',
-      description: 'Monthly subscription starting at ₹1,999 with 750 km/month free (Green plan, 30 km/day), no downpayment, routine service included',
+      description: 'Monthly subscription starting at ₹1,999 with 750 km/month free (Green plan, 30 km/day), no downpayment, free routine service in year 1',
     },
   };
 
@@ -64,7 +64,7 @@ const Index = () => {
         name: 'Is service included?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, routine service is included. We’ll coordinate convenient service windows for you.',
+          text: 'Routine service is free for the first 12 months. From the 2nd year, a 50% discount applies on actual service charges plus 18% GST.',
         },
       },
     ],

@@ -23,8 +23,8 @@ const principles = [
   },
   {
     icon: Wallet,
-    title: "Almost the cost of a bus pass",
-    desc: "Monthly rental is on par with what many women already spend on daily bus tickets — without the wait or crowd.",
+    title: "Almost the cost of your bus fare",
+    desc: "Your monthly rental works out to roughly what you already spend on daily bus fares — without the wait or the crowd.",
   },
   {
     icon: Users,
@@ -44,7 +44,7 @@ const principles = [
   {
     icon: Wrench,
     title: "Maintenance on us",
-    desc: "All routine maintenance is fully handled by our team — you just ride.",
+    desc: "Routine service is free for your first year, and 50% off actual charges from the 2nd year — we handle it, you just ride.",
   },
   {
     icon: Sparkles,
