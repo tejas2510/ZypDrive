@@ -4,12 +4,12 @@ import { Card } from "@/components/ui/card";
 const items = [
   {
     title: "Safe, reliable commutes",
-    desc: "Well-maintained scooters, visible support, and routine service included.",
+    desc: "Well-maintained RTO-registered scooters, visible support, and free routine service for the first year.",
     Icon: ShieldCheck,
   },
   {
     title: "No downpayment",
-    desc: "Starting at ₹1,999/month + a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). Cancel anytime with notice.",
+    desc: "Starting at ₹1,999/month + a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). Cancel with just 7 days' notice.",
     Icon: Wallet,
   },
   {

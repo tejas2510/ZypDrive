@@ -46,7 +46,7 @@ const Showcase = () => {
               </Card>
               <Card className="p-4 bg-background sm:col-span-2">
                 <div className="text-sm text-muted-foreground">Service</div>
-                <div className="text-xl font-semibold">Routine service included</div>
+                <div className="text-xl font-semibold">Free for year 1 · 50% off from year 2</div>
               </Card>
             </div>
           </div>
