@@ -202,7 +202,9 @@ const Pricing = () => {
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
     const ptPerDayMins = scooterPerDayMins * 4;
-    const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
+    // Realistic daily ceiling: up to 3 hrs/day on Green, 4 hrs/day on Plus.
+    const dailyCapMins = plan.id === "green" ? 180 : 240;
+    const savedPerDay = Math.min(dailyCapMins, Math.max(0, ptPerDayMins - scooterPerDayMins));
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
     return {
