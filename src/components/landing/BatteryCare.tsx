@@ -50,6 +50,16 @@ const BatteryCare = () => {
             <p className="mt-5 text-sm text-foreground/80">
               Consistent care can preserve up to <span className="font-medium text-primary">90%</span> of your original battery capacity even after <span className="font-medium">2–3 years</span> of use.
             </p>
+            <div className="mt-5 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm">
+              <div className="flex items-center gap-2 font-medium text-destructive">
+                <AlertTriangle className="w-4 h-4" /> Please take this seriously
+              </div>
+              <p className="mt-2 text-muted-foreground">
+                If the battery is drained completely and stops accepting charge, a{" "}
+                <span className="font-medium text-foreground">₹5,000</span> charge applies to revive it with a booster
+                charger — and its life will drop to roughly half of normal.
+              </p>
+            </div>
           </Card>
 
           <Card className="p-6 md:p-8">
