@@ -373,9 +373,10 @@ const Pricing = () => {
 
 
         <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
-          <p>ℹ️ Unused km don't carry forward to the next month.</p>
-          <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
-          <p>🛒 After <span className="font-medium text-foreground">3 years</span>, you have the option to buy your scooter at <span className="font-medium text-foreground">40–50% of the original price</span> (or as mutually agreed).</p>
+          <p>ℹ️ Unused km don't carry forward to the next month — on every plan.</p>
+          <p>🔧 Routine service is <span className="font-medium text-foreground">free for the first 12 months</span>; from the 2nd year you get a <span className="font-medium text-foreground">50% discount</span> on actual service charges (+18% GST).</p>
+          <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental or as decided by the management — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
+          <p>🛒 Option to buy your scooter after <span className="font-medium text-foreground">3 years</span> at 40–50% of the original price, or after <span className="font-medium text-foreground">5 years</span> at 25–30% (or as mutually agreed).</p>
         </div>
       </div>
     </section>
