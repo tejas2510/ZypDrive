@@ -228,7 +228,7 @@ const Pricing = () => {
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center">Simple pricing</h2>
         <p className="text-center text-muted-foreground mt-2 max-w-xl mx-auto">
-          Pick the plan that fits your routine. Transparent pricing, routine service included.
+          Pick the plan that fits your routine. Transparent pricing, free routine service for the first year.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mt-12 max-w-6xl mx-auto">
@@ -238,7 +238,7 @@ const Pricing = () => {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-4 max-w-2xl mx-auto">
-          *Gig Rider is billed weekly (₹1,250/week). 2,000 km included per month. Unused km don't carry forward.
+          *Gig Rider is billed weekly (₹1,250/week). 2,000 km included per month. Unused km don't carry forward on any plan.
           The onboarding fee is a one-time charge and is not repeated on renewal.
         </p>
 
