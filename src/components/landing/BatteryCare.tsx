@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { BatteryCharging, Sparkles } from "lucide-react";
+import { AlertTriangle, BatteryCharging, Sparkles } from "lucide-react";
 
 const tips = [
   "Never let the battery drain fully — plug in when 20–30% remains.",
