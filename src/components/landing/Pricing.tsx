@@ -124,7 +124,7 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
           </li>
           <li className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
-            Routine service included
+            Free routine service for the first year
           </li>
           <li className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
@@ -202,7 +202,9 @@ const Pricing = () => {
 
     const scooterPerDayMins = (Math.max(0, kmsPerDay) / AVERAGE_SCOOTER_SPEED_KMPH) * 60;
     const ptPerDayMins = scooterPerDayMins * 4;
-    const savedPerDay = Math.max(0, ptPerDayMins - scooterPerDayMins);
+    // Realistic daily ceiling: up to 3 hrs/day on Green, 4 hrs/day on Plus.
+    const dailyCapMins = plan.id === "green" ? 180 : 240;
+    const savedPerDay = Math.min(dailyCapMins, Math.max(0, ptPerDayMins - scooterPerDayMins));
     const savedPerMonthMins = savedPerDay * Math.max(0, days);
 
     return {
@@ -226,7 +228,7 @@ const Pricing = () => {
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center">Simple pricing</h2>
         <p className="text-center text-muted-foreground mt-2 max-w-xl mx-auto">
-          Pick the plan that fits your routine. Transparent pricing, routine service included.
+          Pick the plan that fits your routine. Transparent pricing, free routine service for the first year.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mt-12 max-w-6xl mx-auto">
@@ -236,7 +238,7 @@ const Pricing = () => {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-4 max-w-2xl mx-auto">
-          *Gig Rider is billed weekly (₹1,250/week). 2,000 km included per month. Unused km don't carry forward.
+          *Gig Rider is billed weekly (₹1,250/week). 2,000 km included per month. Unused km don't carry forward on any plan.
           The onboarding fee is a one-time charge and is not repeated on renewal.
         </p>
 
@@ -325,7 +327,7 @@ const Pricing = () => {
                 <div className="sm:col-span-2">
                   <Label htmlFor="busCost">Bus cost per day (₹)</Label>
                   <Input id="busCost" type="number" min={0} max={500} value={busDailyCost} onChange={(e) => setBusDailyCost(Number(e.target.value))} />
-                  <div className="text-xs text-muted-foreground mt-1">Green default ₹60/day · Plus default ₹80/day.</div>
+                  
                 </div>
               )}
             </div>
@@ -371,9 +373,10 @@ const Pricing = () => {
 
 
         <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
-          <p>ℹ️ Unused km don't carry forward to the next month.</p>
-          <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
-          <p>🛒 After <span className="font-medium text-foreground">3 years</span>, you have the option to buy your scooter at <span className="font-medium text-foreground">40–50% of the original price</span> (or as mutually agreed).</p>
+          <p>ℹ️ Unused km don't carry forward to the next month — on every plan.</p>
+          <p>🔧 Routine service is <span className="font-medium text-foreground">free for the first 12 months</span>; from the 2nd year you get a <span className="font-medium text-foreground">50% discount</span> on actual service charges (+18% GST).</p>
+          <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental or as decided by the management — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
+          <p>🛒 Option to buy your scooter after <span className="font-medium text-foreground">3 years</span> at 40–50% of the original price, or after <span className="font-medium text-foreground">5 years</span> at 25–30% (or as mutually agreed).</p>
         </div>
       </div>
     </section>

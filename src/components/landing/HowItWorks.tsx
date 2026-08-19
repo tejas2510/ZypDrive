@@ -14,7 +14,7 @@ const steps = [
   },
   {
     title: "Ride & relax",
-    desc: "Charge at home and ride daily. We handle routine service.",
+    desc: "Charge at home and ride daily. Routine service is on us for the first year.",
     Icon: Bike,
   },
 ];

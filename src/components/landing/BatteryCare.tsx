@@ -1,9 +1,12 @@
 import { Card } from "@/components/ui/card";
-import { BatteryCharging, Sparkles } from "lucide-react";
+import { AlertTriangle, BatteryCharging, Sparkles } from "lucide-react";
 
 const tips = [
-  "Avoid full discharges — plug in when 20–30% remains.",
-  "Store the scooter in cool, dry places.",
+  "Never let the battery drain fully — plug in when 20–30% remains.",
+  "On uphill climbs, keep the accelerator at mid-throttle and ride slow — full acceleration drains the battery fast.",
+  "On downhill stretches, stay off the accelerator to conserve battery capacity.",
+  "Avoid double-riding where possible, and only double-ride on a full battery.",
+  "Park and store the scooter in a cool, dry place.",
   "Only use our charger — third-party chargers can damage the battery.",
   "Charge after every ride instead of waiting for low-battery alerts.",
 ];
@@ -47,6 +50,16 @@ const BatteryCare = () => {
             <p className="mt-5 text-sm text-foreground/80">
               Consistent care can preserve up to <span className="font-medium text-primary">90%</span> of your original battery capacity even after <span className="font-medium">2–3 years</span> of use.
             </p>
+            <div className="mt-5 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm">
+              <div className="flex items-center gap-2 font-medium text-destructive">
+                <AlertTriangle className="w-4 h-4" /> Please take this seriously
+              </div>
+              <p className="mt-2 text-muted-foreground">
+                If the battery is drained completely and stops accepting charge, a{" "}
+                <span className="font-medium text-foreground">₹5,000</span> charge applies to revive it with a booster
+                charger — and its life will drop to roughly half of normal.
+              </p>
+            </div>
           </Card>
 
           <Card className="p-6 md:p-8">

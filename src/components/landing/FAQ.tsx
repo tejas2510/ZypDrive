@@ -9,7 +9,7 @@ const FAQ = () => {
           <AccordionItem value="item-1">
             <AccordionTrigger>Is there any downpayment?</AccordionTrigger>
             <AccordionContent>
-              No downpayment. You start with just a <span className="font-medium">one-time</span> onboarding fee of ₹2,000 (non-refundable, and never charged again on renewal) and your monthly rental in advance — starting at ₹1,999/month on the Green plan.
+              No downpayment. You start with a <span className="font-medium">one-time</span> onboarding fee starting at ₹2,000 (non-refundable, and never charged again on renewal), plus your monthly rental in advance — starting at ₹1,999/month, depending on the plan you choose.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-plans">
@@ -21,7 +21,7 @@ const FAQ = () => {
                 <li><span className="font-medium">Plus</span> — ₹2,599/month · 40 km/day (1,000 km/month free) · extra km at ₹5/km.</li>
                 <li><span className="font-medium">Gig Rider</span> — ₹1,250/week · 80 km/day (2,000 km/month free) · extra km at ₹6/km. Perfect for delivery and gig workers.</li>
               </ul>
-              All plans include routine service, home charging and third-party insurance.
+              All plans include free routine service for the first year (50% discount on actual bills from the 2nd year), home charging and insurance cover.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -39,7 +39,7 @@ const FAQ = () => {
           <AccordionItem value="item-agreement">
             <AccordionTrigger>How long is the rental agreement?</AccordionTrigger>
             <AccordionContent>
-              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue at the prevailing monthly rental, and the ₹2,000 onboarding fee is <span className="font-medium">not</span> charged again.
+              The first rental agreement is for 12 months (1 year) from the start date. After that, a new agreement can be made with the same or revised terms — once we verify your usage and our support team confirms a smooth ride history. Renewals continue at the prevailing monthly rental or as decided by the management, and the onboarding fee is <span className="font-medium">not</span> charged again.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
@@ -51,7 +51,7 @@ const FAQ = () => {
           <AccordionItem value="item-4">
             <AccordionTrigger>Is service included?</AccordionTrigger>
             <AccordionContent>
-              Yes, routine service is fully included on all plans. We'll coordinate convenient service windows for you.
+              Routine service is included free for the first 12 months. From the 2nd year, you get a 50% discount on actual service charges (plus 18% GST) if service is required. We'll coordinate convenient service windows for you.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
@@ -75,7 +75,7 @@ const FAQ = () => {
           <AccordionItem value="item-8">
             <AccordionTrigger>What about insurance and registration?</AccordionTrigger>
             <AccordionContent>
-              All our scooters are non-RTO vehicles, so no registration is required on your part. Third-party insurance is already covered. Please always carry your driving licence and wear a helmet ⛑️ for your safety.
+              All our scooters are RTO-registered high-speed scooters. Comprehensive insurance is covered in the first year, and third-party insurance from the 2nd year onwards. From the 2nd year, any damage to the vehicle or personal damage is on your account, at actuals as per our authorised service centre. Please always carry your driving licence and insurance copy, and wear a helmet ⛑️.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-9">
@@ -93,25 +93,25 @@ const FAQ = () => {
           <AccordionItem value="item-buy">
             <AccordionTrigger>Can I buy my scooter later?</AccordionTrigger>
             <AccordionContent>
-              Yes 🎉 After completing <span className="font-medium">3 years</span> of your rental agreement, you'll have the option to buy the scooter at <span className="font-medium">40–50% of the original price</span>, or at a price we mutually agree upon.
+              Yes 🎉 After completing <span className="font-medium">3 years</span> you can buy the scooter at <span className="font-medium">40–50% of the original price</span>, and after <span className="font-medium">5 years</span> at <span className="font-medium">25–30%</span> — or at a price we mutually agree upon.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-parking">
             <AccordionTrigger>Where should I park the scooter?</AccordionTrigger>
             <AccordionContent>
-              Please park your scooter in a <span className="font-medium">covered shed or parking area</span> at home or office whenever possible. This protects the electronic dashboard and other components from heavy rain. Short outdoor stops (a restaurant, the market) are completely fine — just try to avoid leaving it exposed to heavy rains for long periods.
+              Please park your scooter in a <span className="font-medium">covered shed or parking area</span> at home or office whenever possible. This protects the electronic dashboard and other components from rain, dust and the hot summer sun. Short outdoor stops (a restaurant, the market) are completely fine — just try to avoid leaving it exposed to heavy rains for long periods.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-11">
             <AccordionTrigger>How can I cancel my subscription?</AccordionTrigger>
             <AccordionContent>
-              You can cancel your subscription by giving 15 days prior notice as per the terms of your selected plan. Please note that the ₹2,000 onboarding fee is a one-time non-refundable charge.
+              You can cancel by giving 15 days prior notice as per the terms of your selected plan. Any remaining kilometres are forfeited, and the onboarding fee is a one-time non-refundable charge.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-12">
             <AccordionTrigger>Do I need a driving licence?</AccordionTrigger>
             <AccordionContent>
-              Our scooters are non-RTO vehicles, so no registration is required. However, we only provide scooters to riders with a valid driving licence to ensure you can ride comfortably and safely, avoiding any issues later.
+              Yes. You need a valid driving licence, and you should always carry your insurance copy and wear a helmet — for your own safety and comfort on the road.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

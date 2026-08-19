@@ -9,12 +9,12 @@ const sections = [
     body: (
       <ul className="list-disc pl-5 space-y-1">
         <li>
-          <span className="font-medium text-foreground">Low-speed scooters:</span> Renters must be at
-          least 18 years old and have a valid government-issued ID along with a valid Driving Licence.
+          <span className="font-medium text-foreground">High-speed, RTO-registered scooters:</span> Renters
+          must be at least 18 years old and hold a valid government-issued ID along with a valid
+          Driving Licence.
         </li>
         <li>
-          <span className="font-medium text-foreground">High-speed scooters:</span> Not introduced as
-          of now.
+          A valid insurance copy and helmet must be carried and worn on every ride.
         </li>
       </ul>
     ),
@@ -24,8 +24,9 @@ const sections = [
     body: (
       <p>
         Customers must present a government-issued ID (Aadhaar Card), Driving Licence and a recent
-        photograph, along with a local address proof or a letter of recommendation from the HR
-        department of their employer, in order to book or rent a vehicle from Zypdrive.
+        photograph, along with permanent and local address proof and a letter of recommendation (for
+        example, from the HR department of their employer), in order to book or rent a vehicle from
+        Zypdrive.
       </p>
     ),
   },
@@ -34,8 +35,8 @@ const sections = [
     body: (
       <ul className="list-disc pl-5 space-y-1">
         <li>
-          A <span className="font-medium text-foreground">one-time</span> onboarding fee of{" "}
-          <span className="font-medium text-foreground">₹2,000</span> is payable at the time of joining.
+          A <span className="font-medium text-foreground">one-time</span> onboarding fee as per our latest
+          plans — <span className="font-medium text-foreground">₹2,000 / ₹3,000 / ₹5,000</span> — is payable at the time of joining.
           This onboarding fee is{" "}
           <span className="font-medium text-foreground">strictly non-refundable</span> and is{" "}
           <span className="font-medium text-foreground">not charged again on renewal</span>.
@@ -52,7 +53,12 @@ const sections = [
           Included kilometres: <span className="font-medium text-foreground">Green — 750 km/month</span> (extra
           at ₹4/km), <span className="font-medium text-foreground">Plus — 1,000 km/month</span> (extra at
           ₹5/km), <span className="font-medium text-foreground">Gig Rider — 2,000 km/month</span> (extra
-          at ₹6/km). Unused km do not carry forward.
+          at ₹6/km). Unused km do not carry forward to the next month on any plan.
+        </li>
+        <li>
+          Routine service is <span className="font-medium text-foreground">free for the first 12
+          months</span>. From the 2nd year, a 50% discount applies on actual service charges, plus
+          18% GST.
         </li>
       </ul>
     ),
@@ -64,9 +70,9 @@ const sections = [
         Our first rental agreement is valid for{" "}
         <span className="font-medium text-foreground">12 months (1 year)</span> from the start date.
         A new agreement may be made with the same or revised terms after verification of customer
-        credentials and feedback from our support team. Renewals continue at the prevailing rental
-        rate as per company policy — <span className="font-medium text-foreground">the ₹2,000
-        onboarding fee is not charged again on renewal</span>.
+        credentials and feedback from our support team. Renewals continue at the same rental or as
+        decided by the management — <span className="font-medium text-foreground">the onboarding fee
+        is not charged again on renewal</span>.
       </p>
     ),
   },
@@ -130,10 +136,10 @@ const sections = [
     title: "9. Insurance Coverage",
     body: (
       <p>
-        All Zypdrive vehicles are non-RTO vehicles and come with{" "}
-        <span className="font-medium text-foreground">third-party insurance coverage</span>.
-        Registration is not required. In case of an accident or emergency, please reach out to
-        customer support immediately.
+        All Zypdrive vehicles are <span className="font-medium text-foreground">RTO registered</span>.
+        Third-party insurance is covered for the period of your rental agreement. Any self-damage or
+        vehicle damage arising from an accident will be recovered from the customer. In case of an
+        accident or emergency, please reach out to customer support immediately.
       </p>
     ),
   },
@@ -141,9 +147,9 @@ const sections = [
     title: "10. Cancellation",
     body: (
       <p>
-        You may cancel your subscription by giving prior notice as per the terms of your selected
-        plan. The onboarding fee remains non-refundable. Any unused km balance does not carry forward
-        and is not refundable.
+        All cancellations require a <span className="font-medium text-foreground">15 days notice
+        period</span>. Any remaining kilometres will be forfeited. The onboarding fee remains
+        non-refundable, and unused km neither carry forward nor are refundable.
       </p>
     ),
   },

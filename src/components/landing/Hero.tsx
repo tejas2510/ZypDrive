@@ -44,7 +44,7 @@ const Hero = () => {
                 <span className="block text-gradient">₹1,999 per month</span>
               </h1>
               <p className="mt-4 text-muted-foreground max-w-prose">
-                Commute with confidence and predictable costs. No downpayment — just a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). From 750 km/month free, charge at home, and routine service handled by us.
+                Commute with confidence and predictable costs. No downpayment — just a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). From 750 km/month free, charge at home, and free routine service for your first year.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Button asChild variant="hero" size="lg">
@@ -59,7 +59,7 @@ const Hero = () => {
                 <li className="flex items-center gap-2"><CheckCircle className="text-primary" /> No downpayment</li>
                 <li className="flex items-center gap-2"><BatteryCharging className="text-primary" /> Charge at home</li>
                 <li className="flex items-center gap-2"><Home className="text-primary" /> From 750 km/month free</li>
-                <li className="flex items-center gap-2"><Wrench className="text-primary" /> Routine service included</li>
+                <li className="flex items-center gap-2"><Wrench className="text-primary" /> Free service, year 1</li>
               </ul>
 
               <div className="mt-6 text-xs text-muted-foreground">Trusted by 120+ riders in Bengaluru</div>
