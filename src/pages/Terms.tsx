@@ -55,6 +55,11 @@ const sections = [
           ₹5/km), <span className="font-medium text-foreground">Gig Rider — 2,000 km/month</span> (extra
           at ₹6/km). Unused km do not carry forward to the next month on any plan.
         </li>
+        <li>
+          Routine service is <span className="font-medium text-foreground">free for the first 12
+          months</span>. From the 2nd year, a 50% discount applies on actual service charges, plus
+          18% GST.
+        </li>
       </ul>
     ),
   },
