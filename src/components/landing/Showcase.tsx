@@ -1,5 +1,7 @@
 import scooterImg from "@/assets/scooter-zypdrive.png";
 import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { BatteryCharging } from "lucide-react";
 
 const Showcase = () => {
   return (
