@@ -49,6 +49,13 @@ const Showcase = () => {
                 <div className="text-xl font-semibold">Free for year 1 · 50% off from year 2</div>
               </Card>
             </div>
+            <Link
+              to="/battery-care"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              <BatteryCharging className="w-4 h-4" /> Battery care tips & charging guide
+            </Link>
+
           </div>
         </div>
       </div>
