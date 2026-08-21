@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Info, Leaf, Zap, Briefcase } from "lucide-react";
+import { Info, Leaf, Zap, Briefcase, Gauge, Wrench, FileText, ShoppingBag } from "lucide-react";
 
 const AVERAGE_SCOOTER_SPEED_KMPH = 20;
 
