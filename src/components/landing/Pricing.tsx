@@ -372,12 +372,44 @@ const Pricing = () => {
         </div>
 
 
-        <div className="max-w-4xl mx-auto mt-8 text-xs text-muted-foreground space-y-2 text-center">
-          <p>ℹ️ Unused km don't carry forward to the next month — on every plan.</p>
-          <p>🔧 Routine service is <span className="font-medium text-foreground">free for the first 12 months</span>; from the 2nd year you get a <span className="font-medium text-foreground">50% discount</span> on actual service charges (+18% GST).</p>
-          <p>📝 First rental agreement runs for <span className="font-medium text-foreground">12 months</span> from the start date. Renewals continue at the prevailing monthly rental or as decided by the management — <span className="font-medium text-foreground">no onboarding fee is charged again</span>.</p>
-          <p>🛒 Option to buy your scooter after <span className="font-medium text-foreground">3 years</span> at 40–50% of the original price, or after <span className="font-medium text-foreground">5 years</span> at 25–30% (or as mutually agreed).</p>
+        <div className="max-w-5xl mx-auto mt-10">
+          <h3 className="text-center font-heading text-xl md:text-2xl mb-5">Good to know</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                Icon: Gauge,
+                title: "Km don't carry forward",
+                body: "Unused kilometres expire at the end of each month — on every plan.",
+              },
+              {
+                Icon: Wrench,
+                title: "Service included",
+                body: "Routine service is free for the first 12 months; from the 2nd year, 50% off actual service charges (+18% GST).",
+              },
+              {
+                Icon: FileText,
+                title: "12-month agreement",
+                body: "Renewals continue at the prevailing monthly rental or as decided by the management — the onboarding fee is never charged again.",
+              },
+              {
+                Icon: ShoppingBag,
+                title: "Option to own it",
+                body: "Buy your scooter after 3 years at 40–50% of the original price, or after 5 years at 25–30% (or as mutually agreed).",
+              },
+            ].map(({ Icon, title, body }) => (
+              <Card key={title} className="p-4 md:p-5 flex gap-3 items-start bg-secondary/30">
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 shrink-0">
+                  <Icon className="w-4 h-4 text-primary" />
+                </span>
+                <div>
+                  <div className="font-medium text-sm md:text-base">{title}</div>
+                  <p className="text-xs md:text-sm text-muted-foreground mt-1 leading-relaxed">{body}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );
