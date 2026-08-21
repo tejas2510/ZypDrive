@@ -29,6 +29,7 @@ const Footer = () => {
     { label: "FAQ", to: "/#faq" },
     { label: "Contact", to: "/#contact" },
     { label: "Safety Guidelines", to: "/safety" },
+    { label: "Battery care", to: "/battery-care" },
     { label: "Terms & Conditions", to: "/terms" },
   ];
 

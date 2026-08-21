@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import SafetyGuidelines from "./pages/SafetyGuidelines";
+import BatteryCarePage from "./pages/BatteryCarePage";
 import Login from "./pages/Login";
 import OAuthConsent from "./pages/OAuthConsent";
 import NotFound from "./pages/NotFound";
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/safety" element={<SafetyGuidelines />} />
+          <Route path="/battery-care" element={<BatteryCarePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
