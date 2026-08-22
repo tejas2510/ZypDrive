@@ -1,4 +1,4 @@
-import { Bike, CheckCircle2, FileText, ShieldCheck } from "lucide-react";
+import { Bike, CheckCircle2, FileText } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const steps = [
@@ -19,42 +19,6 @@ const steps = [
   },
 ];
 
-const kycDocs = [
-  "Aadhaar card",
-  "Driving licence",
-  "Permanent residential address proof",
-  "Current residential address proof",
-  "HR letter confirming your position & recommending the subscription",
-  "BYOH — bring your own helmet",
-  "Follow us on Facebook, Instagram, X & LinkedIn for updates",
-];
-
-const KYC = () => {
-  return (
-    <Card className="p-6 md:p-8">
-      <div className="flex items-start gap-4">
-        <div className="h-12 w-12 rounded-lg bg-primary/10 grid place-items-center shrink-0">
-          <ShieldCheck className="text-primary" />
-        </div>
-        <div>
-          <h3 className="font-semibold text-lg">What you need to subscribe</h3>
-          <p className="text-muted-foreground text-sm mt-0.5">
-            Keep these ready so your verification is quick and your delivery is on time.
-          </p>
-        </div>
-      </div>
-      <ul className="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-muted-foreground">
-        {kycDocs.map((it) => (
-          <li key={it} className="flex gap-2.5">
-            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary inline-block shrink-0" />
-            <span>{it}</span>
-          </li>
-        ))}
-      </ul>
-    </Card>
-  );
-};
-
 const HowItWorks = () => {
   return (
     <section id="how" className="py-12 md:py-16">
@@ -71,9 +35,6 @@ const HowItWorks = () => {
               <p className="text-muted-foreground text-sm">{desc}</p>
             </Card>
           ))}
-        </div>
-        <div className="mt-5">
-          <KYC />
         </div>
       </div>
     </section>
