@@ -22,14 +22,25 @@ const sections = [
   {
     title: "2. KYC",
     body: (
-      <p>
-        Customers must present a government-issued ID (Aadhaar Card), Driving Licence and a recent
-        photograph, along with permanent and local address proof and a letter of recommendation (for
-        example, from the HR department of their employer), in order to book or rent a vehicle from
-        Zypdrive.
-      </p>
+      <>
+        <p>Before we hand over a scooter, please keep the following ready:</p>
+        <ul className="list-disc pl-5 space-y-1 mt-2">
+          <li>Aadhaar card</li>
+          <li>Driving licence</li>
+          <li>Permanent residential address proof</li>
+          <li>Current residential address proof</li>
+          <li>
+            A letter from your company HR confirming your position and recommending the subscription
+          </li>
+          <li>Your own helmet (BYOH — bring your own helmet)</li>
+          <li>
+            Follow our Facebook, Instagram, X and LinkedIn pages for regular updates
+          </li>
+        </ul>
+      </>
     ),
   },
+
   {
     title: "3. Onboarding fee and monthly rentals",
     body: (
