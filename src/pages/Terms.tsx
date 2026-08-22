@@ -194,7 +194,7 @@ const sections = [
   },
 
   {
-    title: "11. Customer Support",
+    title: "12. Customer Support",
     body: (
       <ul className="list-disc pl-5 space-y-1">
         <li>
