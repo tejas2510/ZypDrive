@@ -108,12 +108,39 @@ const FAQ = () => {
               You can cancel by giving 15 days prior notice as per the terms of your selected plan. Any remaining kilometres are forfeited, and the onboarding fee is a one-time non-refundable charge.
             </AccordionContent>
           </AccordionItem>
+          <AccordionItem value="item-docs">
+            <AccordionTrigger>What documents do I need to subscribe?</AccordionTrigger>
+            <AccordionContent>
+              Please keep these ready for KYC:
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>Aadhaar card</li>
+                <li>Driving licence</li>
+                <li>Permanent residential address proof</li>
+                <li>Current residential address proof</li>
+                <li>A letter from your company HR confirming your position and recommending the subscription</li>
+              </ul>
+              It's also BYOH — bring your own helmet — and do follow our Facebook, Instagram, X and LinkedIn pages for regular updates.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-accident">
+            <AccordionTrigger>What should I do in case of an accident or theft?</AccordionTrigger>
+            <AccordionContent>
+              Call our customer service immediately on <span className="font-medium">+91 91087 21342</span>. For an accident, all costs involved in vehicle damage and self-damage are on your account — please ride with caution and care. For theft, we'll help you file a complaint at the local police station; always park in a safe, secure place and keep the scooter locked.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-challan">
+            <AccordionTrigger>Who pays RTO challans?</AccordionTrigger>
+            <AccordionContent>
+              Any RTO challan raised during your usage period, for any reason, must be paid by you immediately.
+            </AccordionContent>
+          </AccordionItem>
           <AccordionItem value="item-12">
             <AccordionTrigger>Do I need a driving licence?</AccordionTrigger>
             <AccordionContent>
               Yes. You need a valid driving licence, and you should always carry your insurance copy and wear a helmet — for your own safety and comfort on the road.
             </AccordionContent>
           </AccordionItem>
+
         </Accordion>
       </div>
     </section>
