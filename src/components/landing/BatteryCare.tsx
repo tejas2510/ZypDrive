@@ -24,17 +24,7 @@ const BatteryCare = () => {
   return (
     <section id="battery-care" className="py-14 md:py-20 bg-secondary/40">
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-            <BatteryCharging className="w-3.5 h-3.5" /> Battery care
-          </span>
-          <h2 className="mt-4 font-heading text-3xl md:text-4xl">
-            Enhancing battery life through <span className="text-gradient">smarter practices</span>
-          </h2>
-          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-            Once you've chosen a scooter with the right battery capacity, keeping it healthy takes just a few smart habits.
-          </p>
-        </div>
+
 
         <div className="grid md:grid-cols-2 gap-6">
           <Card className="p-6 md:p-8">
