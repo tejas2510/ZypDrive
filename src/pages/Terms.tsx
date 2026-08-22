@@ -155,7 +155,35 @@ const sections = [
     ),
   },
   {
-    title: "10. Cancellation",
+    title: "10. Accidents, challans and theft",
+    body: (
+      <ul className="list-disc pl-5 space-y-1">
+        <li>
+          <span className="font-medium text-foreground">In case of an accident:</span> call customer
+          service immediately on{" "}
+          <a href="tel:+919108721342" className="text-primary hover:underline">
+            +91-9108721342
+          </a>
+          . All costs involved in damage to the vehicle and self-damage are on the subscriber's
+          account. Please drive with caution and care.
+        </li>
+        <li>
+          <span className="font-medium text-foreground">RTO challans:</span> any challan raised
+          during your usage period, for any reason, must be paid by the subscriber immediately.
+        </li>
+        <li>
+          <span className="font-medium text-foreground">In case of theft:</span> call{" "}
+          <a href="tel:+919108721342" className="text-primary hover:underline">
+            +91-9108721342
+          </a>{" "}
+          so we can file a complaint with the local police station. Always park the scooter in a
+          safe, secure place and keep it locked.
+        </li>
+      </ul>
+    ),
+  },
+  {
+    title: "11. Cancellation",
     body: (
       <p>
         All cancellations require a <span className="font-medium text-foreground">15 days notice
@@ -164,6 +192,7 @@ const sections = [
       </p>
     ),
   },
+
   {
     title: "11. Customer Support",
     body: (
