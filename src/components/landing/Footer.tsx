@@ -117,7 +117,17 @@ const Footer = () => {
 
         <div className="pt-6 text-muted-foreground text-sm text-center">
           <div className="italic text-primary/80 mb-1">Urban Mobility Redefined · Proudly Made in India 🇮🇳</div>
-          Made with ❤️ by Tejas © {new Date().getFullYear()} Zypdrive. All rights reserved.
+          Made with ❤️ by{" "}
+          <a
+            href="https://github.com/tejas2510"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Tejas
+          </a>{" "}
+          © {new Date().getFullYear()} Zypdrive. All rights reserved.
+
         </div>
       </div>
     </footer>
