@@ -117,8 +117,8 @@ const SafetyGuidelines = () => {
               <a href="tel:+919108721342" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium">
                 <Phone className="w-4 h-4" /> +91 91087 21342
               </a>
-              <a href="mailto:contact.mohandaspatil@gmail.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium break-all">
-                <Mail className="w-4 h-4" /> contact.mohandaspatil@gmail.com
+              <a href="mailto:contact@zypdrive.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium break-all">
+                <Mail className="w-4 h-4" /> contact@zypdrive.com
               </a>
             </div>
           </Card>

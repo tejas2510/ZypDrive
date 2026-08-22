@@ -200,10 +200,10 @@ const sections = [
         <li>
           Email:{" "}
           <a
-            href="mailto:contact.mohandaspatil@gmail.com"
+            href="mailto:contact@zypdrive.com"
             className="text-primary hover:underline break-all"
           >
-            contact.mohandaspatil@gmail.com
+            contact@zypdrive.com
           </a>
         </li>
         <li>

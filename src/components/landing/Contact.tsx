@@ -30,7 +30,7 @@ const Contact = () => {
     }
 
     setSubmitting(true);
-    const destinationEmail = "contact.mohandaspatil@gmail.com";
+    const destinationEmail = "contact@zypdrive.com";
     try {
       const formData = new FormData();
       formData.append("name", name);

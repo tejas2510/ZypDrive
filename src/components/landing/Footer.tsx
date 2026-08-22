@@ -85,8 +85,8 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>
-                <a href="mailto:contact.mohandaspatil@gmail.com" className="hover:text-primary transition-colors break-all">
-                  contact.mohandaspatil@gmail.com
+                <a href="mailto:contact@zypdrive.com" className="hover:text-primary transition-colors break-all">
+                  contact@zypdrive.com
                 </a>
               </li>
               <li>

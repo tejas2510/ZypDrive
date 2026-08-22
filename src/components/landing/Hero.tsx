@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-import heroImg from "@/assets/hero-woman-scooter.webp";
+import { getWeeklyHeroPersona } from "@/lib/heroRotation";
 import { CheckCircle, BatteryCharging, Home, Wrench } from "lucide-react";
 import { useRef } from "react";
 
