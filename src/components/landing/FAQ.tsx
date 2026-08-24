@@ -19,9 +19,10 @@ const FAQ = () => {
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><span className="font-medium">Green</span> — ₹1,999/month · 30 km/day (750 km/month free) · extra km at ₹4/km.</li>
                 <li><span className="font-medium">Plus</span> — ₹2,599/month · 40 km/day (1,000 km/month free) · extra km at ₹5/km.</li>
-                <li><span className="font-medium">Gig Rider</span> — ₹1,250/week · 80 km/day (2,000 km/month free) · extra km at ₹6/km. Perfect for delivery and gig workers.</li>
+                <li><span className="font-medium">Gig Rider</span> — ₹1,250/week · 80 km/day (2,000 km/month free) · extra km at ₹6/km. Perfect for delivery and gig workers, with <span className="font-medium">all maintenance free</span>.</li>
               </ul>
               All plans include free routine service for the first year (50% discount on actual bills from the 2nd year), home charging and insurance cover.
+
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -51,7 +52,7 @@ const FAQ = () => {
           <AccordionItem value="item-4">
             <AccordionTrigger>Is service included?</AccordionTrigger>
             <AccordionContent>
-              Routine service is included free for the first 12 months. From the 2nd year, you get a 50% discount on actual service charges (plus 18% GST) if service is required. We'll coordinate convenient service windows for you.
+              Routine service is included free for the first 12 months on every plan — including Gig Rider, where all maintenance is free. From the 2nd year, you get a 50% discount on actual service charges if service is required. We'll coordinate convenient service windows for you.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
@@ -117,8 +118,10 @@ const FAQ = () => {
                 <li>Driving licence</li>
                 <li>Permanent residential address proof</li>
                 <li>Current residential address proof</li>
+                <li>Your latest salary slip</li>
                 <li>A letter from your company HR confirming your position and recommending the subscription</li>
               </ul>
+
               It's also BYOH — bring your own helmet — and do follow our Facebook, Instagram, X and LinkedIn pages for regular updates.
             </AccordionContent>
           </AccordionItem>

@@ -11,14 +11,15 @@ const dailyHabits = [
 const ridingHabits = [
   "On uphill climbs, keep the accelerator at mid-throttle and ride slow — full acceleration drains the battery fast.",
   "On downhill stretches, stay off the accelerator to conserve battery capacity.",
-  "Avoid double-riding where possible, and only double-ride on a full battery.",
+  "Avoid double riding wherever possible, and only double-ride on a full battery.",
 ];
 
 const protectionNotes = [
-  "Avoid full discharge. If the battery is drained completely and stops charging, a booster recovery costs about₹5,000.",
+  "Avoid full discharge. If the battery is drained completely and stops charging, a booster recovery cost of ₹3,000 will be charged to the subscriber.",
   "A fully drained battery that needs revival will have roughly half its normal life left.",
   "Heat, moisture and direct sun reduce battery life — keep the scooter sheltered whenever you can.",
 ];
+
 
 const BatteryCare = () => {
   return (
@@ -81,10 +82,11 @@ const BatteryCare = () => {
                 <AlertTriangle className="w-4 h-4" /> Please take this seriously
               </div>
               <p className="mt-2 text-muted-foreground">
-                Full discharge is the fastest way to shorten battery life. If it happens, revival costs{" "}
-                <span className="font-medium text-foreground">₹5,000</span> and the battery will only perform at about{" "}
+                Full discharge is the fastest way to shorten battery life. If it happens, a booster recovery cost of{" "}
+                <span className="font-medium text-foreground">₹3,000</span> will be charged to the subscriber, and the battery will only perform at about{" "}
                 <span className="font-medium text-foreground">half</span> of its normal capacity afterwards.
               </p>
+
             </div>
           </Card>
         </div>

@@ -6,6 +6,8 @@ import { useRef } from "react";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const persona = getWeeklyHeroPersona();
+
 
   const handlePointer = (e: React.PointerEvent) => {
     const el = ref.current;
@@ -67,14 +69,18 @@ const Hero = () => {
 
             <div className="relative">
               <img
-                src={heroImg}
-                alt="Confident woman riding an electric scooter for her work commute"
+                src={persona.src}
+                alt={persona.alt}
                 className="w-full h-auto rounded-xl shadow-elevated"
                 loading="eager"
                 width={1600}
                 height={900}
               />
+              <span className="absolute bottom-3 left-3 rounded-full bg-background/85 backdrop-blur px-3 py-1 text-xs text-foreground shadow">
+                {persona.caption}
+              </span>
             </div>
+
           </div>
         </div>
       </div>

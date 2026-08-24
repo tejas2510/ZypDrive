@@ -63,7 +63,7 @@ const Index = () => {
         name: 'Is service included?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Routine service is free for the first 12 months. From the 2nd year, a 50% discount applies on actual service charges plus 18% GST.',
+          text: 'Routine service is free for the first 12 months on every plan, including Gig Rider. From the 2nd year, a 50% discount applies on actual service charges.',
         },
       },
     ],
