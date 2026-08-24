@@ -9,7 +9,7 @@ const items = [
   },
   {
     title: "No downpayment",
-    desc: "Starting at ₹1,999/month + a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). Cancel with just 7 days' notice.",
+    desc: "Starting at ₹1,999/month + a one-time ₹2,000 onboarding fee (paid once, never on renewal · non-refundable). Cancel with 15 days' notice.",
     Icon: Wallet,
   },
   {

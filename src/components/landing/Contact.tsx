@@ -19,6 +19,8 @@ const Contact = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +32,8 @@ const Contact = () => {
     }
 
     setSubmitting(true);
+    setSent(false);
+
     const destinationEmail = "contact@zypdrive.com";
     try {
       const formData = new FormData();
@@ -60,6 +64,8 @@ const Contact = () => {
       setEmail("");
       setPhone("");
       setMessage("");
+      setSent(true);
+
     } catch (err) {
       console.error("Contact form error:", err);
       // Fallback: open the user's mail client pre-filled so the message still goes through.
@@ -103,7 +109,13 @@ const Contact = () => {
               {submitting ? "Sending…" : "Send message"}
             </Button>
           </div>
+          {sent && (
+            <p role="status" className="text-sm font-medium text-primary">
+              Your message is sent — we'll get back to you within 24 hours.
+            </p>
+          )}
         </form>
+
       </div>
     </section>
   );
