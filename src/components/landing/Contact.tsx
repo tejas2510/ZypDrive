@@ -32,6 +32,8 @@ const Contact = () => {
     }
 
     setSubmitting(true);
+    setSent(false);
+
     const destinationEmail = "contact@zypdrive.com";
     try {
       const formData = new FormData();
