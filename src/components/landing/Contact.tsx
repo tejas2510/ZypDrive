@@ -19,6 +19,8 @@ const Contact = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
