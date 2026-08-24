@@ -64,6 +64,8 @@ const Contact = () => {
       setEmail("");
       setPhone("");
       setMessage("");
+      setSent(true);
+
     } catch (err) {
       console.error("Contact form error:", err);
       // Fallback: open the user's mail client pre-filled so the message still goes through.
