@@ -109,7 +109,13 @@ const Contact = () => {
               {submitting ? "Sending…" : "Send message"}
             </Button>
           </div>
+          {sent && (
+            <p role="status" className="text-sm font-medium text-primary">
+              Your message is sent — we'll get back to you within 24 hours.
+            </p>
+          )}
         </form>
+
       </div>
     </section>
   );
