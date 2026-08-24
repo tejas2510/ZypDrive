@@ -30,9 +30,10 @@ const sections = [
           <li>Permanent residential address proof</li>
           <li>Current residential address proof</li>
           <li>Your latest salary slip</li>
-
+          <li>
             A letter from your company HR confirming your position and recommending the subscription
           </li>
+
           <li>Your own helmet (BYOH — bring your own helmet)</li>
           <li>
             Follow our Facebook, Instagram, X and LinkedIn pages for regular updates
