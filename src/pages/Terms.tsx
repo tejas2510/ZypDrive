@@ -29,7 +29,8 @@ const sections = [
           <li>Driving licence</li>
           <li>Permanent residential address proof</li>
           <li>Current residential address proof</li>
-          <li>
+          <li>Your latest salary slip</li>
+
             A letter from your company HR confirming your position and recommending the subscription
           </li>
           <li>Your own helmet (BYOH — bring your own helmet)</li>
