@@ -124,8 +124,9 @@ const PlanCard = ({ plan }: { plan: typeof PLANS[PlanId] }) => {
           </li>
           <li className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
-            Free routine service for the first year
+            {plan.id === "gig" ? "All maintenance & routine service free" : "Free routine service for the first year"}
           </li>
+
           <li className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-primary inline-block" />
             Charge at home only as required
@@ -187,15 +188,16 @@ const Pricing = () => {
     const petrolFuel = petrolMileage > 0
       ? Math.round((expected / petrolMileage) * petrolPrice)
       : 0;
-    const emi = Math.max(0, bikeEmi);
+    const emi = Math.round(Math.max(0, bikeEmi) / 4); // weekly share of the monthly EMI
     const maint = Math.max(0, maintenanceWeekly);
     const petrolTotal = petrolFuel + emi + maint;
 
     const busMonthly = Math.max(0, busDailyCost) * Math.max(0, days);
     const comparisonAmount = isGigPlan ? petrolTotal : busMonthly;
     const comparisonLabel = isGigPlan
-      ? "Petrol + EMI + maintenance (week)"
+      ? "Petrol + maintenance + EMI (week)"
       : "Bus (month)";
+
     const scooterLabel = isGigPlan
       ? `Scooter — ${plan.name} (week)`
       : `Scooter — ${plan.name} (month)`;
@@ -250,8 +252,9 @@ const Pricing = () => {
                 <h3 className="font-heading text-xl md:text-2xl">Your commute calculator</h3>
                 <p className="text-sm text-muted-foreground">
                   {isGig
-                    ? "Compare Gig Rider cost vs running a petrol scooter/bike."
+                    ? "Compare Gig Rider (all maintenance free) vs running a petrol scooter/bike."
                     : "Compare scooter costs vs bus and see time saved."}
+
                 </p>
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -351,11 +354,17 @@ const Pricing = () => {
                 <div className="text-muted-foreground text-xs">{results.comparisonLabel}</div>
                 <div className="text-xl md:text-2xl font-heading">₹{results.comparisonAmount.toLocaleString()}</div>
                 {isGig && (
-                  <div className="text-[11px] text-muted-foreground mt-1">
-                    Petrol ₹{results.petrolFuel.toLocaleString()} + EMI ₹{results.emi.toLocaleString()} + Maint. ₹{results.maint.toLocaleString()}
-                  </div>
+                  <>
+                    <div className="text-[11px] text-muted-foreground mt-1">
+                      Petrol ₹{results.petrolFuel.toLocaleString()} + Maint. ₹{results.maint.toLocaleString()} + EMI ₹{results.emi.toLocaleString()} (₹{bikeEmi.toLocaleString()}/4)
+                    </div>
+                    <div className="text-[11px] text-muted-foreground mt-1">
+                      ≈ ₹{(results.comparisonAmount * 4).toLocaleString()} / month
+                    </div>
+                  </>
                 )}
               </Card>
+
             </div>
 
             {!isGig && (
