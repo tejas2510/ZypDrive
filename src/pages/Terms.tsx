@@ -70,9 +70,11 @@ const sections = [
         </li>
         <li>
           Routine service is <span className="font-medium text-foreground">free for the first 12
-          months</span>. From the 2nd year, a 50% discount applies on actual service charges, plus
-          18% GST.
+          months</span> on every plan. On the{" "}
+          <span className="font-medium text-foreground">Gig Rider</span> plan, all maintenance is
+          free. From the 2nd year, a 50% discount applies on actual service charges.
         </li>
+
       </ul>
     ),
   },
@@ -120,9 +122,11 @@ const sections = [
     title: "6. Ownership of Vehicles",
     body: (
       <p>
-        All vehicles are exclusively owned by Zypdrive. Any unauthorised sale of a vehicle, battery,
-        charger, or other equipment will result in legal action.
+        All vehicles are exclusively owned by the holding company{" "}
+        <span className="font-medium text-foreground">ZYPDRIVE E-MOBILITY</span>. Any unauthorised
+        sale of a vehicle, battery, charger, or other equipment will result in legal action.
       </p>
+
     ),
   },
   {
