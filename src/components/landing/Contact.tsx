@@ -89,7 +89,7 @@ const Contact = () => {
             </Button>
           </div>
           {sent && (
-            <p role="status" className="text-sm font-medium text-primary">
+            <p role="status" aria-live="polite" className="text-sm md:text-base font-bold text-primary">
               Your message is sent — we'll get back to you within 24 hours.
             </p>
           )}
