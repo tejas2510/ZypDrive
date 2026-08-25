@@ -83,16 +83,19 @@ const Contact = () => {
             <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} rows={5} maxLength={2000} required />
           </div>
           <div className="flex items-center justify-between gap-4">
-            <p className="text-xs text-muted-foreground">We'll reply within 24 hours. No spam—ever.</p>
+            <p
+              role={sent ? "status" : undefined}
+              aria-live="polite"
+              className={`text-xs font-semibold ${sent ? "text-green-600 dark:text-green-400" : "text-muted-foreground"}`}
+            >
+              {sent
+                ? "Your message is sent — we'll reply within 24 hours. No spam—ever."
+                : "We'll reply within 24 hours. No spam—ever."}
+            </p>
             <Button type="submit" variant="hero" disabled={submitting}>
               {submitting ? "Sending…" : "Send message"}
             </Button>
           </div>
-          {sent && (
-            <p role="status" aria-live="polite" className="text-sm md:text-base font-bold text-primary">
-              Your message is sent — we'll get back to you within 24 hours.
-            </p>
-          )}
         </form>
 
       </div>
