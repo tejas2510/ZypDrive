@@ -34,30 +34,15 @@ const Contact = () => {
     setSubmitting(true);
     setSent(false);
 
-    const destinationEmail = "contact@zypdrive.com";
     try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("message", message);
-      formData.append("_subject", "New inquiry from Zypdrive website");
-      formData.append("_captcha", "false");
-      formData.append("_template", "table");
+      const { error } = await supabase.from("contact_messages").insert({
+        name: parsed.data.name,
+        email: parsed.data.email,
+        phone: parsed.data.phone || null,
+        message: parsed.data.message,
+      });
 
-      const res = await fetch(
-        `https://formsubmit.co/ajax/${destinationEmail}`,
-        {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: formData,
-        }
-      );
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || (data && data.success === "false")) {
-        throw new Error(data?.message || "Network error");
-      }
+      if (error) throw error;
 
       toast.success("Message sent! We'll reply within 24 hours.");
       setName("");
@@ -65,16 +50,9 @@ const Contact = () => {
       setPhone("");
       setMessage("");
       setSent(true);
-
     } catch (err) {
       console.error("Contact form error:", err);
-      // Fallback: open the user's mail client pre-filled so the message still goes through.
-      const subject = encodeURIComponent("New inquiry from Zypdrive website");
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
-      );
-      window.location.href = `mailto:${destinationEmail}?subject=${subject}&body=${body}`;
-      toast.message("Opening your email app as a fallback. You can also WhatsApp us.");
+      toast.error("Couldn't send right now. Please WhatsApp us or email contact@zypdrive.com.");
     } finally {
       setSubmitting(false);
     }
