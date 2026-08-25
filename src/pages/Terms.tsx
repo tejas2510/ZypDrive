@@ -49,7 +49,7 @@ const sections = [
       <ul className="list-disc pl-5 space-y-1">
         <li>
           A <span className="font-medium text-foreground">one-time</span> onboarding fee as per our latest
-          plans — <span className="font-medium text-foreground">₹2,000 / ₹3,000 / ₹5,000</span> — is payable at the time of joining.
+          plans — <span className="font-medium text-foreground">₹2,000 (Green) / ₹3,000 (Plus) / ₹2,000 (Gig Rider, plus a ₹3,000 refundable deposit)</span> — is payable at the time of joining.
           This onboarding fee is{" "}
           <span className="font-medium text-foreground">strictly non-refundable</span> and is{" "}
           <span className="font-medium text-foreground">not charged again on renewal</span>.
