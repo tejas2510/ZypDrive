@@ -86,7 +86,7 @@ const Contact = () => {
             <p
               role={sent ? "status" : undefined}
               aria-live="polite"
-              className={`text-xs font-semibold ${sent ? "text-green-600" : "text-muted-foreground"}`}
+              className={`text-xs font-semibold ${sent ? "text-green-600 dark:text-green-400" : "text-muted-foreground"}`}
             >
               {sent
                 ? "Your message is sent — we'll reply within 24 hours. No spam—ever."
