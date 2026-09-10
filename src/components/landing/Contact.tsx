@@ -88,12 +88,13 @@ const Contact = () => {
             </div>
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} />
+              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} />
             </div>
           </div>
           <div>
             <Label htmlFor="phone">Phone</Label>
             <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={20} />
+            <p className="text-xs text-muted-foreground mt-1">Please give us either an email or a phone number so we can reply.</p>
           </div>
           <div>
             <Label htmlFor="message">Message</Label>
