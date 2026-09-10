@@ -7,12 +7,29 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Enter a valid email").max(255),
-  phone: z.string().trim().max(20).optional().or(z.literal("")),
-  message: z.string().trim().min(1, "Message cannot be empty").max(2000),
-});
+const contactSchema = z
+  .object({
+    name: z.string().trim().min(1, "Name is required").max(100),
+    email: z
+      .string()
+      .trim()
+      .max(255)
+      .email("Enter a valid email")
+      .optional()
+      .or(z.literal("")),
+    phone: z
+      .string()
+      .trim()
+      .max(20)
+      .regex(/^[0-9+\-\s()]{7,20}$/, "Enter a valid phone number")
+      .optional()
+      .or(z.literal("")),
+    message: z.string().trim().min(1, "Message cannot be empty").max(2000),
+  })
+  .refine((d) => !!d.email || !!d.phone, {
+    message: "Please give us either an email or a phone number",
+    path: ["email"],
+  });
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -38,7 +55,7 @@ const Contact = () => {
     try {
       const { error } = await supabase.from("contact_messages").insert({
         name: parsed.data.name,
-        email: parsed.data.email,
+        email: parsed.data.email || "",
         phone: parsed.data.phone || null,
         message: parsed.data.message,
       });
@@ -71,12 +88,13 @@ const Contact = () => {
             </div>
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} />
+              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} />
             </div>
           </div>
           <div>
             <Label htmlFor="phone">Phone</Label>
             <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={20} />
+            <p className="text-xs text-muted-foreground mt-1">Please give us either an email or a phone number so we can reply.</p>
           </div>
           <div>
             <Label htmlFor="message">Message</Label>

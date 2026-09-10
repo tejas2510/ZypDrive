@@ -8,7 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const links = [
   { label: "Why", to: "/#why" },
   { label: "Pricing", to: "/#pricing" },
-  { label: "How it works", to: "/#how" },
+  { label: "Ride Path", to: "/ride-path" },
   { label: "About", to: "/about" },
   { label: "FAQ", to: "/#faq" },
 ];
@@ -25,8 +25,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isActive = (to: string) =>
-    to === "/about" ? pathname === "/about" : false;
+  const isActive = (to: string) => to.startsWith("/") && !to.includes("#") && pathname === to;
 
   return (
     <nav
