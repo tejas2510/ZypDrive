@@ -20,8 +20,8 @@ const Footer = () => {
     { label: "Home", to: "/" },
     { label: "Why Zypdrive", to: "/#why" },
     { label: "Pricing", to: "/#pricing" },
-    { label: "How it works", to: "/#how" },
-    { label: "Ride Path — full journey", to: "/ride-path" },
+    { label: "Quick steps", to: "/#how" },
+    { label: "How it works", to: "/ride-path" },
     { label: "Scooter showcase", to: "/#scooter" },
   ];
 
