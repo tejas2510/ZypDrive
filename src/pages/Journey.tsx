@@ -44,7 +44,7 @@ const stages: Stage[] = [
       "Green — 30 km/day (750 km a month), extra km at ₹4",
       "Plus — 40 km/day (1,000 km a month), extra km at ₹5",
       "Gig Rider — weekly plan, 80 km/day, extra km at ₹6",
-      "One-time onboarding fee of ₹2,000 (non-refundable)",
+      "One-time onboarding fee: ₹2,000 (Green), ₹3,000 (Plus), ₹2,000 (Gig Rider) — non-refundable",
     ],
   },
   {
@@ -71,7 +71,8 @@ const stages: Stage[] = [
     desc: "We sign a simple 12-month subscription agreement and collect the first payment.",
     points: [
       "12-month rental agreement, explained line by line",
-      "One-time onboarding fee ₹2,000 + first month's rental in advance",
+      "One-time onboarding fee as per your plan + first month's rental in advance",
+      "Gig Rider only: a ₹3,000 refundable security deposit is collected at handover",
       "Insurance and RTO paperwork stay with us — nothing for you to chase",
       "All vehicles are owned by ZYPDRIVE E-MOBILITY",
     ],
