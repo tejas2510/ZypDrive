@@ -7,12 +7,29 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Enter a valid email").max(255),
-  phone: z.string().trim().max(20).optional().or(z.literal("")),
-  message: z.string().trim().min(1, "Message cannot be empty").max(2000),
-});
+const contactSchema = z
+  .object({
+    name: z.string().trim().min(1, "Name is required").max(100),
+    email: z
+      .string()
+      .trim()
+      .max(255)
+      .email("Enter a valid email")
+      .optional()
+      .or(z.literal("")),
+    phone: z
+      .string()
+      .trim()
+      .max(20)
+      .regex(/^[0-9+\-\s()]{7,20}$/, "Enter a valid phone number")
+      .optional()
+      .or(z.literal("")),
+    message: z.string().trim().min(1, "Message cannot be empty").max(2000),
+  })
+  .refine((d) => !!d.email || !!d.phone, {
+    message: "Please give us either an email or a phone number",
+    path: ["email"],
+  });
 
 const Contact = () => {
   const [name, setName] = useState("");
