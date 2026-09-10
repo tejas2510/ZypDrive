@@ -8,7 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const links = [
   { label: "Why", to: "/#why" },
   { label: "Pricing", to: "/#pricing" },
-  { label: "Ride Path", to: "/ride-path" },
+  { label: "How it works", to: "/ride-path" },
   { label: "About", to: "/about" },
   { label: "FAQ", to: "/#faq" },
 ];
