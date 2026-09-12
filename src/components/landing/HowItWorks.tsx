@@ -42,7 +42,7 @@ const HowItWorks = () => {
             to="/ride-path"
             className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
           >
-            <Route className="w-4 h-4" /> See the full journey — from first hello to keys in hand
+            <Route className="w-4 h-4" /> See the full journey — from "hi" to your first ride
           </Link>
         </div>
       </div>
