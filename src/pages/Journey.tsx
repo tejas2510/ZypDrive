@@ -138,10 +138,10 @@ const Journey = () => {
             <RouteIcon className="w-3.5 h-3.5 text-primary" /> The Zypdrive Ride Path
           </span>
           <h1 className="mt-4 font-heading text-3xl md:text-5xl">
-            From <span className="text-gradient">hello</span> to keys in hand
+            From <span className="text-gradient">"hi"</span> to your first ride
           </h1>
           <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            The whole journey, start to finish — what we ask for, what we hand over, and how renewal works.
+            Every step from your first message to your daily commute — what we ask for, what we hand over, and how renewal works.
           </p>
         </div>
       </section>
