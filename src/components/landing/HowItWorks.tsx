@@ -1,5 +1,6 @@
-import { Bike, CheckCircle2, FileText } from "lucide-react";
+import { Bike, CheckCircle2, FileText, Route } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -35,6 +36,14 @@ const HowItWorks = () => {
               <p className="text-muted-foreground text-sm">{desc}</p>
             </Card>
           ))}
+        </div>
+        <div className="text-center">
+          <Link
+            to="/ride-path"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+          >
+            <Route className="w-4 h-4" /> See the full journey — from first hello to keys in hand
+          </Link>
         </div>
       </div>
     </section>
