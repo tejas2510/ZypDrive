@@ -52,7 +52,7 @@ const FAQ = () => {
           <AccordionItem value="item-4">
             <AccordionTrigger>Is service included?</AccordionTrigger>
             <AccordionContent>
-              Routine service is included free for the first 12 months on every plan — including Gig Rider, where all maintenance is free. From the 2nd year, you get a 50% discount on actual service charges if service is required. We'll coordinate convenient service windows for you.
+              Routine service is included free for the first 12 months on the Green and Plus plans. From the 2nd year, you get a 50% discount on actual service charges if service is required. On the Gig Rider plan, all maintenance and routine service are free. We'll coordinate convenient service windows for you.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">

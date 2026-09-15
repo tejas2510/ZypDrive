@@ -201,7 +201,21 @@ const sections = [
   },
 
   {
-    title: "12. Customer Support",
+    title: "12. Governing Law & Jurisdiction",
+    body: (
+      <p>
+        These terms are governed by and construed in accordance with the laws of India. Any dispute
+        arising out of or in connection with this agreement shall be subject to the{" "}
+        <span className="font-medium text-foreground">
+          exclusive jurisdiction of the courts at Udupi, Karnataka, India
+        </span>
+        .
+      </p>
+    ),
+  },
+
+  {
+    title: "13. Customer Support",
     body: (
       <ul className="list-disc pl-5 space-y-1">
         <li>
