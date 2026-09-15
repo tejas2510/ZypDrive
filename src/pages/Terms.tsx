@@ -70,9 +70,10 @@ const sections = [
         </li>
         <li>
           Routine service is <span className="font-medium text-foreground">free for the first 12
-          months</span> on every plan. On the{" "}
-          <span className="font-medium text-foreground">Gig Rider</span> plan, all maintenance is
-          free. From the 2nd year, a 50% discount applies on actual service charges.
+          months</span> on the Green and Plus plans. From the 2nd year, a 50% discount applies on
+          actual service charges. On the{" "}
+          <span className="font-medium text-foreground">Gig Rider</span> plan, all maintenance and
+          routine service are free.
         </li>
 
       </ul>
@@ -200,7 +201,21 @@ const sections = [
   },
 
   {
-    title: "12. Customer Support",
+    title: "12. Governing Law & Jurisdiction",
+    body: (
+      <p>
+        These terms are governed by and construed in accordance with the laws of India. Any dispute
+        arising out of or in connection with this agreement shall be subject to the{" "}
+        <span className="font-medium text-foreground">
+          exclusive jurisdiction of the courts at Udupi, Karnataka, India
+        </span>
+        .
+      </p>
+    ),
+  },
+
+  {
+    title: "13. Customer Support",
     body: (
       <ul className="list-disc pl-5 space-y-1">
         <li>

@@ -55,7 +55,7 @@ const stages: Stage[] = [
     points: [
       "Aadhaar card",
       "Valid driving licence (two-wheeler)",
-      "PAN card",
+      
       "Your latest salary slip",
       "Letter from your employer / HR, or proof of work",
       "Current address proof",
