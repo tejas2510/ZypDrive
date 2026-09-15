@@ -16,7 +16,7 @@ const ridingHabits = [
 
 const protectionNotes = [
   "Avoid full discharge. If the battery is drained completely and stops charging, a booster recovery cost of ₹3,000 will be charged to the subscriber.",
-  "A fully drained battery that needs revival will have roughly half its normal life left.",
+  "A fully drained battery that needs revival will have a shorter overall life cycle.",
   "Heat, moisture and direct sun reduce battery life — keep the scooter sheltered whenever you can.",
 ];
 
@@ -83,8 +83,8 @@ const BatteryCare = () => {
               </div>
               <p className="mt-2 text-muted-foreground">
                 Full discharge is the fastest way to shorten battery life. If it happens, a booster recovery cost of{" "}
-                <span className="font-medium text-foreground">₹3,000</span> will be charged to the subscriber, and the battery will only perform at about{" "}
-                <span className="font-medium text-foreground">half</span> of its normal capacity afterwards.
+                <span className="font-medium text-foreground">₹3,000</span> will be charged to the subscriber, and the{" "}
+                <span className="font-medium text-foreground">battery life cycle will shorten</span>.
               </p>
 
             </div>

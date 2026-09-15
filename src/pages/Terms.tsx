@@ -70,9 +70,10 @@ const sections = [
         </li>
         <li>
           Routine service is <span className="font-medium text-foreground">free for the first 12
-          months</span> on every plan. On the{" "}
-          <span className="font-medium text-foreground">Gig Rider</span> plan, all maintenance is
-          free. From the 2nd year, a 50% discount applies on actual service charges.
+          months</span> on the Green and Plus plans. From the 2nd year, a 50% discount applies on
+          actual service charges. On the{" "}
+          <span className="font-medium text-foreground">Gig Rider</span> plan, all maintenance and
+          routine service are free.
         </li>
 
       </ul>

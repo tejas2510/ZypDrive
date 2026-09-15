@@ -165,7 +165,7 @@ const Pricing = () => {
   const [petrolMileage, setPetrolMileage] = useState(40); // km/l for petrol scooter/bike
   const [petrolPrice, setPetrolPrice] = useState(105); // ₹/l
   const [bikeEmi, setBikeEmi] = useState(3500); // ₹/month EMI for owning a petrol 2-wheeler
-  const [maintenanceWeekly, setMaintenanceWeekly] = useState(300); // ₹/week maintenance for petrol 2-wheeler
+  const [maintenanceWeekly, setMaintenanceWeekly] = useState(100); // ₹/week maintenance for petrol 2-wheeler
 
   useEffect(() => {
     const defaults = PLAN_DEFAULTS[planId];
@@ -323,7 +323,7 @@ const Pricing = () => {
                   <div>
                     <Label htmlFor="maint">Maintenance (₹/week)</Label>
                     <Input id="maint" type="number" min={0} max={5000} value={maintenanceWeekly} onChange={(e) => setMaintenanceWeekly(Number(e.target.value))} />
-                    <div className="text-xs text-muted-foreground mt-1">Servicing, oil, tyres, small repairs (~₹300/week).</div>
+                    <div className="text-xs text-muted-foreground mt-1">Servicing, oil, tyres, small repairs (~₹100/week).</div>
                   </div>
                 </>
               ) : (
