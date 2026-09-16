@@ -67,6 +67,12 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
+          <Link
+            to={user ? "/profile" : "/login"}
+            className="text-sm hover:text-primary transition-colors"
+          >
+            {user ? "My account" : "Sign in"}
+          </Link>
           <Button asChild variant="hero" size="lg">
             <Link to="/#contact">Start subscription</Link>
           </Button>
@@ -93,6 +99,13 @@ const Navbar = () => {
                   {l.label}
                 </Link>
               ))}
+              <Link
+                to={user ? "/profile" : "/login"}
+                onClick={() => setOpen(false)}
+                className="px-3 py-3 rounded-md text-base hover:bg-secondary transition-colors"
+              >
+                {user ? "My account" : "Sign in"}
+              </Link>
               <Button asChild variant="hero" size="lg" className="mt-4">
                 <Link to="/#contact" onClick={() => setOpen(false)}>
                   Start subscription
