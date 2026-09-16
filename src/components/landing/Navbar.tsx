@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useSession } from "@/hooks/useSession";
 
 const links = [
   { label: "Why", to: "/#why" },
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const { user } = useSession();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -65,6 +67,12 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
+          <Link
+            to={user ? "/profile" : "/login"}
+            className="text-sm hover:text-primary transition-colors"
+          >
+            {user ? "My account" : "Sign in"}
+          </Link>
           <Button asChild variant="hero" size="lg">
             <Link to="/#contact">Start subscription</Link>
           </Button>
@@ -91,6 +99,13 @@ const Navbar = () => {
                   {l.label}
                 </Link>
               ))}
+              <Link
+                to={user ? "/profile" : "/login"}
+                onClick={() => setOpen(false)}
+                className="px-3 py-3 rounded-md text-base hover:bg-secondary transition-colors"
+              >
+                {user ? "My account" : "Sign in"}
+              </Link>
               <Button asChild variant="hero" size="lg" className="mt-4">
                 <Link to="/#contact" onClick={() => setOpen(false)}>
                   Start subscription
