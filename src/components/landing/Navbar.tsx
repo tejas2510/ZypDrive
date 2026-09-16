@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useSession } from "@/hooks/useSession";
 
 const links = [
   { label: "Why", to: "/#why" },
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const { user } = useSession();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
