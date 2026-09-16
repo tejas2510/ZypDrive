@@ -11,6 +11,8 @@ import SafetyGuidelines from "./pages/SafetyGuidelines";
 import BatteryCarePage from "./pages/BatteryCarePage";
 import Journey from "./pages/Journey";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Kyc from "./pages/Kyc";
 import OAuthConsent from "./pages/OAuthConsent";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -55,6 +57,8 @@ const App = () => (
           <Route path="/battery-care" element={<BatteryCarePage />} />
           <Route path="/ride-path" element={<Journey />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/kyc" element={<Kyc />} />
           <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
