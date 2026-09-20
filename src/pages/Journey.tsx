@@ -184,6 +184,11 @@ const Journey = () => {
                             </li>
                           ))}
                         </ul>
+                        {title === "Documents & verification" && (
+                          <Button asChild variant="hero" size="sm" className="mt-5">
+                            <Link to="/kyc">Verify your ID online</Link>
+                          </Button>
+                        )}
                       </Card>
                     </div>
                   </li>
