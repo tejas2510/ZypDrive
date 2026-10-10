@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { ShieldCheck, FileCheck2, Clock } from "lucide-react";
+import { KycStatusPill, KYC_LOCKED, KYC_FAILED } from "@/components/KycStatusPill";
 
 export const KYC_LABEL: Record<string, string> = {
   "Not Started": "Not started",
@@ -28,6 +29,7 @@ export default function Kyc() {
   const navigate = useNavigate();
   const [status, setStatus] = useState<string>("Not Started");
   const [busy, setBusy] = useState(false);
+  const [reason, setReason] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !user) navigate("/login?next=/kyc", { replace: true });
@@ -37,10 +39,11 @@ export default function Kyc() {
     if (!user) return;
     const { data } = await supabase
       .from("kyc_verifications")
-      .select("status")
+      .select("status, reason")
       .eq("user_id", user.id)
       .maybeSingle();
     if (data?.status) setStatus(data.status);
+    setReason(data?.reason ?? null);
   }, [user]);
 
   useEffect(() => {
@@ -53,7 +56,14 @@ export default function Kyc() {
       const { data, error } = await supabase.functions.invoke("didit-session", {
         body: { callback: `${window.location.origin}/kyc` },
       });
-      if (error) throw error;
+      if (error) {
+        const ctx = (error as { context?: Response }).context;
+        if (ctx?.status === 409) {
+          await refresh();
+          throw new Error("Your verification is already submitted. No need to do it again.");
+        }
+        throw error;
+      }
       const url = (data as { url?: string })?.url;
       if (!url) throw new Error("Could not start verification.");
       DiditSdk.shared.onComplete = () => {
@@ -85,7 +95,24 @@ export default function Kyc() {
               <div className="text-sm text-muted-foreground">Current status</div>
               <div className="font-semibold">{KYC_LABEL[status] ?? status}</div>
             </div>
+            <div className="ml-auto"><KycStatusPill status={status} /></div>
           </div>
+
+          {status === "In Review" && (
+            <p className="text-sm rounded-md bg-warning/10 p-3">
+              Thanks — your documents are with our team. We'll update your status here and email you once it's done.
+            </p>
+          )}
+          {status === "Approved" && (
+            <p className="text-sm rounded-md bg-success/10 p-3">You're verified. Nothing more to do here.</p>
+          )}
+          {KYC_FAILED.includes(status) && (
+            <div className="text-sm rounded-md bg-destructive/10 p-3">
+              <div className="font-semibold text-destructive">Verification not successful</div>
+              <p className="mt-1">{reason ?? "Please try again with clear photos in good light."}</p>
+              <p className="mt-1 text-muted-foreground">You can verify again below.</p>
+            </div>
+          )}
 
           <ul className="text-sm text-muted-foreground space-y-2">
             <li className="flex gap-2"><FileCheck2 className="h-4 w-4 mt-0.5 shrink-0" /> Keep your Aadhaar and driving licence handy.</li>
@@ -99,11 +126,13 @@ export default function Kyc() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <Button variant="hero" size="lg" onClick={start} disabled={busy}>
-              {busy ? "Opening…" : status === "Approved" ? "Verify again" : "Start verification"}
-            </Button>
+            {!KYC_LOCKED.includes(status) && (
+              <Button variant="hero" size="lg" onClick={start} disabled={busy}>
+                {busy ? "Opening…" : KYC_FAILED.includes(status) ? "Verify again" : "Start verification"}
+              </Button>
+            )}
             <Button variant="outline" size="lg" onClick={() => navigate("/profile")}>
-              Skip for now
+              {KYC_LOCKED.includes(status) ? "Go to my profile" : "Skip for now"}
             </Button>
           </div>
         </Card>

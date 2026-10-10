@@ -62,6 +62,7 @@ export type Database = {
           decision: Json | null
           id: string
           last_event_at: string | null
+          reason: string | null
           session_id: string | null
           status: string
           updated_at: string
@@ -72,6 +73,7 @@ export type Database = {
           decision?: Json | null
           id?: string
           last_event_at?: string | null
+          reason?: string | null
           session_id?: string | null
           status?: string
           updated_at?: string
@@ -82,6 +84,7 @@ export type Database = {
           decision?: Json | null
           id?: string
           last_event_at?: string | null
+          reason?: string | null
           session_id?: string | null
           status?: string
           updated_at?: string

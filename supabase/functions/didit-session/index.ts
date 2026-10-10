@@ -31,6 +31,22 @@ Deno.serve(async (req) => {
       });
     }
 
+    const adminCheck = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+    );
+    const { data: existing } = await adminCheck
+      .from("kyc_verifications")
+      .select("status")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    if (existing && ["In Review", "Approved"].includes(existing.status)) {
+      return new Response(JSON.stringify({ error: "already_submitted", status: existing.status }), {
+        status: 409,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const body = await req.json().catch(() => ({}));
     const origin = req.headers.get("origin") ?? "https://zypdrive.com";
     const callback = typeof body?.callback === "string" ? body.callback : `${origin}/kyc`;
@@ -69,6 +85,7 @@ Deno.serve(async (req) => {
         user_id: user.id,
         session_id: session.session_id,
         status: session.status ?? "Not Started",
+        reason: null,
       },
       { onConflict: "user_id" },
     );
