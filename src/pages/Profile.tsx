@@ -6,13 +6,14 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { KycStatusPill, KYC_LOCKED, KYC_FAILED } from "@/components/KycStatusPill";
 import { KYC_LABEL } from "./Kyc";
 
 export default function Profile() {
   const { user, loading } = useSession();
   const navigate = useNavigate();
   const [status, setStatus] = useState<string>("Not Started");
+  const [reason, setReason] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !user) navigate("/login?next=/profile", { replace: true });
@@ -22,11 +23,12 @@ export default function Profile() {
     if (!user) return;
     supabase
       .from("kyc_verifications")
-      .select("status")
+      .select("status, reason")
       .eq("user_id", user.id)
       .maybeSingle()
       .then(({ data }) => {
         if (data?.status) setStatus(data.status);
+        setReason(data?.reason ?? null);
       });
   }, [user]);
 
@@ -50,21 +52,28 @@ export default function Profile() {
               <div className="text-sm text-muted-foreground">Identity check</div>
               <div className="font-medium">{KYC_LABEL[status] ?? status}</div>
             </div>
-            <Badge variant={verified ? "default" : "secondary"}>
-              {verified ? "Verified" : "Pending"}
-            </Badge>
+<KycStatusPill status={status} />
           </div>
 
-          {pending && (
+          {KYC_FAILED.includes(status) && (
+            <p className="text-sm rounded-md bg-destructive/10 p-3">
+              <span className="font-semibold text-destructive">Reason: </span>
+              {reason ?? "Please try again with clear photos in good light."}
+            </p>
+          )}
+
+          {pending && status !== "In Review" && (
             <p className="text-sm text-muted-foreground">
               You can keep browsing, but we'll need this done before your scooter is handed over.
             </p>
           )}
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <Button asChild variant="hero" size="lg">
-              <Link to="/kyc">{verified ? "Re-verify identity" : "Complete verification"}</Link>
-            </Button>
+            {!KYC_LOCKED.includes(status) && (
+              <Button asChild variant="hero" size="lg">
+                <Link to="/kyc">{KYC_FAILED.includes(status) ? "Verify again" : "Complete verification"}</Link>
+              </Button>
+            )}
             <Button
               variant="outline"
               size="lg"
