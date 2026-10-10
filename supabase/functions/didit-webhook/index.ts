@@ -105,12 +105,37 @@ Deno.serve(async (req) => {
   ];
 
   if (vendorData && knownStatuses.includes(status)) {
+    const decision = (parsed.decision ?? parsed.resubmit_info ?? null) as unknown;
+    let reason: string | null = null;
+    if (["Declined", "Resubmitted", "Expired", "Kyc Expired", "Abandoned"].includes(status)) {
+      const found = new Set<string>();
+      const walk = (v: unknown) => {
+        if (Array.isArray(v)) return v.forEach(walk);
+        if (v && typeof v === "object") {
+          const o = v as Record<string, unknown>;
+          const text = o.long_description ?? o.short_description ?? o.reason ?? o.message;
+          if (typeof text === "string" && text.trim() && (o.risk || o.short_description || o.reason)) {
+            found.add(text.trim());
+          }
+          Object.values(o).forEach(walk);
+        }
+      };
+      walk(decision);
+      reason = found.size
+        ? [...found].slice(0, 4).join(" ")
+        : status === "Declined"
+          ? "We couldn't confirm your identity from the photos provided."
+          : status === "Resubmitted"
+            ? "Some details need to be submitted again."
+            : "Your verification wasn't completed in time.";
+    }
     await admin.from("kyc_verifications").upsert(
       {
         user_id: vendorData,
         session_id: parsed.session_id ? String(parsed.session_id) : null,
         status,
-        decision: (parsed.decision ?? parsed.resubmit_info ?? null) as unknown,
+        decision,
+        reason,
         last_event_at: new Date().toISOString(),
       },
       { onConflict: "user_id" },
