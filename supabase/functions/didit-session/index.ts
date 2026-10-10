@@ -85,6 +85,7 @@ Deno.serve(async (req) => {
         user_id: user.id,
         session_id: session.session_id,
         status: session.status ?? "Not Started",
+        reason: null,
       },
       { onConflict: "user_id" },
     );
